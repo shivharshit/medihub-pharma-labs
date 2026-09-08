@@ -11,11 +11,19 @@ import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import AdminPortal from './admin/AdminPortal';
+import { syncLiveTranslations } from './services/translationService';
 
 import productsData from './data/products.json';
 import categoriesData from './data/categories.json';
 
 export default function App() {
+  const [isAdminView, setIsAdminView] = useState(() => {
+    return window.location.pathname === '/admin' || 
+           window.location.hash === '#admin' || 
+           window.location.search.includes('admin=true');
+  });
+
   const [products] = useState(productsData);
   const [categories] = useState(categoriesData);
 
@@ -23,6 +31,26 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isRfqOpen, setIsRfqOpen] = useState(false);
+
+  // Sync any cloud translations on startup
+  useEffect(() => {
+    syncLiveTranslations();
+
+    const handleHashChange = () => {
+      const isNowAdmin = window.location.pathname === '/admin' || 
+                         window.location.hash === '#admin' || 
+                         window.location.search.includes('admin=true');
+      setIsAdminView(isNowAdmin);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleHashChange);
+    };
+  }, []);
 
   // RFQ Cart State persisted in LocalStorage
   const [rfqItems, setRfqItems] = useState(() => {
@@ -88,6 +116,10 @@ export default function App() {
       catalogEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (isAdminView) {
+    return <AdminPortal />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">

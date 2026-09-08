@@ -100,6 +100,18 @@ export default function Footer({ categories, onSelectCategory }) {
           </div>
 
           <div className="flex items-center gap-4">
+            <a
+              href="#admin"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.hash = 'admin';
+                window.dispatchEvent(new HashChangeEvent('hashchange'));
+              }}
+              className="text-slate-500 hover:text-cyan-400 text-[11px] transition-colors flex items-center gap-1"
+            >
+              <span>Admin Portal</span>
+            </a>
+            <span className="text-slate-700">•</span>
             <button
               onClick={scrollToTop}
               className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"
