@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ShieldCheck, Snowflake, Plane, FileCheck, Package, Lock, Award, Clock } from 'lucide-react';
 
 export default function ExportFeatures() {
+  const { t } = useTranslation();
   const features = [
     {
       icon: ShieldCheck,
@@ -42,13 +44,13 @@ export default function ExportFeatures() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-xs font-bold text-brand-blue tracking-wider uppercase bg-brand-blue-light px-3 py-1 rounded-full">
-            Global Supply Chain Capabilities
+            {t('nav.exportServices')}
           </span>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
-            Engineered for International Pharmaceutical Export
+            {t('exportFeatures.heading')}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Medihub Pharma Labs delivers world-class pharmaceutical excellence to global markets, providing end-to-end reliability from factory floor to international destination.
+            {t('exportFeatures.subheading')}
           </p>
         </div>
 
@@ -74,9 +76,9 @@ export default function ExportFeatures() {
         {/* Global Delivery Banner */}
         <div className="bg-gradient-to-r from-brand-navy via-slate-900 to-brand-navy rounded-3xl p-8 text-white text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6 border border-slate-700 shadow-xl">
           <div className="space-y-2">
-            <h3 className="text-xl sm:text-2xl font-bold">Ready to import certified pharmaceutical supplies?</h3>
+            <h3 className="text-xl sm:text-2xl font-bold">{t('exportFeatures.ctaTitle')}</h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Get in touch with our international business development team for MOQ inquiries, proforma quotation rate cards, and batch availability.
+              {t('exportFeatures.ctaSub')}
             </p>
           </div>
           <a
@@ -85,7 +87,7 @@ export default function ExportFeatures() {
             rel="noopener noreferrer"
             className="flex-shrink-0 bg-brand-green hover:bg-brand-green-dark text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg transition-transform transform hover:-translate-y-0.5"
           >
-            Connect on WhatsApp (+91 9244200415)
+            {t('exportFeatures.ctaButton')}
           </a>
         </div>
 

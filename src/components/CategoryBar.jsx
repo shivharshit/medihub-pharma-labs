@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { 
   Pill, Dumbbell, Syringe, Flame, Zap, ShieldPlus, Dna, Activity, 
   ShieldCheck, Ribbon, HeartHandshake, Sparkles, Brain, HeartPulse, 
@@ -16,6 +17,7 @@ const iconMap = {
 };
 
 export default function CategoryBar({ categories, selectedCategory, onSelectCategory, totalProducts = 598 }) {
+  const { t } = useTranslation();
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -51,7 +53,7 @@ export default function CategoryBar({ categories, selectedCategory, onSelectCate
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>All Categories</span>
+            <span>{t('nav.allCategories')}</span>
             <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono font-bold ${
               selectedCategory === 'all' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
             }`}>

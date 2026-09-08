@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { X, Check, MessageCircle, ShoppingBag, ShieldCheck, FileText, Package, AlertCircle, Sparkles, Building2 } from 'lucide-react';
 
 export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) {
+  const { t, i18n } = useTranslation();
   const [quantity, setQuantity] = useState(100);
   const [isAdded, setIsAdded] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -26,9 +28,24 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
     setTimeout(() => setIsAdded(false), 2000);
   };
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello Medihub Pharma Labs, I would like to request an export quotation for:\n\n*Product:* ${product.name}\n*Category:* ${product.category}\n*Strength/Dosage:* ${product.dosage || 'Standard'}\n*Estimated Order Quantity:* ${quantity} Units / Packs\n\nPlease provide wholesale quotation, delivery timeline, and COA availability.`
-  );
+  const getLocalizedModalWaMessage = () => {
+    const lang = (i18n.language || 'en').slice(0, 2);
+    if (lang === 'es') {
+      return encodeURIComponent(
+        `Hola Medihub Pharma Labs, me gustaría solicitar una cotización de exportación para:\n\n*Producto:* ${product.name}\n*Categoría:* ${product.category}\n*Dosis/Concentración:* ${product.dosage || 'Estándar'}\n*Cantidad Estimada de Pedido:* ${quantity} Unidades / Cajas\n\nPor favor proporcione cotización mayorista, tiempo de entrega y disponibilidad de COA.`
+      );
+    }
+    if (lang === 'de') {
+      return encodeURIComponent(
+        `Hallo Medihub Pharma Labs, ich möchte ein Export-Angebot anfordern für:\n\n*Produkt:* ${product.name}\n*Kategorie:* ${product.category}\n*Stärke/Dosis:* ${product.dosage || 'Standard'}\n*Geschätzte Bestellmenge:* ${quantity} Einheiten / Packungen\n\nBitte senden Sie mir ein Großhandelsangebot, Lieferzeiten und COA-Verfügbarkeit.`
+      );
+    }
+    return encodeURIComponent(
+      `Hello Medihub Pharma Labs, I would like to request an export quotation for:\n\n*Product:* ${product.name}\n*Category:* ${product.category}\n*Strength/Dosage:* ${product.dosage || 'Standard'}\n*Estimated Order Quantity:* ${quantity} Units / Packs\n\nPlease provide wholesale quotation, delivery timeline, and COA availability.`
+    );
+  };
+
+  const whatsappMessage = getLocalizedModalWaMessage();
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
@@ -92,24 +109,24 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
               {/* Technical Specifications Table */}
               <div className="bg-slate-50 rounded-xl p-4 border border-slate-200/70 space-y-2 text-xs">
                 <div className="font-bold text-slate-800 pb-1 border-b border-slate-200 flex items-center justify-between">
-                  <span>Product Specifications</span>
-                  <span className="text-[10px] text-brand-green font-semibold">Export Ready</span>
+                  <span>{t('productModal.productSpecifications')}</span>
+                  <span className="text-[10px] text-brand-green font-semibold">{t('productModal.readyForDispatch')}</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-y-2 pt-1">
-                  <div className="text-slate-500">Dosage Form:</div>
-                  <div className="font-semibold text-slate-800">{product.form || 'Tablet'}</div>
+                  <div className="text-slate-500">{t('productCard.form')}:</div>
+                  <div className="font-semibold text-slate-800">{product.form || t('productCard.tablets')}</div>
 
                   {product.dosage && (
                     <>
-                      <div className="text-slate-500">Strength:</div>
+                      <div className="text-slate-500">{t('productCard.dosage')}:</div>
                       <div className="font-semibold text-slate-800">{product.dosage}</div>
                     </>
                   )}
 
                   {product.packaging && (
                     <>
-                      <div className="text-slate-500">Packaging Type:</div>
+                      <div className="text-slate-500">{t('productCard.packaging')}:</div>
                       <div className="font-semibold text-slate-800">{product.packaging}</div>
                     </>
                   )}
@@ -129,7 +146,7 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
               {/* Product Description */}
               {product.description && (
                 <div className="text-xs text-slate-600 leading-relaxed bg-brand-blue-light/30 p-3.5 rounded-xl border border-brand-blue/20">
-                  <strong className="text-brand-blue block mb-1">Export Formulation Details:</strong>
+                  <strong className="text-brand-blue block mb-1">{t('productModal.productOverview')}:</strong>
                   <p>{product.description}</p>
                 </div>
               )}
@@ -141,15 +158,15 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
             <div className="flex items-center gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200">
               <ShieldCheck className="w-4 h-4 text-brand-green flex-shrink-0" />
-              <span className="text-slate-700">100% WHO-GMP Sourced</span>
+              <span className="text-slate-700">{t('productModal.gmpCertified')}</span>
             </div>
             <div className="flex items-center gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200">
               <FileText className="w-4 h-4 text-brand-blue flex-shrink-0" />
-              <span className="text-slate-700">COA & Batch Testing Available</span>
+              <span className="text-slate-700">{t('productModal.coaAvailable')}</span>
             </div>
             <div className="flex items-center gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200">
               <Building2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
-              <span className="text-slate-700">Customs Clearance Support</span>
+              <span className="text-slate-700">{t('productModal.worldwideAirExpress')}</span>
             </div>
           </div>
         </div>
@@ -159,7 +176,7 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
           {/* Quantity Selector */}
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <label className="text-xs font-semibold text-slate-600">
-              RFQ Quantity:
+              {t('rfq.qty')}
             </label>
             <div className="flex items-center border border-slate-300 rounded-xl bg-white overflow-hidden shadow-xs">
               <button
@@ -183,7 +200,6 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
                 +
               </button>
             </div>
-            <span className="text-xs text-slate-400">packs/vials</span>
           </div>
 
           {/* Action Buttons */}
@@ -199,12 +215,12 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
               {isInRfq || isAdded ? (
                 <>
                   <Check className="w-4 h-4" />
-                  <span>Added to RFQ</span>
+                  <span>{t('productCard.addedToRfq')}</span>
                 </>
               ) : (
                 <>
                   <ShoppingBag className="w-4 h-4" />
-                  <span>Add to Inquiry List</span>
+                  <span>{t('productModal.addToInquiryList')}</span>
                 </>
               )}
             </button>
@@ -216,7 +232,7 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md shadow-emerald-600/20 transition-colors"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>Inquire via WhatsApp</span>
+              <span>{t('productModal.inquireViaWhatsapp')}</span>
             </a>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, ShieldCheck, Globe, Truck, Award, Sparkles, CheckCircle2, MessageCircle, Layers } from 'lucide-react';
 
 const pillThemes = {
@@ -19,6 +20,7 @@ export default function Hero({
   totalProducts = 598, 
   totalCategories = 48 
 }) {
+  const { t } = useTranslation();
   // Dynamically take top featured categories from categories list
   const topFeaturedCategories = categories.length > 0
     ? categories.filter(c => c.featured).slice(0, 8)
@@ -39,20 +41,21 @@ export default function Hero({
             {/* Trust Badge */}
             <div className="inline-flex items-center gap-2 bg-slate-800/80 border border-brand-blue/40 px-3.5 py-1.5 rounded-full text-xs font-semibold text-brand-blue-light shadow-inner">
               <span className="w-2 h-2 rounded-full bg-brand-green animate-ping"></span>
-              <span>Leading Pharmaceutical Manufacturer & Global Exporter</span>
+              <span>{t('hero.badge')}</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-              Importing Health, <br />
+              {t('hero.titlePrefix')}{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-400">
-                Exporting Wellness Worldwide
-              </span>
+                {t('hero.titleHighlight')}
+              </span>{' '}
+              {t('hero.titleSuffix')}
             </h1>
 
             {/* Description */}
             <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-              <strong>Medihub Pharma Labs</strong> delivers high-grade pharmaceutical tablets, capsules, injectables, peptides, SARMs, Shree Venkatesh, Roger Pharma, 3rd Degree, PHARMAQO Labs, Infinity Pharma, and Evolve Biolabs formulations to verified buyers across 60+ countries.
+              {t('hero.subtitle')}
             </p>
 
             {/* Key Quality Pillars */}
@@ -89,7 +92,7 @@ export default function Hero({
                 onClick={onExploreClick}
                 className="flex items-center gap-2 bg-gradient-to-r from-brand-blue to-sky-500 hover:from-brand-blue-dark hover:to-sky-600 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-sky-500/25 transition-all transform hover:-translate-y-0.5"
               >
-                <span>Browse {totalProducts}+ Products</span>
+                <span>{t('hero.browseCatalog', { count: totalProducts })}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -100,7 +103,7 @@ export default function Hero({
                 className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Instant WhatsApp RFQ</span>
+                <span>{t('hero.instantRfq')}</span>
               </a>
             </div>
 
@@ -108,7 +111,7 @@ export default function Hero({
             <div className="pt-2 space-y-2">
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Popular Flagship Categories & Brands:</span>
+                <span>{t('hero.popularBrands')}</span>
               </div>
 
               <div className="flex items-center gap-2 flex-wrap">
@@ -149,7 +152,7 @@ export default function Hero({
                   </div>
                 </div>
                 <span className="px-2.5 py-1 bg-emerald-900/60 text-emerald-300 text-xs font-semibold rounded-full border border-emerald-500/30">
-                  Active Exporter
+                  {t('hero.activeExporter')}
                 </span>
               </div>
 
@@ -157,36 +160,36 @@ export default function Hero({
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60">
                   <div className="text-2xl sm:text-3xl font-black text-brand-blue">{totalProducts}+</div>
-                  <div className="text-xs text-slate-400 font-medium">Export Formulations</div>
+                  <div className="text-xs text-slate-400 font-medium">{t('hero.exportFormulations')}</div>
                 </div>
                 <div className="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60">
                   <div className="text-2xl sm:text-3xl font-black text-brand-green">{totalCategories}</div>
-                  <div className="text-xs text-slate-400 font-medium">Therapeutic Categories</div>
+                  <div className="text-xs text-slate-400 font-medium">{t('hero.therapeuticCategories')}</div>
                 </div>
                 <div className="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60">
                   <div className="text-2xl sm:text-3xl font-black text-sky-400">60+</div>
-                  <div className="text-xs text-slate-400 font-medium">Global Export Markets</div>
+                  <div className="text-xs text-slate-400 font-medium">{t('hero.globalExportMarkets')}</div>
                 </div>
                 <div className="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60">
                   <div className="text-2xl sm:text-3xl font-black text-amber-400">100%</div>
-                  <div className="text-xs text-slate-400 font-medium">Quality Guaranteed</div>
+                  <div className="text-xs text-slate-400 font-medium">{t('hero.qualityGuaranteed')}</div>
                 </div>
               </div>
 
               {/* Fast Quote Prompt */}
               <div className="bg-gradient-to-r from-brand-blue/15 to-brand-green/15 border border-brand-blue/30 rounded-xl p-4 text-xs space-y-2">
                 <div className="flex items-center justify-between font-semibold text-white">
-                  <span>Fast Quotation Delivery:</span>
-                  <span className="text-brand-green">Within 2 Hours</span>
+                  <span>{t('hero.fastQuote')}</span>
+                  <span className="text-brand-green">{t('hero.within2Hours')}</span>
                 </div>
                 <p className="text-slate-300 text-[11px] leading-normal">
-                  Submit your required molecules, strengths, and destination country to receive immediate proforma pricing with full COA documentation.
+                  {t('hero.quoteDesc')}
                 </p>
               </div>
 
               {/* Contact direct hotline */}
               <div className="pt-2 flex items-center justify-between text-xs text-slate-300">
-                <span className="text-slate-400">Export Desk:</span>
+                <span className="text-slate-400">{t('hero.exportDesk')}</span>
                 <span className="font-mono font-bold text-white text-sm">+91 9244200415</span>
               </div>
             </div>

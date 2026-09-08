@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ShieldCheck, Phone, Mail, Globe, ArrowUp, Award } from 'lucide-react';
 
 export default function Footer({ categories, onSelectCategory }) {
+  const { t } = useTranslation();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -31,17 +33,17 @@ export default function Footer({ categories, onSelectCategory }) {
             </div>
 
             <p className="text-slate-300 leading-relaxed text-xs">
-              <strong>Medihub Pharma Labs</strong> is an internationally accredited pharmaceutical exporter and manufacturer network specializing in finished formulations, generic tablets, sterile injectables, research peptides, and specialized healthcare solutions for global healthcare markets.
+              {t('footer.desc')}
             </p>
 
             <div className="pt-1 space-y-2 text-slate-300">
               <div className="flex items-center gap-2 text-emerald-400 font-semibold">
                 <ShieldCheck className="w-4 h-4 text-brand-green flex-shrink-0" />
-                <span>WHO-GMP Sourced & European Quality Standards</span>
+                <span>{t('footer.whoGmpStandards')}</span>
               </div>
               <div className="flex items-center gap-2 text-sky-400 font-medium">
                 <Globe className="w-4 h-4 text-brand-blue flex-shrink-0" />
-                <span>Global Air-Express Sourcing Across 60+ Countries</span>
+                <span>{t('footer.globalExpress')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-brand-green flex-shrink-0" />
@@ -61,8 +63,8 @@ export default function Footer({ categories, onSelectCategory }) {
           {/* Col 3, 4, 5: All Categories Columns */}
           <div className="lg:col-span-3 space-y-3">
             <div className="text-white font-bold text-sm border-b border-slate-800 pb-2 flex items-center justify-between">
-              <span>Therapeutic Categories & Brands ({categories.length} Lines)</span>
-              <span className="text-[10px] text-brand-blue font-semibold uppercase">Browse By Area</span>
+              <span>{t('footer.categoriesTitle', { count: categories.length })}</span>
+              <span className="text-[10px] text-brand-blue font-semibold uppercase">{t('footer.browseByArea')}</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1.5 pt-1 text-[11px] max-h-80 overflow-y-auto pr-2 no-scrollbar">
@@ -84,17 +86,17 @@ export default function Footer({ categories, onSelectCategory }) {
         <div className="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 text-[11px] text-slate-400 leading-relaxed space-y-2">
           <div className="font-bold text-slate-300 text-xs flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-brand-green" />
-            <span>International Compliance & Export Disclaimer:</span>
+            <span>{t('footer.complianceTitle')}:</span>
           </div>
           <p>
-            Medihub Pharma Labs supplies pharmaceutical formulations, active compounds, and specialty products strictly in accordance with applicable drug regulations in manufacturing and destination jurisdictions. Information on this website is intended solely for licensed B2B international distributors, healthcare professionals, pharmacies, and commercial buyers. All trademarks and brand names are property of their respective owners.
+            {t('footer.complianceDesc')}
           </p>
         </div>
 
         {/* Bottom Strip */}
         <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
           <div>
-            © {new Date().getFullYear()} <strong>Medihub Pharma Labs</strong>. All rights reserved.
+            © {new Date().getFullYear()} <strong>Medihub Pharma Labs</strong>. {t('footer.rights')}
           </div>
 
           <div className="flex items-center gap-4">

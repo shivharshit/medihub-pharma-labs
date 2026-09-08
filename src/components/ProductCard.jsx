@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Eye, Plus, Check, MessageCircle, Package, ShieldCheck, Zap } from 'lucide-react';
 
 export default function ProductCard({ product, onSelectProduct, onAddToRfq, isInRfq }) {
+  const { t, i18n } = useTranslation();
   const [imgError, setImgError] = useState(false);
   const [isAddedAnim, setIsAddedAnim] = useState(false);
 
@@ -25,6 +27,17 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
     return 'bg-sky-100 text-sky-800 border-sky-200';
   };
 
+  const getLocalizedWaMessage = () => {
+    const lang = (i18n.language || 'en').slice(0, 2);
+    if (lang === 'es') {
+      return `Hola Medihub Pharma Labs, estoy interesado en el producto: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.dosage || '')}). Por favor proporcione cotización de exportación y MOQ.`;
+    }
+    if (lang === 'de') {
+      return `Hallo Medihub Pharma Labs, ich interessiere mich für das Produkt: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.dosage || '')}). Bitte senden Sie mir ein Export-Angebot und Mindestbestellmengen (MOQ).`;
+    }
+    return `Hello Medihub Pharma Labs, I am interested in product: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.dosage || '')}). Please provide export quotation and MOQ.`;
+  };
+
   return (
     <div 
       onClick={() => onSelectProduct(product)}
@@ -33,7 +46,7 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
       {/* Top Badges & Indicators */}
       <div className="p-3 pb-0 flex items-center justify-between gap-1 z-10">
         <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${getFormColor(product.form)}`}>
-          {product.form || 'Tablet'}
+          {product.form || t('productCard.tablets')}
         </span>
 
         {product.dosage && (
@@ -57,7 +70,7 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
         <div className="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
           <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-full shadow flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
             <Eye className="w-3.5 h-3.5 text-brand-blue" />
-            Quick View Specs
+            {t('productCard.viewDetails')}
           </span>
         </div>
       </div>
@@ -106,26 +119,26 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
             {isInRfq || isAddedAnim ? (
               <>
                 <Check className="w-3.5 h-3.5 text-emerald-600" />
-                <span>In RFQ</span>
+                <span>{t('productCard.addedToRfq')}</span>
               </>
             ) : (
               <>
                 <Plus className="w-3.5 h-3.5" />
-                <span>Add to RFQ</span>
+                <span>{t('productCard.addToRfq')}</span>
               </>
             )}
           </button>
 
           {/* WhatsApp Direct Quote */}
           <a
-            href={`https://wa.me/919244200415?text=Hello%20Medihub%20Pharma%20Labs,%20I%20am%20interested%20in%20product:%20${encodeURIComponent(product.name)}%20(${encodeURIComponent(product.dosage || '')}).%20Please%20provide%20export%20quotation%20and%20MOQ.`}
+            href={`https://wa.me/919244200415?text=${getLocalizedWaMessage()}`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
             className="flex items-center justify-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-2.5 rounded-xl text-xs font-semibold shadow-xs transition-colors"
           >
             <MessageCircle className="w-3.5 h-3.5" />
-            <span>Quote</span>
+            <span>{t('productCard.quote')}</span>
           </a>
         </div>
       </div>

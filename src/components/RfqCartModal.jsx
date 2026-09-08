@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { X, Trash2, MessageCircle, Mail, Send, ShoppingBag, Globe, Building2, User, Phone, CheckCircle } from 'lucide-react';
 
 export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuantity, onRemoveItem, onClearRfq }) {
+  const { t, i18n } = useTranslation();
   const [buyerInfo, setBuyerInfo] = useState({
     companyName: '',
     contactPerson: '',
@@ -18,15 +20,48 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
   const totalItemsCount = rfqItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const formatRfqMessage = () => {
-    let msg = `*MEDIHUB PHARMA LABS - B2B EXPORT INQUIRY / RFQ*\n`;
+    const lang = (i18n.language || 'en').slice(0, 2);
+    let title = 'MEDIHUB PHARMA LABS - B2B EXPORT INQUIRY / RFQ';
+    let labelCompany = 'Company';
+    let labelContact = 'Contact Person';
+    let labelDest = 'Destination Country';
+    let labelPhone = 'Phone/WhatsApp';
+    let labelEmail = 'Email';
+    let labelProducts = 'REQUESTED PRODUCTS LIST';
+    let labelNotes = 'Additional Instructions / Requirements';
+    let labelClosing = 'Please provide proforma quotation, delivery timeline, and Certificate of Analysis (COA).';
+
+    if (lang === 'es') {
+      title = 'MEDIHUB PHARMA LABS - SOLICITUD DE COTIZACIÓN DE EXPORTACIÓN B2B';
+      labelCompany = 'Empresa';
+      labelContact = 'Persona de Contacto';
+      labelDest = 'País de Destino';
+      labelPhone = 'Teléfono/WhatsApp';
+      labelEmail = 'Correo Electrónico';
+      labelProducts = 'LISTA DE PRODUCTOS SOLICITADOS';
+      labelNotes = 'Instrucciones / Requisitos Adicionales';
+      labelClosing = 'Por favor proporcione factura proforma, tiempo estimado de entrega y Certificado de Análisis (COA).';
+    } else if (lang === 'de') {
+      title = 'MEDIHUB PHARMA LABS - B2B EXPORT-ANGEBOTSANFRAGE';
+      labelCompany = 'Unternehmen';
+      labelContact = 'Ansprechpartner';
+      labelDest = 'Zielland';
+      labelPhone = 'Telefon/WhatsApp';
+      labelEmail = 'E-Mail';
+      labelProducts = 'ANGEFORDERTE PRODUKTE';
+      labelNotes = 'Zusätzliche Anweisungen / Anforderungen';
+      labelClosing = 'Bitte senden Sie uns ein Proforma-Angebot, Lieferfristen und das Analysezertifikat (COA).';
+    }
+
+    let msg = `*${title}*\n`;
     msg += `-------------------------------------------\n`;
-    if (buyerInfo.companyName) msg += `*Company:* ${buyerInfo.companyName}\n`;
-    if (buyerInfo.contactPerson) msg += `*Contact Person:* ${buyerInfo.contactPerson}\n`;
-    if (buyerInfo.country) msg += `*Destination Country:* ${buyerInfo.country}\n`;
-    if (buyerInfo.phone) msg += `*Phone/WhatsApp:* ${buyerInfo.phone}\n`;
-    if (buyerInfo.email) msg += `*Email:* ${buyerInfo.email}\n`;
+    if (buyerInfo.companyName) msg += `*${labelCompany}:* ${buyerInfo.companyName}\n`;
+    if (buyerInfo.contactPerson) msg += `*${labelContact}:* ${buyerInfo.contactPerson}\n`;
+    if (buyerInfo.country) msg += `*${labelDest}:* ${buyerInfo.country}\n`;
+    if (buyerInfo.phone) msg += `*${labelPhone}:* ${buyerInfo.phone}\n`;
+    if (buyerInfo.email) msg += `*${labelEmail}:* ${buyerInfo.email}\n`;
     msg += `-------------------------------------------\n`;
-    msg += `*REQUESTED PRODUCTS LIST (${rfqItems.length} items):*\n\n`;
+    msg += `*${labelProducts} (${rfqItems.length} items):*\n\n`;
 
     rfqItems.forEach((item, idx) => {
       msg += `${idx + 1}. *${item.name}*\n`;
@@ -36,10 +71,10 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
     });
 
     if (buyerInfo.notes) {
-      msg += `*Additional Instructions / Requirements:*\n${buyerInfo.notes}\n\n`;
+      msg += `*${labelNotes}:*\n${buyerInfo.notes}\n\n`;
     }
 
-    msg += `Please provide proforma quotation, delivery timeline, and Certificate of Analysis (COA).`;
+    msg += labelClosing;
     return msg;
   };
 
@@ -72,9 +107,9 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
               <ShoppingBag className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">Request For Quotation (RFQ)</h2>
+              <h2 className="text-base font-bold text-slate-900">{t('rfq.title')}</h2>
               <p className="text-xs text-slate-500">
-                {rfqItems.length} unique formulation{rfqItems.length !== 1 ? 's' : ''} selected
+                {t('rfq.itemsSelected', { count: rfqItems.length })}
               </p>
             </div>
           </div>
@@ -95,9 +130,9 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
               <div className="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto">
                 <ShoppingBag className="w-8 h-8" />
               </div>
-              <h3 className="text-sm font-bold text-slate-700">Your Inquiry List is empty</h3>
+              <h3 className="text-sm font-bold text-slate-700">{t('rfq.emptyCart')}</h3>
               <p className="text-xs text-slate-500 max-w-xs mx-auto">
-                Browse our 337+ pharmaceutical products and click "Add to RFQ" to build your custom export quote.
+                {t('rfq.emptyCartSub')}
               </p>
             </div>
           ) : (
@@ -162,12 +197,12 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
               {/* Buyer Contact Form */}
               <div className="space-y-3 pt-2 border-t border-slate-200">
                 <div className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                  International Buyer & Shipping Info (Optional)
+                  {t('rfq.buyerInformation')}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                   <div>
-                    <label className="block text-slate-600 font-medium mb-1">Company / Pharmacy Name</label>
+                    <label className="block text-slate-600 font-medium mb-1">{t('rfq.fullName')}</label>
                     <input
                       type="text"
                       placeholder="e.g. Apex Global Pharma Ltd."
@@ -178,7 +213,7 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
                   </div>
 
                   <div>
-                    <label className="block text-slate-600 font-medium mb-1">Destination Country</label>
+                    <label className="block text-slate-600 font-medium mb-1">{t('rfq.country')}</label>
                     <input
                       type="text"
                       placeholder="e.g. United Kingdom, USA, UAE"
@@ -189,18 +224,7 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
                   </div>
 
                   <div>
-                    <label className="block text-slate-600 font-medium mb-1">Contact Person</label>
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      value={buyerInfo.contactPerson}
-                      onChange={(e) => setBuyerInfo({ ...buyerInfo, contactPerson: e.target.value })}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-blue"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-slate-600 font-medium mb-1">WhatsApp / Phone</label>
+                    <label className="block text-slate-600 font-medium mb-1">{t('rfq.phone')}</label>
                     <input
                       type="text"
                       placeholder="+1 (555) 000-0000"
@@ -210,8 +234,8 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
                     />
                   </div>
 
-                  <div className="sm:col-span-2">
-                    <label className="block text-slate-600 font-medium mb-1">Email Address</label>
+                  <div>
+                    <label className="block text-slate-600 font-medium mb-1">{t('rfq.email')}</label>
                     <input
                       type="email"
                       placeholder="buyer@domain.com"
@@ -222,7 +246,7 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-slate-600 font-medium mb-1">Special Packaging or Delivery Instructions</label>
+                    <label className="block text-slate-600 font-medium mb-1">{t('rfq.notes')}</label>
                     <textarea
                       rows={2}
                       placeholder="Need COA, temperature control, express air cargo, etc."
@@ -242,7 +266,7 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
         {rfqItems.length > 0 && (
           <div className="p-5 border-t border-slate-200 bg-slate-50 space-y-3">
             <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
-              <span>Total Formulations:</span>
+              <span>{t('categories.formulations')}:</span>
               <span className="text-brand-blue font-bold">{rfqItems.length} Products ({totalItemsCount} Total Units)</span>
             </div>
 
@@ -252,7 +276,7 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
                 className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-xl font-bold text-xs shadow-md shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Submit via WhatsApp</span>
+                <span>{t('rfq.sendWhatsapp')}</span>
               </button>
 
               <button
@@ -260,12 +284,12 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
                 className="flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white py-3 px-4 rounded-xl font-bold text-xs shadow-md shadow-brand-blue/20 transition-all transform hover:-translate-y-0.5"
               >
                 <Mail className="w-4 h-4" />
-                <span>Submit via Email</span>
+                <span>{t('rfq.sendEmail')}</span>
               </button>
             </div>
 
             <p className="text-[10px] text-slate-400 text-center">
-              Our export desk will review your list and respond with pricing & COA within 2 hours.
+              {t('rfq.submittedSub')}
             </p>
           </div>
         )}

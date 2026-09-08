@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Phone, Mail, MapPin, MessageCircle, Send, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export default function ContactSection() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,13 +47,13 @@ export default function ContactSection() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs font-bold text-brand-green tracking-wider uppercase bg-brand-green-light px-3 py-1 rounded-full">
-            Connect With Global Export Desk
+            {t('contact.badge')}
           </span>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
-            Request Export Quotations & Rate Cards
+            {t('contact.heading')}
           </h2>
           <p className="text-sm text-slate-600">
-            Reach out directly for wholesale inquiries, batch certificate requests, customs queries, or custom formulations.
+            {t('contact.subheading')}
           </p>
         </div>
 
@@ -67,13 +69,13 @@ export default function ContactSection() {
                   <MessageCircle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-base">Direct WhatsApp Export Desk</h3>
-                  <p className="text-xs text-emerald-100">Fastest response for international buyers</p>
+                  <h3 className="font-bold text-base">{t('contact.whatsappCardTitle')}</h3>
+                  <p className="text-xs text-emerald-100">{t('contact.whatsappCardSubtitle')}</p>
                 </div>
               </div>
 
               <p className="text-xs text-emerald-50 leading-relaxed">
-                Chat with our export specialists for live batch photos, ready stock confirmation, and instant proforma invoices.
+                {t('contact.whatsappCardDesc')}
               </p>
 
               <a
@@ -82,7 +84,7 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white text-emerald-800 font-bold text-xs px-5 py-2.5 rounded-xl shadow hover:bg-emerald-50 transition-colors"
               >
-                <span>Chat on WhatsApp (+91 9244200415)</span>
+                <span>{t('contact.chatOnWhatsapp')}</span>
               </a>
             </div>
 
@@ -94,7 +96,7 @@ export default function ContactSection() {
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Phone / Export Helpline:</span>
+                  <span className="text-slate-500 block">{t('contact.phoneHelpline')}</span>
                   <a href="tel:+919244200415" className="font-bold text-slate-800 text-sm hover:text-brand-blue">
                     +91 9244200415
                   </a>
@@ -106,7 +108,7 @@ export default function ContactSection() {
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Official Export Email:</span>
+                  <span className="text-slate-500 block">{t('contact.officialEmail')}</span>
                   <a href="mailto:support@medihubpharmalabs.com" className="font-bold text-slate-800 text-sm hover:text-brand-blue">
                     support@medihubpharmalabs.com
                   </a>
@@ -118,9 +120,9 @@ export default function ContactSection() {
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Export Hub & Global Network:</span>
+                  <span className="text-slate-500 block">{t('contact.exportHub')}</span>
                   <span className="font-semibold text-slate-800">
-                    International Pharmaceutical Formulations & Worldwide Export Hub
+                    {t('contact.exportHubValue')}
                   </span>
                 </div>
               </div>
@@ -130,9 +132,9 @@ export default function ContactSection() {
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Export Desk Hours:</span>
+                  <span className="text-slate-500 block">{t('contact.workingHours')}</span>
                   <span className="font-medium text-slate-800">
-                    24/7 International Timezone Support (Response &lt; 2h)
+                    {t('contact.workingHoursValue')}
                   </span>
                 </div>
               </div>
@@ -146,9 +148,9 @@ export default function ContactSection() {
             <div className="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
               
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900">Send an Export RFQ Message</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900">{t('contact.formTitle')}</h3>
                 <p className="text-xs text-slate-500 mt-1">
-                  Fill out your requirements below and submit directly to our export team.
+                  {t('contact.formSubtitle')}
                 </p>
               </div>
 
@@ -156,7 +158,7 @@ export default function ContactSection() {
                 <div className="bg-emerald-50 border border-emerald-300 text-emerald-800 p-4 rounded-xl flex items-center gap-3 text-xs">
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                   <div>
-                    <strong>Inquiry Form Dispatched!</strong> Our team will contact you shortly with your quotation.
+                    <strong>{t('contact.successMsg')}</strong>
                   </div>
                 </div>
               )}
@@ -165,11 +167,11 @@ export default function ContactSection() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-slate-700 font-medium mb-1">Your Full Name / Company *</label>
+                    <label className="block text-slate-700 font-medium mb-1">{t('rfq.fullName')}</label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. John Doe / HealthCorp"
+                      placeholder={t('contact.namePlaceholder')}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue"
@@ -177,11 +179,11 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-slate-700 font-medium mb-1">Destination Country / City *</label>
+                    <label className="block text-slate-700 font-medium mb-1">{t('rfq.country')}</label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. United Kingdom / London"
+                      placeholder={t('contact.countryPlaceholder')}
                       value={formData.country}
                       onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue"
@@ -191,11 +193,11 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-slate-700 font-medium mb-1">WhatsApp / Phone Number *</label>
+                    <label className="block text-slate-700 font-medium mb-1">{t('rfq.phone')}</label>
                     <input
                       type="text"
                       required
-                      placeholder="+1 (555) 000-0000"
+                      placeholder={t('contact.phonePlaceholder')}
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue"
@@ -203,11 +205,11 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-slate-700 font-medium mb-1">Email Address *</label>
+                    <label className="block text-slate-700 font-medium mb-1">{t('rfq.email')}</label>
                     <input
                       type="email"
                       required
-                      placeholder="buyer@domain.com"
+                      placeholder={t('contact.emailPlaceholder')}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue"
@@ -219,7 +221,7 @@ export default function ContactSection() {
                   <label className="block text-slate-700 font-medium mb-1">Products / Categories of Interest</label>
                   <input
                     type="text"
-                    placeholder="e.g. Cenforce 100mg, Anavar 10mg, Semaglutide, Testosterone Enanthate"
+                    placeholder={t('contact.productsPlaceholder')}
                     value={formData.productOfInterest}
                     onChange={(e) => setFormData({ ...formData, productOfInterest: e.target.value })}
                     className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue"
@@ -227,10 +229,10 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-700 font-medium mb-1">Estimated Quantity & Delivery Requirements</label>
+                  <label className="block text-slate-700 font-medium mb-1">{t('rfq.notes')}</label>
                   <textarea
                     rows={3}
-                    placeholder="Provide estimated pack quantities, desired packaging format, or target timeline..."
+                    placeholder={t('contact.messagePlaceholder')}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue text-xs"
@@ -244,7 +246,7 @@ export default function ContactSection() {
                     className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Send Inquiry on WhatsApp</span>
+                    <span>{t('contact.sendWhatsapp')}</span>
                   </button>
 
                   <button
@@ -253,7 +255,7 @@ export default function ContactSection() {
                     className="flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white font-bold py-3 px-4 rounded-xl shadow-md transition-colors"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send Inquiry via Email</span>
+                    <span>{t('contact.sendEmail')}</span>
                   </button>
                 </div>
 
