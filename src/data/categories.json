@@ -1,0 +1,386 @@
+[
+  {
+    "id": "shree-venkatesh-tablets",
+    "name": "Shree Venkatesh - Tablets",
+    "slug": "shree-venkatesh-tablets",
+    "count": 16,
+    "icon": "Pill",
+    "featured": true
+  },
+  {
+    "id": "shree-venkatesh-injections",
+    "name": "Shree Venkatesh - Injections",
+    "slug": "shree-venkatesh-injections",
+    "count": 16,
+    "icon": "Syringe",
+    "featured": true
+  },
+  {
+    "id": "roger-pharma",
+    "name": "Roger Pharma",
+    "slug": "roger-pharma",
+    "count": 84,
+    "icon": "Sparkles",
+    "featured": true
+  },
+  {
+    "id": "3rd-degree-injectable",
+    "name": "3rd Degree - Injectable",
+    "slug": "3rd-degree-injectable",
+    "count": 24,
+    "icon": "Flame",
+    "featured": true
+  },
+  {
+    "id": "pharmaqo-labs-hgh-peptides",
+    "name": "PHARMAQO Labs - HGH & PEPTIDES",
+    "slug": "pharmaqo-labs-hgh-peptides",
+    "count": 12,
+    "icon": "Dna",
+    "featured": true
+  },
+  {
+    "id": "pharmaqo-labs-injectables",
+    "name": "PHARMAQO Labs - Injectables",
+    "slug": "pharmaqo-labs-injectables",
+    "count": 32,
+    "icon": "Syringe",
+    "featured": true
+  },
+  {
+    "id": "infinity-pharma-injectables",
+    "name": "Infinity Pharma - Injectables",
+    "slug": "infinity-pharma-injectables",
+    "count": 23,
+    "icon": "Syringe",
+    "featured": true
+  },
+  {
+    "id": "evolve-biolabs-anabolics",
+    "name": "Evolve Biolabs Anabolics",
+    "slug": "evolve-biolabs-anabolics",
+    "count": 54,
+    "icon": "Dumbbell",
+    "featured": true
+  },
+  {
+    "id": "pharmaceutical-tablets",
+    "name": "Pharmaceutical Tablets",
+    "slug": "pharmaceutical-tablets",
+    "count": 35,
+    "icon": "Pill",
+    "featured": true
+  },
+  {
+    "id": "steroid",
+    "name": "Steroid",
+    "slug": "steroid",
+    "count": 39,
+    "icon": "Dumbbell",
+    "featured": true
+  },
+  {
+    "id": "testosterone-injection",
+    "name": "Testosterone Injection",
+    "slug": "testosterone-injection",
+    "count": 22,
+    "icon": "Syringe",
+    "featured": true
+  },
+  {
+    "id": "pharmaceutical-injections",
+    "name": "Pharmaceutical Injections",
+    "slug": "pharmaceutical-injections",
+    "count": 12,
+    "icon": "Syringe",
+    "featured": true
+  },
+  {
+    "id": "cenforce-tablets",
+    "name": "Cenforce Tablets",
+    "slug": "cenforce-tablets",
+    "count": 11,
+    "icon": "Flame",
+    "featured": true
+  },
+  {
+    "id": "sildenafil-tablets",
+    "name": "Sildenafil Tablets",
+    "slug": "sildenafil-tablets",
+    "count": 11,
+    "icon": "Zap",
+    "featured": true
+  },
+  {
+    "id": "antibiotic-tablets-capsules",
+    "name": "Antibiotic Tablets & Capsules",
+    "slug": "antibiotic-tablets-capsules",
+    "count": 15,
+    "icon": "ShieldPlus",
+    "featured": true
+  },
+  {
+    "id": "peptides",
+    "name": "Peptides",
+    "slug": "peptides",
+    "count": 16,
+    "icon": "Dna",
+    "featured": true
+  },
+  {
+    "id": "nandrolone-injection",
+    "name": "Nandrolone Injection",
+    "slug": "nandrolone-injection",
+    "count": 7,
+    "icon": "Activity",
+    "featured": false
+  },
+  {
+    "id": "injectable-products",
+    "name": "Injectable Products",
+    "slug": "injectable-products",
+    "count": 7,
+    "icon": "Syringe",
+    "featured": false
+  },
+  {
+    "id": "ivermectin-tablets",
+    "name": "Ivermectin Tablets",
+    "slug": "ivermectin-tablets",
+    "count": 5,
+    "icon": "ShieldCheck",
+    "featured": false
+  },
+  {
+    "id": "anti-cancer-medicines",
+    "name": "Anti Cancer Medicines",
+    "slug": "anti-cancer-medicines",
+    "count": 14,
+    "icon": "Ribbon",
+    "featured": true
+  },
+  {
+    "id": "clenbuterol-tablet",
+    "name": "Clenbuterol Tablet",
+    "slug": "clenbuterol-tablet",
+    "count": 7,
+    "icon": "Flame",
+    "featured": false
+  },
+  {
+    "id": "avanafil-tablets",
+    "name": "Avanafil Tablets",
+    "slug": "avanafil-tablets",
+    "count": 5,
+    "icon": "Zap",
+    "featured": false
+  },
+  {
+    "id": "erectile-dysfunction-medicine",
+    "name": "Erectile Dysfunction Medicine",
+    "slug": "erectile-dysfunction-medicine",
+    "count": 8,
+    "icon": "HeartHandshake",
+    "featured": false
+  },
+  {
+    "id": "pharmaceutical-capsule",
+    "name": "Pharmaceutical Capsule",
+    "slug": "pharmaceutical-capsule",
+    "count": 4,
+    "icon": "Pill",
+    "featured": false
+  },
+  {
+    "id": "sildenafil-oral-jelly",
+    "name": "Sildenafil Oral Jelly",
+    "slug": "sildenafil-oral-jelly",
+    "count": 3,
+    "icon": "Sparkles",
+    "featured": false
+  },
+  {
+    "id": "gabapentin-tablet",
+    "name": "Gabapentin Tablet",
+    "slug": "gabapentin-tablet",
+    "count": 3,
+    "icon": "Brain",
+    "featured": false
+  },
+  {
+    "id": "cardiac-drugs",
+    "name": "Cardiac Drugs",
+    "slug": "cardiac-drugs",
+    "count": 5,
+    "icon": "HeartPulse",
+    "featured": false
+  },
+  {
+    "id": "artesunate-tablet",
+    "name": "Artesunate Tablet",
+    "slug": "artesunate-tablet",
+    "count": 3,
+    "icon": "Cross",
+    "featured": false
+  },
+  {
+    "id": "fluconazole-tablet",
+    "name": "Fluconazole Tablet",
+    "slug": "fluconazole-tablet",
+    "count": 3,
+    "icon": "ShieldAlert",
+    "featured": false
+  },
+  {
+    "id": "clomiphene-citrate-tablet",
+    "name": "Clomiphene Citrate Tablet",
+    "slug": "clomiphene-citrate-tablet",
+    "count": 5,
+    "icon": "Baby",
+    "featured": false
+  },
+  {
+    "id": "antidepressant-anti-anxiety-medicines",
+    "name": "Antidepressant & Anti Anxiety Medicines",
+    "slug": "antidepressant-anti-anxiety-medicines",
+    "count": 7,
+    "icon": "Smile",
+    "featured": false
+  },
+  {
+    "id": "hair-growth-medicine",
+    "name": "Hair Growth Medicine",
+    "slug": "hair-growth-medicine",
+    "count": 6,
+    "icon": "Scissors",
+    "featured": false
+  },
+  {
+    "id": "febuxostat-tablets",
+    "name": "Febuxostat Tablets",
+    "slug": "febuxostat-tablets",
+    "count": 7,
+    "icon": "Bone",
+    "featured": false
+  },
+  {
+    "id": "baclofen-tablet",
+    "name": "Baclofen Tablet",
+    "slug": "baclofen-tablet",
+    "count": 2,
+    "icon": "Stethoscope",
+    "featured": false
+  },
+  {
+    "id": "pharmaceutical-inhaler",
+    "name": "Pharmaceutical Inhaler",
+    "slug": "pharmaceutical-inhaler",
+    "count": 2,
+    "icon": "Wind",
+    "featured": false
+  },
+  {
+    "id": "fertility-enhancer-drugs",
+    "name": "Fertility Enhancer Drugs",
+    "slug": "fertility-enhancer-drugs",
+    "count": 4,
+    "icon": "Heart",
+    "featured": false
+  },
+  {
+    "id": "blood-pressure-medicine",
+    "name": "Blood Pressure Medicine",
+    "slug": "blood-pressure-medicine",
+    "count": 5,
+    "icon": "Gauge",
+    "featured": false
+  },
+  {
+    "id": "antiepileptic-drugs",
+    "name": "Antiepileptic Drugs",
+    "slug": "antiepileptic-drugs",
+    "count": 4,
+    "icon": "BrainCircuit",
+    "featured": false
+  },
+  {
+    "id": "antiviral-drugs",
+    "name": "Antiviral Drugs",
+    "slug": "antiviral-drugs",
+    "count": 3,
+    "icon": "Shield",
+    "featured": false
+  },
+  {
+    "id": "testosterone-gel",
+    "name": "Testosterone Gel",
+    "slug": "testosterone-gel",
+    "count": 1,
+    "icon": "Droplets",
+    "featured": false
+  },
+  {
+    "id": "acarbose-tablets",
+    "name": "Acarbose Tablets",
+    "slug": "acarbose-tablets",
+    "count": 3,
+    "icon": "Apple",
+    "featured": false
+  },
+  {
+    "id": "erythropoietin-injection",
+    "name": "Erythropoietin Injection",
+    "slug": "erythropoietin-injection",
+    "count": 3,
+    "icon": "Syringe",
+    "featured": false
+  },
+  {
+    "id": "antacid-drugs",
+    "name": "Antacid Drugs",
+    "slug": "antacid-drugs",
+    "count": 3,
+    "icon": "CheckCircle",
+    "featured": false
+  },
+  {
+    "id": "nasal-spray",
+    "name": "Nasal Spray",
+    "slug": "nasal-spray",
+    "count": 1,
+    "icon": "Wind",
+    "featured": false
+  },
+  {
+    "id": "hydroxychloroquine-sulfate-tablet",
+    "name": "Hydroxychloroquine Sulfate Tablet",
+    "slug": "hydroxychloroquine-sulfate-tablet",
+    "count": 2,
+    "icon": "Pill",
+    "featured": false
+  },
+  {
+    "id": "kidney-drugs",
+    "name": "Kidney Drugs",
+    "slug": "kidney-drugs",
+    "count": 3,
+    "icon": "Activity",
+    "featured": false
+  },
+  {
+    "id": "vastu-remedies",
+    "name": "Vastu Remedies",
+    "slug": "vastu-remedies",
+    "count": 2,
+    "icon": "Sun",
+    "featured": false
+  },
+  {
+    "id": "new-items",
+    "name": "New Items",
+    "slug": "new-items",
+    "count": 39,
+    "icon": "Sparkles",
+    "featured": true
+  }
+]

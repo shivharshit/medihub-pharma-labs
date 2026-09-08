@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="medBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="medGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0284c7" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Medical Cross / Bio-Hexagon Icon Container -->
+  <g transform="translate(20, 15)">
+    <!-- Hexagon Outer Border -->
+    <polygon points="65,5 125,40 125,110 65,145 5,110 5,40" fill="#ffffff" stroke="url(#medBlueGrad)" stroke-width="4" filter="url(#subtleGlow)" />
+    
+    <!-- Cross Inner Design with rounded gradient pills -->
+    <!-- Vertical Bar -->
+    <rect x="52" y="32" width="26" height="66" rx="8" fill="url(#medGreenGrad)" />
+    <!-- Horizontal Bar -->
+    <rect x="32" y="52" width="66" height="26" rx="8" fill="url(#medBlueGrad)" opacity="0.9" />
+    
+    <!-- Center Biotech Core Node -->
+    <circle cx="65" cy="65" r="9" fill="#ffffff" stroke="#0ea5e9" stroke-width="3" />
+    
+    <!-- Orbiting Molecular Dots -->
+    <circle cx="28" cy="26" r="4.5" fill="#10b981" />
+    <circle cx="102" cy="26" r="4.5" fill="#0ea5e9" />
+    <circle cx="65" cy="128" r="4.5" fill="#0284c7" />
+  </g>
+
+  <!-- Brand Typography -->
+  <!-- Main Name: MEDIHUB -->
+  <text x="175" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="900" fill="#0f172a" letter-spacing="0.5">
+    MEDI<tspan fill="#0ea5e9">HUB</tspan>
+  </text>
+
+  <!-- Subtitle: PHARMA LABS -->
+  <g transform="translate(178, 118)">
+    <rect x="0" y="-18" width="230" height="26" rx="6" fill="#0f172a" />
+    <text x="115" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff" letter-spacing="5.5" text-anchor="middle">
+      PHARMA LABS
+    </text>
+  </g>
+
+  <!-- Tagline / Accent -->
+  <text x="430" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#059669" letter-spacing="1">
+    • GLOBAL EXCELLENCE
+  </text>
+</svg>
