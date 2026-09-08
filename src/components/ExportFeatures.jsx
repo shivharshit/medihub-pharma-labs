@@ -80,12 +80,12 @@ export default function ExportFeatures() {
             </p>
           </div>
           <a
-            href="https://wa.me/918043812772?text=Hello%20Medihub%20Pharma%20Labs,%20I%20would%20like%20to%20request%20an%20export%20formulations%20catalog."
+            href="https://wa.me/917587970797?text=Hello%20Medihub%20Pharma%20Labs,%20I%20would%20like%20to%20request%20an%20export%20formulations%20catalog."
             target="_blank"
             rel="noopener noreferrer"
             className="flex-shrink-0 bg-brand-green hover:bg-brand-green-dark text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg transition-transform transform hover:-translate-y-0.5"
           >
-            Connect on WhatsApp (+91 8043812772)
+            Connect on WhatsApp (+91 7587970797)
           </a>
         </div>
 

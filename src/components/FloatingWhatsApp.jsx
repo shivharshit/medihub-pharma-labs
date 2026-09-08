@@ -11,7 +11,7 @@ export default function FloatingWhatsApp() {
 
       {/* Action Button */}
       <a
-        href="https://wa.me/918043812772?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20place%20an%20inquiry%20for%20pharmaceutical%20products."
+        href="https://wa.me/917587970797?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20place%20an%20inquiry%20for%20pharmaceutical%20products."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Direct WhatsApp Inquiry"

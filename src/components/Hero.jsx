@@ -94,7 +94,7 @@ export default function Hero({
               </button>
 
               <a
-                href="https://wa.me/918043812772?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20place%20a%20bulk%20pharmaceutical%20inquiry"
+                href="https://wa.me/917587970797?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20place%20a%20bulk%20pharmaceutical%20inquiry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5"
@@ -187,7 +187,7 @@ export default function Hero({
               {/* Contact direct hotline */}
               <div className="pt-2 flex items-center justify-between text-xs text-slate-300">
                 <span className="text-slate-400">Export Desk:</span>
-                <span className="font-mono font-bold text-white text-sm">+91 8043812772</span>
+                <span className="font-mono font-bold text-white text-sm">+91 7587970797</span>
               </div>
             </div>
           </div>
