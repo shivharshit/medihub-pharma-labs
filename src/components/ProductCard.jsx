@@ -118,7 +118,7 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
 
           {/* WhatsApp Direct Quote */}
           <a
-            href={`https://wa.me/917587970797?text=Hello%20Medihub%20Pharma%20Labs,%20I%20am%20interested%20in%20product:%20${encodeURIComponent(product.name)}%20(${encodeURIComponent(product.dosage || '')}).%20Please%20provide%20export%20quotation%20and%20MOQ.`}
+            href={`https://wa.me/919244200415?text=Hello%20Medihub%20Pharma%20Labs,%20I%20am%20interested%20in%20product:%20${encodeURIComponent(product.name)}%20(${encodeURIComponent(product.dosage || '')}).%20Please%20provide%20export%20quotation%20and%20MOQ.`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}

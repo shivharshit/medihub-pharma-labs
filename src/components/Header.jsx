@@ -43,15 +43,15 @@ export default function Header({
 
           <div className="flex items-center gap-4">
             <a 
-              href="tel:+917587970797" 
+              href="tel:+919244200415" 
               className="flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-brand-green" />
-              <span>+91 7587970797</span>
+              <span>+91 9244200415</span>
             </a>
             <span className="text-slate-600">|</span>
             <a 
-              href="https://wa.me/917587970797?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20inquire%20about%20pharmaceutical%20products" 
+              href="https://wa.me/919244200415?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20inquire%20about%20pharmaceutical%20products" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-1 text-emerald-400 font-semibold hover:text-emerald-300 transition-colors"

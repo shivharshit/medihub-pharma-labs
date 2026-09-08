@@ -210,7 +210,7 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
             </button>
 
             <a
-              href={`https://wa.me/917587970797?text=${whatsappMessage}`}
+              href={`https://wa.me/919244200415?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md shadow-emerald-600/20 transition-colors"

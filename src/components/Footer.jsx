@@ -45,8 +45,8 @@ export default function Footer({ categories, onSelectCategory }) {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-brand-green flex-shrink-0" />
-                <a href="tel:+917587970797" className="hover:text-white transition-colors">
-                  +91 7587970797
+                <a href="tel:+919244200415" className="hover:text-white transition-colors">
+                  +91 9244200415
                 </a>
               </div>
               <div className="flex items-center gap-2">

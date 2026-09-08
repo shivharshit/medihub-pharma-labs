@@ -45,7 +45,7 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
 
   const handleSendWhatsApp = () => {
     const text = encodeURIComponent(formatRfqMessage());
-    window.open(`https://wa.me/917587970797?text=${text}`, '_blank');
+    window.open(`https://wa.me/919244200415?text=${text}`, '_blank');
     setSubmitted(true);
   };
 

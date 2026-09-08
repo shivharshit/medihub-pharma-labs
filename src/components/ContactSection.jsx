@@ -21,7 +21,7 @@ export default function ContactSection() {
     text += `*Phone:* ${formData.phone}\n`;
     text += `*Products of Interest:* ${formData.productOfInterest}\n`;
     text += `*Message/Quantity:* ${formData.message}\n`;
-    window.open(`https://wa.me/917587970797?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/919244200415?text=${encodeURIComponent(text)}`, '_blank');
     setSubmitted(true);
   };
 
@@ -77,12 +77,12 @@ export default function ContactSection() {
               </p>
 
               <a
-                href="https://wa.me/917587970797?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20place%20an%20export%20inquiry."
+                href="https://wa.me/919244200415?text=Hello%20Medihub%20Pharma%20Labs,%20I%20want%20to%20place%20an%20export%20inquiry."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white text-emerald-800 font-bold text-xs px-5 py-2.5 rounded-xl shadow hover:bg-emerald-50 transition-colors"
               >
-                <span>Chat on WhatsApp (+91 7587970797)</span>
+                <span>Chat on WhatsApp (+91 9244200415)</span>
               </a>
             </div>
 
@@ -95,8 +95,8 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <span className="text-slate-500 block">Phone / Export Helpline:</span>
-                  <a href="tel:+917587970797" className="font-bold text-slate-800 text-sm hover:text-brand-blue">
-                    +91 7587970797
+                  <a href="tel:+919244200415" className="font-bold text-slate-800 text-sm hover:text-brand-blue">
+                    +91 9244200415
                   </a>
                 </div>
               </div>
