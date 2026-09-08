@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import AdminLogin from './AdminLogin';
 import AdminLayout from './AdminLayout';
 import DashboardOverview from './DashboardOverview';
+import DeepAnalysis from './DeepAnalysis';
+import RfqLeadsManager from './RfqLeadsManager';
+import LiveActivityFeed from './LiveActivityFeed';
 import LanguageManager from './LanguageManager';
 import SupabaseSettings from './SupabaseSettings';
 
@@ -37,6 +40,9 @@ export default function AdminPortal() {
       onLogout={handleLogout}
     >
       {activeTab === 'overview' && <DashboardOverview onNavigate={setActiveTab} />}
+      {activeTab === 'analytics' && <DeepAnalysis />}
+      {activeTab === 'leads' && <RfqLeadsManager />}
+      {activeTab === 'feed' && <LiveActivityFeed />}
       {activeTab === 'languages' && <LanguageManager />}
       {activeTab === 'supabase' && <SupabaseSettings />}
     </AdminLayout>

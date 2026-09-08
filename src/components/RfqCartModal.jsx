@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X, Trash2, MessageCircle, Mail, Send, ShoppingBag, Globe, Building2, User, Phone, CheckCircle } from 'lucide-react';
 
+import { submitRfqLead } from '../services/analyticsService';
+
 export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuantity, onRemoveItem, onClearRfq }) {
   const { t, i18n } = useTranslation();
   const [buyerInfo, setBuyerInfo] = useState({
@@ -78,13 +80,28 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
     return msg;
   };
 
+  const recordLeadSubmission = () => {
+    submitRfqLead({
+      company: buyerInfo.companyName || 'Global Pharma Buyer',
+      name: buyerInfo.contactPerson || 'Procurement Officer',
+      email: buyerInfo.email || 'inquiry@medihubpharmalabs.com',
+      phone: buyerInfo.phone || '+91 9244200415',
+      country: buyerInfo.country || 'International',
+      items: rfqItems.map(i => ({ name: i.name, category: i.category, quantity: i.quantity })),
+      notes: buyerInfo.notes || 'Submitted via RFQ drawer.',
+      estimatedValue: `$${(rfqItems.length * 12500).toLocaleString()}`
+    });
+  };
+
   const handleSendWhatsApp = () => {
+    recordLeadSubmission();
     const text = encodeURIComponent(formatRfqMessage());
     window.open(`https://wa.me/919244200415?text=${text}`, '_blank');
     setSubmitted(true);
   };
 
   const handleSendEmail = () => {
+    recordLeadSubmission();
     const subject = encodeURIComponent(`B2B Export Quotation Request - ${buyerInfo.companyName || 'International Buyer'} (${buyerInfo.country || 'Global'})`);
     const body = encodeURIComponent(formatRfqMessage());
     window.location.href = `mailto:support@medihubpharmalabs.com?subject=${subject}&body=${body}`;

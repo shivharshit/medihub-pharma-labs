@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronDown, Check } from 'lucide-react';
 
 import { fetchLanguages } from '../services/translationService';
+import { trackEvent } from '../services/analyticsService';
 
 const DEFAULT_LANGS = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
@@ -44,6 +45,7 @@ export default function LanguageSelector({ variant = 'header' }) {
   }, []);
 
   const changeLang = (langCode) => {
+    trackEvent('language_change', { to: langCode });
     i18n.changeLanguage(langCode);
     setIsOpen(false);
   };

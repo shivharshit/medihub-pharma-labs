@@ -115,24 +115,68 @@ export default function DashboardOverview({ onNavigate }) {
         <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
           Management Workspaces
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Languages workspace */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* Deep Analysis */}
           <div 
-            onClick={() => onNavigate('languages')}
+            onClick={() => onNavigate('analytics')}
             className="group cursor-pointer bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition-all shadow-lg hover:shadow-cyan-500/5 flex flex-col justify-between"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Globe className="w-6 h-6" />
+                <BarChart3 className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-                Multi-Language Studio
+              <h3 className="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">
+                Deep Analysis & KPIs
               </h3>
               <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Add new international languages (French, Arabic, German, Spanish), edit translation strings side-by-side, and push real-time updates to visitors.
+                Live visitor traffic, global export demand hotspots, therapeutic category interest, and search keyword trends.
               </p>
             </div>
             <div className="mt-6 flex items-center text-xs font-semibold text-cyan-400 gap-1">
+              <span>View Deep Analysis</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </div>
+          </div>
+
+          {/* RFQ Leads Manager */}
+          <div 
+            onClick={() => onNavigate('leads')}
+            className="group cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-6 transition-all shadow-lg hover:shadow-emerald-500/5 flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Users className="w-6 h-6" />
+              </div>
+              <h3 className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
+                RFQ Leads CRM
+              </h3>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                Review commercial quotation inquiries, manage deal pipeline statuses, and reply via 1-click WhatsApp or Email.
+              </p>
+            </div>
+            <div className="mt-6 flex items-center text-xs font-semibold text-emerald-400 gap-1">
+              <span>Manage Inquiries</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </div>
+          </div>
+
+          {/* Languages workspace */}
+          <div 
+            onClick={() => onNavigate('languages')}
+            className="group cursor-pointer bg-slate-900 border border-slate-800 hover:border-purple-500/50 rounded-2xl p-6 transition-all shadow-lg hover:shadow-purple-500/5 flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Globe className="w-6 h-6" />
+              </div>
+              <h3 className="text-base font-bold text-white group-hover:text-purple-400 transition-colors">
+                Multi-Language Studio
+              </h3>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                Edit translations side-by-side, add languages with RTL/LTR support, and sync instantly to Supabase.
+              </p>
+            </div>
+            <div className="mt-6 flex items-center text-xs font-semibold text-purple-400 gap-1">
               <span>Open Translation Studio</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
@@ -147,42 +191,18 @@ export default function DashboardOverview({ onNavigate }) {
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <Database className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
+              <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors">
                 Supabase Cloud Settings
               </h3>
               <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Connect your Supabase project URL & Anon Key, initialize database tables with 1-click SQL scripts, and sync local translations to cloud tables.
+                Configure database keys, run 1-click SQL scripts, and push local translations to cloud tables.
               </p>
             </div>
             <div className="mt-6 flex items-center text-xs font-semibold text-blue-400 gap-1">
-              <span>Configure Cloud Sync</span>
+              <span>Configure Database</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </div>
-
-          {/* Public Storefront */}
-          <a
-            href="/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-6 transition-all shadow-lg hover:shadow-emerald-500/5 flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Layers className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
-                Live Storefront Preview
-              </h3>
-              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Open the customer-facing pharmaceutical portal at medihubpharmalabs.com to test language switching and RFQ inquiries live.
-              </p>
-            </div>
-            <div className="mt-6 flex items-center text-xs font-semibold text-emerald-400 gap-1">
-              <span>View Public Portal</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </div>
-          </a>
         </div>
       </div>
     </div>

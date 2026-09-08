@@ -41,9 +41,36 @@ CREATE TABLE IF NOT EXISTS site_settings (
     updated_at TIMESTAMPTZ DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS rfq_inquiries (
+    id VARCHAR(100) PRIMARY KEY,
+    name VARCHAR(255),
+    company VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(100),
+    country VARCHAR(100),
+    country_code VARCHAR(10),
+    items JSONB DEFAULT '[]'::jsonb,
+    status VARCHAR(50) DEFAULT 'New Lead',
+    notes TEXT,
+    estimated_value VARCHAR(50),
+    created_at TIMESTAMPTZ DEFAULT now(),
+    updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS analytics_events (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    event_type VARCHAR(100) NOT NULL,
+    event_data JSONB DEFAULT '{}'::jsonb,
+    device_type VARCHAR(50) DEFAULT 'Desktop',
+    language VARCHAR(10) DEFAULT 'en',
+    created_at TIMESTAMPTZ DEFAULT now()
+);
+
 ALTER TABLE languages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE translations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE site_settings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE rfq_inquiries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE analytics_events ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Public Read Languages" ON languages FOR SELECT USING (true);
 CREATE POLICY "Public Read Translations" ON translations FOR SELECT USING (true);
@@ -51,6 +78,8 @@ CREATE POLICY "Public Read Settings" ON site_settings FOR SELECT USING (true);
 CREATE POLICY "Allow All on Languages" ON languages FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow All on Translations" ON translations FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow All on Settings" ON site_settings FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Allow All on RFQ" ON rfq_inquiries FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Allow All on Analytics" ON analytics_events FOR ALL USING (true) WITH CHECK (true);
 `;
 
 export default function SupabaseSettings() {

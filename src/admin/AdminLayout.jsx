@@ -1,12 +1,14 @@
-import React from 'react';
 import { 
   LayoutDashboard, Globe, Database, LogOut, ArrowLeft, 
-  Shield, Layers, Activity 
+  Shield, Layers, Activity, BarChart3, Users, Radio 
 } from 'lucide-react';
 
 export default function AdminLayout({ activeTab, setActiveTab, onLogout, children }) {
   const navItems = [
     { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard },
+    { id: 'analytics', label: 'Deep Analysis & Insights', icon: BarChart3 },
+    { id: 'leads', label: 'RFQ Leads & Inquiries', icon: Users },
+    { id: 'feed', label: 'Live Activity Stream', icon: Radio },
     { id: 'languages', label: 'Multi-Language Studio', icon: Globe },
     { id: 'supabase', label: 'Supabase Cloud', icon: Database },
   ];

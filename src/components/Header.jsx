@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Search, ShoppingBag, Phone, Mail, Menu, X, Globe, ShieldCheck, ChevronDown, Sparkles } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 
+import { trackSearchQuery } from '../services/analyticsService';
+
 export default function Header({
   searchTerm,
   setSearchTerm,
@@ -24,6 +26,16 @@ export default function Header({
     const catalogEl = document.getElementById('catalog-section');
     if (catalogEl) {
       catalogEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSearchSubmit = (e) => {
+    if (e.key === 'Enter' && searchTerm) {
+      trackSearchQuery(searchTerm);
+      const catalogEl = document.getElementById('catalog-section');
+      if (catalogEl) {
+        catalogEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -89,6 +101,7 @@ export default function Header({
                 placeholder={t('nav.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleSearchSubmit}
                 className="w-full pl-10 pr-4 py-2 text-sm bg-slate-100/90 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all placeholder:text-slate-400"
               />
               {searchTerm && (

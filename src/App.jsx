@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import AdminPortal from './admin/AdminPortal';
 import { syncLiveTranslations } from './services/translationService';
+import { trackEvent } from './services/analyticsService';
 
 import productsData from './data/products.json';
 import categoriesData from './data/categories.json';
@@ -32,9 +33,10 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isRfqOpen, setIsRfqOpen] = useState(false);
 
-  // Sync any cloud translations on startup
+  // Sync any cloud translations on startup and log initial visitor session
   useEffect(() => {
     syncLiveTranslations();
+    trackEvent('page_view', { path: window.location.pathname, ref: document.referrer || 'Direct' });
 
     const handleHashChange = () => {
       const isNowAdmin = window.location.pathname === '/admin' || 

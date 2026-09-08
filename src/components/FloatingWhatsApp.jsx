@@ -1,5 +1,6 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
+import { trackEvent } from '../services/analyticsService';
 
 export default function FloatingWhatsApp() {
   return (
@@ -15,6 +16,7 @@ export default function FloatingWhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Direct WhatsApp Inquiry"
+        onClick={() => trackEvent('whatsapp_click', { source: 'floating_button' })}
         className="relative flex items-center justify-center w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl shadow-emerald-600/50 transition-transform transform hover:scale-110 active:scale-95"
       >
         <MessageCircle className="w-7 h-7" />
