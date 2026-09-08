@@ -52,7 +52,7 @@ export default function RfqCartModal({ isOpen, onClose, rfqItems, onUpdateQuanti
   const handleSendEmail = () => {
     const subject = encodeURIComponent(`B2B Export Quotation Request - ${buyerInfo.companyName || 'International Buyer'} (${buyerInfo.country || 'Global'})`);
     const body = encodeURIComponent(formatRfqMessage());
-    window.location.href = `mailto:medihubpharmaceutical@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:support@medihubpharmalabs.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 

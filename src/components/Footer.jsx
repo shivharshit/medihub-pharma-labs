@@ -51,8 +51,8 @@ export default function Footer({ categories, onSelectCategory }) {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-brand-blue flex-shrink-0" />
-                <a href="mailto:medihubpharmaceutical@gmail.com" className="hover:text-white transition-colors">
-                  medihubpharmaceutical@gmail.com
+                <a href="mailto:support@medihubpharmalabs.com" className="hover:text-white transition-colors">
+                  support@medihubpharmalabs.com
                 </a>
               </div>
             </div>

@@ -34,7 +34,7 @@ export default function ContactSection() {
     body += `Phone: ${formData.phone}\n`;
     body += `Products: ${formData.productOfInterest}\n`;
     body += `Message: ${formData.message}\n`;
-    window.location.href = `mailto:medihubpharmaceutical@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:support@medihubpharmalabs.com?subject=${subject}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -107,8 +107,8 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <span className="text-slate-500 block">Official Export Email:</span>
-                  <a href="mailto:medihubpharmaceutical@gmail.com" className="font-bold text-slate-800 text-sm hover:text-brand-blue">
-                    medihubpharmaceutical@gmail.com
+                  <a href="mailto:support@medihubpharmalabs.com" className="font-bold text-slate-800 text-sm hover:text-brand-blue">
+                    support@medihubpharmalabs.com
                   </a>
                 </div>
               </div>
