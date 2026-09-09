@@ -140,56 +140,83 @@ export default function BillaEyesRadar() {
 
   return (
     <div className="space-y-6 font-sans">
-      {/* Top Hero Command Header with Cinematic BILLA EYES Imagery */}
-      <div className="relative rounded-3xl overflow-hidden border border-amber-500/30 bg-slate-950 shadow-2xl shadow-amber-950/20">
-        {/* Background Image with Gradient Blending */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/billa-eyes-banner.jpg" 
-            alt="BILLA EYES Omniscient Surveillance" 
-            className="w-full h-full object-cover object-right md:object-center opacity-80 filter brightness-95 contrast-125"
-          />
-          {/* Multi-layer Gradient Fades for perfect text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 md:via-slate-950/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40" />
-        </div>
+      {/* Top Hero Command Header with Perfectly Framed BILLA EYES Cat Eyes */}
+      <div className="relative rounded-3xl overflow-hidden border border-amber-500/40 bg-gradient-to-r from-slate-950 via-slate-900 to-amber-950/40 p-6 lg:p-8 shadow-2xl shadow-amber-950/30">
+        {/* Subtle ambient glow in background */}
+        <div className="absolute top-0 right-0 w-96 h-full bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Foreground Content */}
-        <div className="relative z-10 p-6 md:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 backdrop-blur-[1px]">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/15 border border-amber-500/40 rounded-full text-amber-300 text-xs font-bold mb-3 shadow-lg shadow-amber-500/10">
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          {/* Left Column: Command Typography & Stats */}
+          <div className="max-w-xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-500/15 border border-amber-500/40 rounded-full text-amber-300 text-xs font-bold shadow-lg shadow-amber-500/10">
               <Eye className="w-4 h-4 text-amber-400 animate-pulse" />
               <span className="tracking-wider uppercase font-mono">BILLA EYES™ OMNISCIENT RADAR</span>
             </div>
-            <h1 className="text-2xl lg:text-4xl font-black text-white tracking-tight leading-tight flex items-center gap-3 drop-shadow-md">
+
+            <h1 className="text-2xl lg:text-4xl font-black text-white tracking-tight leading-tight">
               Global Buyer Surveillance & Telemetry
             </h1>
-            <p className="text-slate-300 text-xs md:text-sm mt-2 max-w-xl leading-relaxed drop-shadow">
-              Omniscient real-time buyer intelligence. Tracking international buyers with live satellite laser arcs, hardware diagnostics, and step-by-step session trajectory replay.
-            </p>
-          </div>
 
-          {/* Quick Stats Block with Amber/Cyan Glow */}
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="bg-slate-950/80 border border-amber-500/40 p-4 rounded-2xl flex items-center gap-3.5 backdrop-blur-md shadow-xl shadow-amber-950/30">
-              <div className="relative">
-                <div className="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
-                  <Radio className="w-5 h-5 animate-pulse" />
+            <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
+              Omniscient real-time buyer intelligence. Tracking international buyers with live satellite laser arcs, hardware diagnostics, and step-by-step visitor session trajectories.
+            </p>
+
+            {/* Quick Metrics Bar */}
+            <div className="flex items-center gap-3 pt-2">
+              <div className="bg-slate-950/90 border border-amber-500/40 p-3.5 px-4 rounded-2xl flex items-center gap-3 backdrop-blur-md shadow-xl shadow-amber-950/30">
+                <div className="relative">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                    <Radio className="w-5 h-5 animate-pulse" />
+                  </div>
+                  {activeOnlineCount > 0 && (
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-slate-950 rounded-full animate-ping" />
+                  )}
                 </div>
-                {activeOnlineCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-slate-950 rounded-full animate-ping" />
-                )}
+                <div>
+                  <div className="text-[10px] uppercase font-bold text-amber-400/90 tracking-wider">Live Active</div>
+                  <div className="text-xl font-black text-white font-mono">{activeOnlineCount} Online</div>
+                </div>
               </div>
-              <div>
-                <div className="text-[10px] uppercase font-bold text-amber-400/80 tracking-wider">Live Active</div>
-                <div className="text-2xl font-black text-white font-mono">{activeOnlineCount} Online</div>
+
+              <div className="bg-slate-950/90 border border-slate-800 p-3.5 px-4 rounded-2xl flex flex-col justify-center backdrop-blur-md">
+                <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Range Sessions</div>
+                <div className="text-xl font-black text-cyan-300 font-mono">
+                  {timeFilteredSessions.length} <span className="text-xs text-slate-400 font-sans font-normal">Records</span>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="bg-slate-950/80 border border-slate-800 p-4 rounded-2xl flex flex-col justify-center backdrop-blur-md">
-              <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Range Sessions</div>
-              <div className="text-2xl font-black text-cyan-300 font-mono">
-                {timeFilteredSessions.length} <span className="text-xs text-slate-400 font-sans font-normal">Records</span>
+          {/* Right Column: Dedicated Luxury Framed BILLA EYES Spotlight Viewport */}
+          <div className="w-full lg:w-[440px] shrink-0">
+            <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/50 shadow-[0_0_35px_rgba(245,158,11,0.25)] bg-black group aspect-[16/9] flex items-center justify-center">
+              {/* Perfectly Centered Cat Eyes Image */}
+              <img 
+                src="/billa-eyes-banner.jpg" 
+                alt="BILLA EYES Golden Gaze" 
+                className="w-full h-full object-cover object-[center_38%] filter brightness-105 contrast-125 group-hover:scale-105 transition-transform duration-700"
+              />
+
+              {/* Holographic Scanline Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+
+              {/* Animated Horizontal Amber Radar Scanline */}
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-pulse opacity-75 pointer-events-none" />
+
+              {/* Viewport Corner HUD Accents */}
+              <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-amber-400 pointer-events-none" />
+              <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-amber-400 pointer-events-none" />
+              <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-amber-400 pointer-events-none" />
+              <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-amber-400 pointer-events-none" />
+
+              {/* Live HUD Badge */}
+              <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-black/80 border border-amber-500/40 rounded-lg text-amber-300 text-[10px] font-mono font-bold flex items-center gap-1.5 backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                <span>BILLA EYES™ LIVE OPTICS</span>
+              </div>
+
+              <div className="absolute top-3 right-3 px-2 py-0.5 bg-black/70 border border-slate-700 rounded-md text-[9px] font-mono text-slate-300">
+                1080p UHD
               </div>
             </div>
           </div>
