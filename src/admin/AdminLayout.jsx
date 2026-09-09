@@ -1,9 +1,10 @@
+import React from 'react';
 import { 
   LayoutDashboard, Globe, Database, LogOut, ArrowLeft, 
-  Shield, Layers, Activity, BarChart3, Users, Radio 
+  Shield, Layers, Activity, BarChart3, Users, Radio, UserCheck 
 } from 'lucide-react';
 
-export default function AdminLayout({ activeTab, setActiveTab, onLogout, children }) {
+export default function AdminLayout({ activeTab, setActiveTab, onLogout, user, children }) {
   const navItems = [
     { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard },
     { id: 'analytics', label: 'Deep Analysis & Insights', icon: BarChart3 },
@@ -12,6 +13,8 @@ export default function AdminLayout({ activeTab, setActiveTab, onLogout, childre
     { id: 'languages', label: 'Multi-Language Studio', icon: Globe },
     { id: 'supabase', label: 'Supabase Cloud', icon: Database },
   ];
+
+  const userEmail = user?.email || 'admin@medihubpharmalabs.com';
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex font-sans">
@@ -28,8 +31,21 @@ export default function AdminLayout({ activeTab, setActiveTab, onLogout, childre
                 <h2 className="text-sm font-bold text-white tracking-tight">Medihub Admin</h2>
                 <div className="flex items-center gap-1.5 text-[10px] text-cyan-400 font-semibold uppercase tracking-wider">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Management
+                  Console v2.0
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Logged in User Badge */}
+          <div className="px-4 pt-4 pb-2">
+            <div className="bg-slate-950/80 border border-slate-800/80 rounded-xl p-2.5 flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                <UserCheck className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-[10px] text-slate-500 uppercase font-semibold">Logged in as</div>
+                <div className="text-xs text-slate-200 font-bold truncate">{userEmail}</div>
               </div>
             </div>
           </div>

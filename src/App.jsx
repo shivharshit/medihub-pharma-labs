@@ -19,11 +19,14 @@ import productsData from './data/products.json';
 import categoriesData from './data/categories.json';
 
 export default function App() {
-  const [isAdminView, setIsAdminView] = useState(() => {
-    return window.location.pathname === '/admin' || 
-           window.location.hash === '#admin' || 
-           window.location.search.includes('admin=true');
-  });
+  const checkIsAdmin = () => {
+    const path = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+    const search = window.location.search.toLowerCase();
+    return path.startsWith('/admin') || hash.startsWith('#admin') || search.includes('admin=true');
+  };
+
+  const [isAdminView, setIsAdminView] = useState(checkIsAdmin);
 
   const [products] = useState(productsData);
   const [categories] = useState(categoriesData);
@@ -36,23 +39,22 @@ export default function App() {
   // Sync any cloud translations on startup and log initial visitor session
   useEffect(() => {
     syncLiveTranslations();
-    trackEvent('page_view', { path: window.location.pathname, ref: document.referrer || 'Direct' });
+    if (!isAdminView) {
+      trackEvent('page_view', { path: window.location.pathname, ref: document.referrer || 'Direct' });
+    }
 
-    const handleHashChange = () => {
-      const isNowAdmin = window.location.pathname === '/admin' || 
-                         window.location.hash === '#admin' || 
-                         window.location.search.includes('admin=true');
-      setIsAdminView(isNowAdmin);
+    const handleRouteChange = () => {
+      setIsAdminView(checkIsAdmin());
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    window.addEventListener('popstate', handleHashChange);
+    window.addEventListener('hashchange', handleRouteChange);
+    window.addEventListener('popstate', handleRouteChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('popstate', handleHashChange);
+      window.removeEventListener('hashchange', handleRouteChange);
+      window.removeEventListener('popstate', handleRouteChange);
     };
-  }, []);
+  }, [isAdminView]);
 
   // RFQ Cart State persisted in LocalStorage
   const [rfqItems, setRfqItems] = useState(() => {

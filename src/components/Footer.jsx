@@ -101,13 +101,13 @@ export default function Footer({ categories, onSelectCategory }) {
 
           <div className="flex items-center gap-4">
             <a
-              href="#admin"
+              href="/admin"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.hash = 'admin';
-                window.dispatchEvent(new HashChangeEvent('hashchange'));
+                window.history.pushState({}, '', '/admin');
+                window.dispatchEvent(new PopStateEvent('popstate'));
               }}
-              className="text-slate-500 hover:text-cyan-400 text-[11px] transition-colors flex items-center gap-1"
+              className="text-slate-500 hover:text-cyan-400 text-[11px] transition-colors flex items-center gap-1 font-medium"
             >
               <span>Admin Portal</span>
             </a>
