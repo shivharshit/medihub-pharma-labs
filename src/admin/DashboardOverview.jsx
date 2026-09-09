@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Globe, Database, PackageCheck, Layers, ArrowUpRight, ShieldCheck, RefreshCw, Cpu, CheckCircle2 } from 'lucide-react';
+import { 
+  Globe, Database, PackageCheck, Layers, ArrowUpRight, ShieldCheck, 
+  RefreshCw, Cpu, CheckCircle2, BarChart3, Users 
+} from 'lucide-react';
 import { getSupabaseConfig } from '../lib/supabaseClient';
 import { fetchLanguages } from '../services/translationService';
 import products from '../data/products.json';
@@ -26,7 +29,7 @@ export default function DashboardOverview({ onNavigate }) {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-slate-800 rounded-3xl p-8 relative overflow-hidden shadow-xl">
+      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-slate-800 rounded-3xl p-8 relative overflow-hidden shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="absolute right-0 top-0 w-96 h-full bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-xs font-semibold mb-3">
@@ -38,6 +41,15 @@ export default function DashboardOverview({ onNavigate }) {
           <p className="text-slate-300 text-sm mt-2 leading-relaxed">
             Centralized management hub for multi-language global translation workflows, pharmaceutical product catalogs, and Supabase cloud persistence.
           </p>
+        </div>
+
+        {/* Official Brand Logo */}
+        <div className="relative z-10 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-700 shadow-xl self-start md:self-center shrink-0">
+          <img 
+            src="/logo.png" 
+            alt="Medihub Pharma Labs Official Logo" 
+            className="h-12 w-auto object-contain" 
+          />
         </div>
       </div>
 

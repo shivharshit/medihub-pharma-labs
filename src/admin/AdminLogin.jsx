@@ -83,15 +83,21 @@ export default function AdminLogin({ onLoginSuccess }) {
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-8 backdrop-blur-xl space-y-6">
-        {/* Brand Header */}
-        <div className="text-center space-y-2">
-          <div className="w-14 h-14 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-cyan-500/20">
-            <Lock className="w-7 h-7 text-white" />
+        {/* Official Brand Logo & Header */}
+        <div className="text-center space-y-3">
+          <div className="inline-block bg-white p-2.5 rounded-2xl shadow-xl border border-slate-700">
+            <img 
+              src="/logo.png" 
+              alt="Medihub Pharma Labs Official Logo" 
+              className="h-12 w-auto object-contain mx-auto" 
+            />
           </div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">Medihub Admin Portal</h1>
-          <p className="text-xs text-cyan-400 font-semibold uppercase tracking-widest">
-            Supabase Backend & Global Intelligence
-          </p>
+          <div>
+            <h1 className="text-xl font-extrabold text-white tracking-tight">Admin Management Console</h1>
+            <p className="text-[11px] text-cyan-400 font-semibold uppercase tracking-widest mt-0.5">
+              Supabase Backend & Global Intelligence
+            </p>
+          </div>
         </div>
 
         {/* Error Alert */}

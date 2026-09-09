@@ -22,16 +22,20 @@ export default function AdminLayout({ activeTab, setActiveTab, onLogout, user, c
       <aside className="w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between shrink-0">
         <div>
           {/* Brand header */}
-          <div className="p-6 border-b border-slate-800">
+          <div className="p-5 border-b border-slate-800">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-md shadow-cyan-500/20">
-                <Shield className="w-5 h-5 text-white" />
+              <div className="bg-white p-1 rounded-xl shadow-md border border-slate-700 h-10 w-auto flex items-center justify-center shrink-0">
+                <img 
+                  src="/logo.png" 
+                  alt="Medihub Official Logo" 
+                  className="h-full w-auto object-contain" 
+                />
               </div>
               <div>
-                <h2 className="text-sm font-bold text-white tracking-tight">Medihub Admin</h2>
-                <div className="flex items-center gap-1.5 text-[10px] text-cyan-400 font-semibold uppercase tracking-wider">
+                <h2 className="text-xs font-bold text-white tracking-tight leading-tight">Medihub Pharma Labs</h2>
+                <div className="flex items-center gap-1.5 text-[9px] text-cyan-400 font-semibold uppercase tracking-wider mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Console v2.0
+                  Admin Console v2.0
                 </div>
               </div>
             </div>
