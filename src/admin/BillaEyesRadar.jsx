@@ -3,12 +3,21 @@ import {
   Eye, Radio, Globe2, Laptop, Smartphone, Tablet, 
   Search, RefreshCw, Filter, Download, ChevronRight, 
   Clock, ShieldAlert, Sparkles, Activity, CheckCircle2, 
-  Layers, MapPin, X, ArrowUpRight, Cpu, Zap, Compass, Play
+  Layers, MapPin, X, ArrowUpRight, Cpu, Zap, Compass, Play,
+  Calendar, BarChart3, Database, Shield, ArrowRight
 } from 'lucide-react';
-import { fetchBillaSessions, fetchBillaVisitorJourney, pingBillaEyes, getCountryInfo } from '../services/billaEyesService';
+import { 
+  fetchBillaSessions, 
+  fetchBillaVisitorJourney, 
+  pingBillaEyes, 
+  getCountryInfo, 
+  filterSessionsByTimeRange 
+} from '../services/billaEyesService';
+import WorldRadarMap from '../components/WorldRadarMap';
 
 export default function BillaEyesRadar() {
-  const [sessions, setSessions] = useState([]);
+  const [allSessions, setAllSessions] = useState([]);
+  const [timeRange, setTimeRange] = useState('live');
   const [selectedVisitor, setSelectedVisitor] = useState(null);
   const [visitorJourney, setVisitorJourney] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,6 +25,7 @@ export default function BillaEyesRadar() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [autoRadar, setAutoRadar] = useState(true);
   const [isLoadingJourney, setIsLoadingJourney] = useState(false);
+  const [viewMode, setViewMode] = useState('map'); // 'map' | 'table'
 
   useEffect(() => {
     loadRadarData(true);
@@ -32,14 +42,12 @@ export default function BillaEyesRadar() {
     if (showSpinner) setIsRefreshing(true);
     try {
       const list = await fetchBillaSessions();
-      setSessions(list);
+      setAllSessions(list);
       
-      // Auto-select first visitor if none selected or if selected is no longer in list
       if (list.length > 0) {
         if (!selectedVisitor) {
           handleSelectVisitor(list[0]);
         } else {
-          // Update selected visitor's live status
           const updatedSelected = list.find(s => s.visitor_id === selectedVisitor.visitor_id);
           if (updatedSelected) {
             setSelectedVisitor(prev => ({ ...prev, ...updatedSelected }));
@@ -72,18 +80,23 @@ export default function BillaEyesRadar() {
     await loadRadarData(true);
   };
 
-  const activeOnlineCount = sessions.filter(s => s.is_online).length;
+  // Filter sessions by Time-Range first
+  const timeFilteredSessions = filterSessionsByTimeRange(allSessions, timeRange);
 
-  // Extract unique countries dynamically from real sessions
+  // Active online count across all sessions
+  const activeOnlineCount = allSessions.filter(s => s.is_online).length;
+
+  // Extract unique countries dynamically from time-filtered sessions
   const availableCountries = Array.from(
-    new Set(sessions.map(s => s.countryCode).filter(Boolean))
+    new Set(timeFilteredSessions.map(s => s.countryCode).filter(Boolean))
   ).map(code => ({
     code,
     ...getCountryInfo(code),
-    count: sessions.filter(s => s.countryCode === code).length
+    count: timeFilteredSessions.filter(s => s.countryCode === code).length
   }));
 
-  const filteredSessions = sessions.filter(s => {
+  // Apply search query and country status filter
+  const finalFilteredSessions = timeFilteredSessions.filter(s => {
     const matchesStatus = statusFilter === 'all' || 
       (statusFilter === 'online' && s.is_online) || 
       (statusFilter === 'offline' && !s.is_online) ||
@@ -101,17 +114,17 @@ export default function BillaEyesRadar() {
   });
 
   const handleExportCsv = () => {
-    if (sessions.length === 0) return;
-    const headers = "Visitor ID,Status,Country,Country Code,City,Device,Browser,OS,Current Page,Current Action,Last Seen\n";
-    const rows = sessions.map(s => 
-      `"${s.visitor_id}","${s.is_online ? 'ONLINE' : 'IDLE'}","${s.country}","${s.countryCode}","${s.city}","${s.deviceType}","${s.browser}","${s.os}","${s.current_page}","${(s.current_action || '').replace(/"/g, '""')}","${s.last_ping_at}"`
+    if (finalFilteredSessions.length === 0) return;
+    const headers = "Visitor ID,Status,Time Range,Country,Country Code,City,Device,Browser,OS,Current Page,Current Action,Last Seen\n";
+    const rows = finalFilteredSessions.map(s => 
+      `"${s.visitor_id}","${s.is_online ? 'ONLINE' : 'IDLE'}","${timeRange}","${s.country}","${s.countryCode}","${s.city}","${s.deviceType}","${s.browser}","${s.os}","${s.current_page}","${(s.current_action || '').replace(/"/g, '""')}","${s.last_ping_at}"`
     ).join("\n");
 
     const blob = new Blob([headers + rows], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `BILLA_EYES_Real_Telemetry_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `BILLA_EYES_Data_${timeRange}_${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -127,118 +140,118 @@ export default function BillaEyesRadar() {
 
   return (
     <div className="space-y-6 font-sans">
-      {/* High-Class Executive Hero Banner */}
-      <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/70 border border-cyan-500/30 rounded-3xl p-6 lg:p-8 relative overflow-hidden shadow-2xl shadow-cyan-950/40">
-        {/* Subtle radar pulse glow in background */}
-        <div className="absolute -right-10 -top-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-48 border border-cyan-500/20 rounded-full animate-ping pointer-events-none hidden lg:block" />
-
+      {/* Top Hero Command Header */}
+      <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/70 border border-cyan-500/30 rounded-3xl p-6 relative overflow-hidden shadow-2xl shadow-cyan-950/40">
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-bold mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-bold mb-2">
               <Eye className="w-4 h-4 text-cyan-400 animate-pulse" />
-              <span>BILLA EYES™ REAL-TIME BUYER RADAR</span>
+              <span>BILLA EYES™ SATELLITE RADAR & TELEMETRY</span>
             </div>
             <h1 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
-              Executive Telemetry & Surveillance
+              Global Buyer Surveillance & Telemetry
             </h1>
-            <p className="text-slate-300 text-xs mt-2 max-w-2xl leading-relaxed">
-              100% genuine real-time visitor telemetry streaming directly from global client visits. Inspect live IP geolocation, active browsing routes, product engagement, and session trajectories.
+            <p className="text-slate-300 text-xs mt-1 max-w-2xl leading-relaxed">
+              Real-time animated laser arcs shooting from Medihub HQ to live visitors worldwide. Multi-range historical analysis with deep telemetry replay.
             </p>
           </div>
 
-          {/* Active Live Metric Counter */}
-          <div className="flex items-center gap-4 shrink-0">
-            <div className="bg-slate-900/90 border border-cyan-500/40 p-4 lg:p-5 rounded-2xl flex items-center gap-4 backdrop-blur-md shadow-xl">
+          {/* Quick Stats Block */}
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="bg-slate-900/90 border border-cyan-500/40 p-3.5 px-4 rounded-2xl flex items-center gap-3 backdrop-blur-md shadow-xl">
               <div className="relative">
-                <div className="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-                  <Radio className="w-6 h-6 animate-pulse" />
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                  <Radio className="w-5 h-5 animate-pulse" />
                 </div>
                 {activeOnlineCount > 0 && (
-                  <>
-                    <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-slate-900 rounded-full animate-ping" />
-                    <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-slate-900 rounded-full" />
-                  </>
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-slate-900 rounded-full animate-ping" />
                 )}
               </div>
-
               <div>
-                <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Live Online Now</div>
-                <div className="text-2xl font-black text-white font-mono flex items-center gap-2">
-                  <span>{activeOnlineCount}</span>
-                  <span className="text-xs text-emerald-400 font-sans font-bold">Active Buyer{activeOnlineCount !== 1 ? 's' : ''}</span>
-                </div>
+                <div className="text-[10px] uppercase font-bold text-slate-400">Live Active</div>
+                <div className="text-xl font-black text-white font-mono">{activeOnlineCount} Online</div>
               </div>
             </div>
 
-            <div className="bg-slate-900/90 border border-slate-800 p-4 lg:p-5 rounded-2xl flex flex-col justify-center backdrop-blur-md">
-              <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Total Recorded</div>
-              <div className="text-2xl font-black text-cyan-300 font-mono">
-                {sessions.length} <span className="text-xs text-slate-400 font-sans font-normal">Sessions</span>
+            <div className="bg-slate-900/90 border border-slate-800 p-3.5 px-4 rounded-2xl">
+              <div className="text-[10px] uppercase font-bold text-slate-400">Range Sessions</div>
+              <div className="text-xl font-black text-cyan-300 font-mono">
+                {timeFilteredSessions.length} <span className="text-xs text-slate-400 font-sans font-normal">Records</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Control Strip & Filters */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-4 rounded-2xl">
-        <div className="flex items-center flex-wrap gap-2">
-          {/* Base status filters */}
-          <button
-            onClick={() => setStatusFilter('all')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              statusFilter === 'all'
-                ? 'bg-cyan-500 text-slate-950 font-bold shadow-md'
-                : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
-            }`}
-          >
-            All Visitors ({sessions.length})
-          </button>
-
-          <button
-            onClick={() => setStatusFilter('online')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-              statusFilter === 'online'
-                ? 'bg-emerald-500 text-slate-950 font-bold shadow-md'
-                : 'bg-slate-950 border border-slate-800 text-emerald-400 hover:text-white'
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Live Online ({activeOnlineCount})
-          </button>
-
-          {/* Dynamic country filter pills from real sessions */}
-          {availableCountries.map(c => (
+      {/* Time-Range Filters & View Switcher Strip */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        {/* Time Selector Tabs */}
+        <div className="flex items-center flex-wrap gap-1.5 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+          {[
+            { id: 'live', label: '🟢 Live Radar', badge: `${activeOnlineCount}` },
+            { id: 'today', label: 'Today' },
+            { id: 'yesterday', label: 'Yesterday' },
+            { id: '7d', label: 'Last 7 Days' },
+            { id: '30d', label: 'Last 30 Days' },
+            { id: '90d', label: 'Last 90 Days' },
+            { id: 'all', label: 'All Time' }
+          ].map(tab => (
             <button
-              key={c.code}
-              onClick={() => setStatusFilter(c.code)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                statusFilter.toLowerCase() === c.code.toLowerCase()
-                  ? 'bg-cyan-500 text-slate-950 font-bold shadow-md'
-                  : 'bg-slate-950 border border-slate-800 text-slate-300 hover:text-white'
+              key={tab.id}
+              onClick={() => {
+                setTimeRange(tab.id);
+                setStatusFilter('all');
+              }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                timeRange === tab.id
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
               }`}
             >
-              <span>{c.flag}</span>
-              <span>{c.name}</span>
-              <span className="text-[10px] opacity-70">({c.count})</span>
+              <span>{tab.label}</span>
+              {tab.badge && (
+                <span className="px-1.5 py-0.2 bg-emerald-500/20 text-emerald-300 text-[10px] rounded-full font-mono font-bold">
+                  {tab.badge}
+                </span>
+              )}
             </button>
           ))}
         </div>
 
-        {/* Live Auto-Radar switch & Export */}
-        <div className="flex items-center gap-2.5 self-end md:self-auto">
+        {/* Action Buttons & View Mode */}
+        <div className="flex items-center flex-wrap gap-2.5">
+          <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800">
+            <button
+              onClick={() => setViewMode('map')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                viewMode === 'map' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Globe2 className="w-3.5 h-3.5" />
+              <span>World Radar Map</span>
+            </button>
+            <button
+              onClick={() => setViewMode('table')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                viewMode === 'table' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>Deep Data Table</span>
+            </button>
+          </div>
+
           <button
             onClick={() => setAutoRadar(!autoRadar)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 border transition-all ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 border transition-all ${
               autoRadar
                 ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300'
                 : 'bg-slate-950 border-slate-800 text-slate-400'
             }`}
-            title="Toggle Real-Time Radar Auto-Sync"
+            title="Toggle Live Radar Auto-Sync"
           >
             <Zap className={`w-3.5 h-3.5 ${autoRadar ? 'text-emerald-400 animate-pulse' : 'text-slate-500'}`} />
-            <span>Auto-Radar: {autoRadar ? 'ON (3s)' : 'PAUSED'}</span>
+            <span>{autoRadar ? 'Syncing (3s)' : 'Paused'}</span>
           </button>
 
           <button
@@ -252,8 +265,8 @@ export default function BillaEyesRadar() {
 
           <button
             onClick={handleExportCsv}
-            disabled={sessions.length === 0}
-            className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 border border-slate-700 text-white rounded-xl text-xs font-semibold flex items-center gap-2 transition-all"
+            disabled={finalFilteredSessions.length === 0}
+            className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 border border-slate-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
           >
             <Download className="w-3.5 h-3.5 text-cyan-400" />
             <span>Export CSV</span>
@@ -261,11 +274,56 @@ export default function BillaEyesRadar() {
         </div>
       </div>
 
-      {/* Main Radar Layout */}
+      {/* 1. Animated World Radar Map View */}
+      {viewMode === 'map' && (
+        <div className="space-y-4">
+          <WorldRadarMap
+            sessions={timeFilteredSessions}
+            selectedVisitor={selectedVisitor}
+            onSelectVisitor={handleSelectVisitor}
+          />
+        </div>
+      )}
+
+      {/* Dynamic Country Filter Pills */}
+      {availableCountries.length > 0 && (
+        <div className="flex items-center flex-wrap gap-2 bg-slate-900/80 border border-slate-800 p-3 rounded-2xl">
+          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-1">
+            Active Territories ({availableCountries.length}):
+          </span>
+          <button
+            onClick={() => setStatusFilter('all')}
+            className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
+              statusFilter === 'all'
+                ? 'bg-cyan-500 text-slate-950 font-bold'
+                : 'bg-slate-950 border border-slate-800 text-slate-300'
+            }`}
+          >
+            All ({timeFilteredSessions.length})
+          </button>
+          {availableCountries.map(c => (
+            <button
+              key={c.code}
+              onClick={() => setStatusFilter(c.code)}
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                statusFilter.toLowerCase() === c.code.toLowerCase()
+                  ? 'bg-cyan-500 text-slate-950 font-bold shadow-md'
+                  : 'bg-slate-950 border border-slate-800 text-slate-300 hover:text-white'
+              }`}
+            >
+              <span>{c.flag}</span>
+              <span>{c.name}</span>
+              <span className="text-[10px] opacity-70">({c.count})</span>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* 2. Main Radar Layout: Visitor Stream & Selected Detail */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column: Live Visitor List (7 cols) */}
+        {/* Left Column: Visitor List (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
-          {/* Search bar inside list */}
+          {/* Search bar */}
           <div className="relative">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
@@ -277,30 +335,31 @@ export default function BillaEyesRadar() {
             />
           </div>
 
-          {/* Zero State: Pure Real Radar Awaiting Pings */}
-          {filteredSessions.length === 0 && (
+          {/* Zero State if empty */}
+          {finalFilteredSessions.length === 0 && (
             <div className="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-10 text-center relative overflow-hidden">
-              <div className="w-20 h-20 rounded-full bg-cyan-500/10 border border-cyan-500/20 mx-auto flex items-center justify-center text-cyan-400 mb-4 relative">
-                <Compass className="w-10 h-10 animate-spin text-cyan-400" style={{ animationDuration: '8s' }} />
-                <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30 animate-ping pointer-events-none" />
+              <div className="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/20 mx-auto flex items-center justify-center text-cyan-400 mb-3 relative">
+                <Compass className="w-8 h-8 animate-spin text-cyan-400" style={{ animationDuration: '8s' }} />
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">BILLA EYES™ Radar Active & Listening</h3>
-              <p className="text-xs text-slate-400 max-w-md mx-auto mb-6 leading-relaxed">
-                Awaiting incoming client connections. No fake placeholder data is displayed. Open <span className="text-cyan-400 font-mono">medihubpharmalabs.com</span> or test a live telemetry ping below to see real data populate.
+              <h3 className="text-base font-bold text-white mb-1">
+                No Visitor Records for "{timeRange.toUpperCase()}"
+              </h3>
+              <p className="text-xs text-slate-400 max-w-md mx-auto mb-5 leading-relaxed">
+                As real visitors access <span className="text-cyan-400 font-mono">medihubpharmalabs.com</span>, laser beams and visitor trajectories will stream automatically.
               </p>
               <button
                 onClick={handleTriggerTestPing}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-cyan-500/20 transition-all"
               >
                 <Play className="w-3.5 h-3.5" />
-                <span>Simulate Live Client Ping</span>
+                <span>Simulate Live Client Telemetry Ping</span>
               </button>
             </div>
           )}
 
           {/* Sessions List */}
           <div className="space-y-3">
-            {filteredSessions.map((visitor) => {
+            {finalFilteredSessions.map((visitor) => {
               const isSelected = selectedVisitor?.visitor_id === visitor.visitor_id;
               return (
                 <div
@@ -312,14 +371,12 @@ export default function BillaEyesRadar() {
                       : 'bg-slate-900/60 border-slate-800 hover:border-slate-700 hover:bg-slate-900'
                   }`}
                 >
-                  {/* Active highlight pill */}
                   {isSelected && (
                     <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-cyan-400 to-blue-500" />
                   )}
 
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      {/* Flag and Status */}
                       <div className="relative">
                         <div className="w-11 h-11 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-xl shadow-inner">
                           {visitor.flag || '🌐'}
@@ -345,7 +402,7 @@ export default function BillaEyesRadar() {
                                 : 'bg-slate-800 text-slate-400'
                             }`}
                           >
-                            {visitor.is_online ? 'Live Now' : 'Idle'}
+                            {visitor.is_online ? 'Live Now' : 'Recorded'}
                           </span>
                         </div>
 
@@ -357,7 +414,6 @@ export default function BillaEyesRadar() {
                       </div>
                     </div>
 
-                    {/* Time ago */}
                     <div className="text-right shrink-0">
                       <span className="text-[10px] text-slate-400 font-mono">
                         {formatTimeAgo(visitor.last_ping_at)}
@@ -365,7 +421,6 @@ export default function BillaEyesRadar() {
                     </div>
                   </div>
 
-                  {/* Current Active Action */}
                   <div className="mt-3.5 pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                     <div className="flex items-center gap-2 text-cyan-300 font-medium truncate">
                       <Activity className="w-3.5 h-3.5 text-cyan-400 shrink-0 animate-pulse" />
@@ -398,7 +453,7 @@ export default function BillaEyesRadar() {
                     {selectedVisitor.flag || '🌐'}
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 uppercase font-semibold">Active Session Profile</div>
+                    <div className="text-xs text-slate-400 uppercase font-semibold">Session Profile</div>
                     <div className="text-base font-bold text-white font-mono">{selectedVisitor.visitor_id}</div>
                   </div>
                 </div>
@@ -417,7 +472,7 @@ export default function BillaEyesRadar() {
                 </div>
               </div>
 
-              {/* Hardware & Geolocation Diagnostics Matrix */}
+              {/* Hardware & Geolocation Diagnostics */}
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="bg-slate-950 border border-slate-800/80 p-3 rounded-xl">
                   <div className="text-[10px] text-slate-500 uppercase font-bold">Country & Region</div>
@@ -502,7 +557,7 @@ export default function BillaEyesRadar() {
           ) : (
             <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 text-center text-slate-400 text-xs">
               <Eye className="w-8 h-8 mx-auto mb-2 text-slate-600" />
-              <span>Select any live session on the left to inspect detailed telemetry diagnostics and timeline replay.</span>
+              <span>Select any live session on the left or click a map pin to inspect detailed telemetry diagnostics and timeline replay.</span>
             </div>
           )}
         </div>

@@ -5,38 +5,58 @@ const BILLA_GEO_KEY = 'billa_eyes_geo_cache';
 const BILLA_LOCAL_SESSIONS_KEY = 'billa_eyes_all_sessions';
 const BILLA_LOCAL_EVENTS_KEY = 'billa_eyes_all_events';
 
-// Country Code to Name & Flag Mapper
-const COUNTRY_MAP = {
-  IN: { name: 'India', flag: '🇮🇳' },
-  US: { name: 'United States', flag: '🇺🇸' },
-  GB: { name: 'United Kingdom', flag: '🇬🇧' },
-  DE: { name: 'Germany', flag: '🇩🇪' },
-  AE: { name: 'United Arab Emirates', flag: '🇦🇪' },
-  SA: { name: 'Saudi Arabia', flag: '🇸🇦' },
-  ES: { name: 'Spain', flag: '🇪🇸' },
-  FR: { name: 'France', flag: '🇫🇷' },
-  CA: { name: 'Canada', flag: '🇨🇦' },
-  AU: { name: 'Australia', flag: '🇦🇺' },
-  SG: { name: 'Singapore', flag: '🇸🇬' },
-  NL: { name: 'Netherlands', flag: '🇳🇱' },
-  IT: { name: 'Italy', flag: '🇮🇹' },
-  BR: { name: 'Brazil', flag: '🇧🇷' },
-  ZA: { name: 'South Africa', flag: '🇿🇦' },
-  KE: { name: 'Kenya', flag: '🇰🇪' },
-  NG: { name: 'Nigeria', flag: '🇳🇬' },
-  RU: { name: 'Russia', flag: '🇷🇺' },
-  TR: { name: 'Turkey', flag: '🇹🇷' },
-  EG: { name: 'Egypt', flag: '🇪🇬' },
-  PH: { name: 'Philippines', flag: '🇵🇭' },
-  VN: { name: 'Vietnam', flag: '🇻🇳' },
-  ID: { name: 'Indonesia', flag: '🇮🇩' },
-  BD: { name: 'Bangladesh', flag: '🇧🇩' },
-  LK: { name: 'Sri Lanka', flag: '🇱🇰' },
-  NP: { name: 'Nepal', flag: '🇳🇵' }
+// Country Code to Name, Flag & Map Coordinates (x%, y% on 1000x500 World SVG)
+export const COUNTRY_MAP = {
+  IN: { name: 'India', flag: '🇮🇳', x: 70.0, y: 48.0 },
+  US: { name: 'United States', flag: '🇺🇸', x: 23.0, y: 36.0 },
+  GB: { name: 'United Kingdom', flag: '🇬🇧', x: 47.0, y: 26.0 },
+  DE: { name: 'Germany', flag: '🇩🇪', x: 51.0, y: 28.0 },
+  AE: { name: 'United Arab Emirates', flag: '🇦🇪', x: 62.0, y: 43.0 },
+  SA: { name: 'Saudi Arabia', flag: '🇸🇦', x: 60.0, y: 45.0 },
+  ES: { name: 'Spain', flag: '🇪🇸', x: 46.0, y: 35.0 },
+  FR: { name: 'France', flag: '🇫🇷', x: 49.0, y: 31.0 },
+  CA: { name: 'Canada', flag: '🇨🇦', x: 24.0, y: 24.0 },
+  AU: { name: 'Australia', flag: '🇦🇺', x: 86.0, y: 76.0 },
+  SG: { name: 'Singapore', flag: '🇸🇬', x: 76.5, y: 56.5 },
+  NL: { name: 'Netherlands', flag: '🇳🇱', x: 49.5, y: 26.5 },
+  IT: { name: 'Italy', flag: '🇮🇹', x: 51.5, y: 33.5 },
+  BR: { name: 'Brazil', flag: '🇧🇷', x: 34.0, y: 68.0 },
+  ZA: { name: 'South Africa', flag: '🇿🇦', x: 54.0, y: 77.0 },
+  KE: { name: 'Kenya', flag: '🇰🇪', x: 58.5, y: 57.0 },
+  NG: { name: 'Nigeria', flag: '🇳🇬', x: 49.0, y: 53.0 },
+  RU: { name: 'Russia', flag: '🇷🇺', x: 72.0, y: 22.0 },
+  TR: { name: 'Turkey', flag: '🇹🇷', x: 57.0, y: 35.0 },
+  EG: { name: 'Egypt', flag: '🇪🇬', x: 55.0, y: 42.0 },
+  PH: { name: 'Philippines', flag: '🇵🇭', x: 81.0, y: 51.0 },
+  VN: { name: 'Vietnam', flag: '🇻🇳', x: 77.0, y: 48.0 },
+  ID: { name: 'Indonesia', flag: '🇮🇩', x: 79.0, y: 60.0 },
+  BD: { name: 'Bangladesh', flag: '🇧🇩', x: 73.0, y: 46.0 },
+  LK: { name: 'Sri Lanka', flag: '🇱🇰', x: 70.5, y: 55.0 },
+  NP: { name: 'Nepal', flag: '🇳🇵', x: 71.5, y: 44.0 },
+  MX: { name: 'Mexico', flag: '🇲🇽', x: 19.0, y: 44.0 },
+  JP: { name: 'Japan', flag: '🇯🇵', x: 85.0, y: 37.0 },
+  KR: { name: 'South Korea', flag: '🇰🇷', x: 83.0, y: 37.0 },
+  CN: { name: 'China', flag: '🇨🇳', x: 76.0, y: 38.0 },
+  TH: { name: 'Thailand', flag: '🇹🇭', x: 75.0, y: 49.0 },
+  MY: { name: 'Malaysia', flag: '🇲🇾', x: 76.0, y: 54.0 },
+  NZ: { name: 'New Zealand', flag: '🇳🇿', x: 92.0, y: 84.0 },
+  PL: { name: 'Poland', flag: '🇵🇱', x: 53.0, y: 27.0 },
+  SE: { name: 'Sweden', flag: '🇸🇪', x: 52.0, y: 20.0 },
+  NO: { name: 'Norway', flag: '🇳🇴', x: 49.0, y: 20.0 },
+  CH: { name: 'Switzerland', flag: '🇨🇭', x: 49.5, y: 30.5 },
+  BE: { name: 'Belgium', flag: '🇧🇪', x: 48.5, y: 27.5 },
+  AT: { name: 'Austria', flag: '🇦🇹', x: 52.0, y: 30.0 },
+  AR: { name: 'Argentina', flag: '🇦🇷', x: 31.0, y: 80.0 },
+  CL: { name: 'Chile', flag: '🇨🇱', x: 28.0, y: 78.0 },
+  CO: { name: 'Colombia', flag: '🇨🇴', x: 27.0, y: 52.0 },
+  PE: { name: 'Peru', flag: '🇵🇪', x: 26.0, y: 62.0 }
 };
 
+// Medihub Global Hub Coordinates (Mumbai / SEZ)
+export const MEDIHUB_HQ_COORDS = { x: 70.0, y: 48.0, name: 'Medihub Global Exports HQ (India)' };
+
 export const getCountryInfo = (code) => {
-  if (!code) return { name: 'Global Partner', flag: '🌐' };
+  if (!code) return { name: 'Global Partner', flag: '🌐', x: 50.0, y: 50.0 };
   const upper = code.toUpperCase();
   if (COUNTRY_MAP[upper]) return COUNTRY_MAP[upper];
   
@@ -46,15 +66,14 @@ export const getCountryInfo = (code) => {
       .slice(0, 2)
       .split('')
       .map(char => 127397 + char.charCodeAt(0));
-    return { name: upper, flag: String.fromCodePoint(...codePoints) };
+    return { name: upper, flag: String.fromCodePoint(...codePoints), x: 50.0, y: 50.0 };
   } catch (e) {
-    return { name: upper, flag: '🌐' };
+    return { name: upper, flag: '🌐', x: 50.0, y: 50.0 };
   }
 };
 
-// Real-Time IP / Geolocation Resolver (Fast & Non-blocking)
+// Real-Time IP / Geolocation Resolver
 export const resolveRealLocation = async () => {
-  // Check cached geo in current session
   try {
     const cached = sessionStorage.getItem(BILLA_GEO_KEY);
     if (cached) return JSON.parse(cached);
@@ -62,7 +81,6 @@ export const resolveRealLocation = async () => {
 
   let geo = null;
 
-  // 1. Try fast country API
   try {
     const res = await fetch('https://api.country.is', { cache: 'no-store' });
     if (res.ok) {
@@ -74,13 +92,14 @@ export const resolveRealLocation = async () => {
           country: info.name,
           countryCode: data.country.toUpperCase(),
           flag: info.flag,
-          city: 'Gateway Node'
+          city: 'Gateway Node',
+          x: info.x,
+          y: info.y
         };
       }
     }
   } catch (e) {}
 
-  // 2. Fallback to timezone heuristics if offline / API blocked
   if (!geo) {
     try {
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
@@ -88,22 +107,22 @@ export const resolveRealLocation = async () => {
       const city = parts[1] ? parts[1].replace(/_/g, ' ') : 'International';
 
       if (tz.includes('Kolkata') || tz.includes('Calcutta') || tz.includes('Asia/Kolkata')) {
-        geo = { ip: 'Client Node', country: 'India', countryCode: 'IN', flag: '🇮🇳', city: 'Mumbai / Delhi SEZ' };
+        geo = { ip: 'Client Node', country: 'India', countryCode: 'IN', flag: '🇮🇳', city: 'Mumbai / Delhi SEZ', x: 70.0, y: 48.0 };
       } else if (tz.includes('Europe/Berlin')) {
-        geo = { ip: 'Client Node', country: 'Germany', countryCode: 'DE', flag: '🇩🇪', city: 'Berlin / Frankfurt' };
+        geo = { ip: 'Client Node', country: 'Germany', countryCode: 'DE', flag: '🇩🇪', city: 'Berlin / Frankfurt', x: 51.0, y: 28.0 };
       } else if (tz.includes('Europe/London')) {
-        geo = { ip: 'Client Node', country: 'United Kingdom', countryCode: 'GB', flag: '🇬🇧', city: 'London' };
+        geo = { ip: 'Client Node', country: 'United Kingdom', countryCode: 'GB', flag: '🇬🇧', city: 'London', x: 47.0, y: 26.0 };
       } else if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) {
-        geo = { ip: 'Client Node', country: 'United States', countryCode: 'US', flag: '🇺🇸', city: 'North America' };
+        geo = { ip: 'Client Node', country: 'United States', countryCode: 'US', flag: '🇺🇸', city: 'North America', x: 23.0, y: 36.0 };
       } else if (tz.includes('Asia/Dubai')) {
-        geo = { ip: 'Client Node', country: 'United Arab Emirates', countryCode: 'AE', flag: '🇦🇪', city: 'Dubai' };
+        geo = { ip: 'Client Node', country: 'United Arab Emirates', countryCode: 'AE', flag: '🇦🇪', city: 'Dubai', x: 62.0, y: 43.0 };
       } else if (tz.includes('Europe/Madrid')) {
-        geo = { ip: 'Client Node', country: 'Spain', countryCode: 'ES', flag: '🇪🇸', city: 'Madrid' };
+        geo = { ip: 'Client Node', country: 'Spain', countryCode: 'ES', flag: '🇪🇸', city: 'Madrid', x: 46.0, y: 35.0 };
       } else {
-        geo = { ip: 'Client Node', country: 'Global Partner', countryCode: 'GL', flag: '🌐', city };
+        geo = { ip: 'Client Node', country: 'Global Partner', countryCode: 'GL', flag: '🌐', city, x: 50.0, y: 50.0 };
       }
     } catch (e) {
-      geo = { ip: 'Client Node', country: 'Global Partner', countryCode: 'GL', flag: '🌐', city: 'Direct Connection' };
+      geo = { ip: 'Client Node', country: 'Global Partner', countryCode: 'GL', flag: '🌐', city: 'Direct Connection', x: 50.0, y: 50.0 };
     }
   }
 
@@ -167,6 +186,8 @@ export const pingBillaEyes = async (actionDesc = 'Browsing Medihub Catalog', pag
     countryCode: loc.countryCode,
     flag: loc.flag,
     city: loc.city,
+    x: loc.x,
+    y: loc.y,
     deviceType: dev.deviceType,
     browser: dev.browser,
     os: dev.os,
@@ -216,7 +237,7 @@ export const pingBillaEyes = async (actionDesc = 'Browsing Medihub Catalog', pag
   return payload;
 };
 
-// Log a Real BILLA Action Event (clicks, searches, RFQs)
+// Log a Real BILLA Action Event
 export const logBillaAction = async (title, detail = '') => {
   const visitorId = getBillaVisitorId();
   const timeStr = new Date().toLocaleTimeString();
@@ -231,7 +252,6 @@ export const logBillaAction = async (title, detail = '') => {
     created_at: now
   };
 
-  // 1. Write to local events buffer
   try {
     const raw = localStorage.getItem(BILLA_LOCAL_EVENTS_KEY);
     const map = raw ? JSON.parse(raw) : {};
@@ -241,10 +261,8 @@ export const logBillaAction = async (title, detail = '') => {
     localStorage.setItem(BILLA_LOCAL_EVENTS_KEY, JSON.stringify(map));
   } catch (e) {}
 
-  // 2. Trigger ping with new action description
   pingBillaEyes(title, window.location.pathname);
 
-  // 3. Write event to Supabase
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -260,12 +278,11 @@ export const logBillaAction = async (title, detail = '') => {
   }
 };
 
-// Fetch 100% Pure Real BILLA Sessions (No Mock Data)
+// Fetch Real BILLA Sessions with Coordinates
 export const fetchBillaSessions = async () => {
   const now = Date.now();
-  const ONLINE_THRESHOLD_MS = 35000; // Active within last 35 seconds
+  const ONLINE_THRESHOLD_MS = 35000;
 
-  // Try Supabase first
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -277,12 +294,16 @@ export const fetchBillaSessions = async () => {
       if (!error && Array.isArray(data)) {
         return data.map(s => {
           const lastPing = new Date(s.last_ping_at || s.updated_at || s.created_at).getTime();
+          const countryCode = s.country_code || 'GL';
+          const info = getCountryInfo(countryCode);
           return {
             visitor_id: s.visitor_id,
-            country: s.country || 'Global Partner',
-            countryCode: s.country_code || 'GL',
-            flag: s.flag || getCountryInfo(s.country_code).flag,
+            country: s.country || info.name,
+            countryCode,
+            flag: s.flag || info.flag,
             city: s.city || 'Network Node',
+            x: info.x,
+            y: info.y,
             deviceType: s.device_type || 'Desktop PC',
             browser: s.browser || 'Browser',
             os: s.os || 'OS',
@@ -299,7 +320,6 @@ export const fetchBillaSessions = async () => {
     }
   }
 
-  // Fallback to local session buffer
   try {
     const raw = localStorage.getItem(BILLA_LOCAL_SESSIONS_KEY);
     if (raw) {
@@ -307,8 +327,12 @@ export const fetchBillaSessions = async () => {
       if (Array.isArray(list)) {
         return list.map(s => {
           const lastPing = new Date(s.last_ping_at || s.created_at).getTime();
+          const countryCode = s.countryCode || 'GL';
+          const info = getCountryInfo(countryCode);
           return {
             ...s,
+            x: s.x || info.x,
+            y: s.y || info.y,
             is_online: (now - lastPing) < ONLINE_THRESHOLD_MS
           };
         });
@@ -316,15 +340,13 @@ export const fetchBillaSessions = async () => {
     }
   } catch (e) {}
 
-  // If completely fresh and no visitors yet, return empty array (zero fake data)
   return [];
 };
 
-// Fetch Real Visitor Journey (No Mock Events)
+// Fetch Real Visitor Journey
 export const fetchBillaVisitorJourney = async (visitorId) => {
   if (!visitorId) return [];
 
-  // Try Supabase first
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -347,7 +369,6 @@ export const fetchBillaVisitorJourney = async (visitorId) => {
     }
   }
 
-  // Fallback to local event buffer
   try {
     const raw = localStorage.getItem(BILLA_LOCAL_EVENTS_KEY);
     if (raw) {
@@ -365,4 +386,38 @@ export const fetchBillaVisitorJourney = async (visitorId) => {
       detail: 'Visitor connected via BILLA EYES™ Telemetry Network'
     }
   ];
+};
+
+// Filter Sessions by Historical Time-Range
+export const filterSessionsByTimeRange = (sessions, timeRange = 'all') => {
+  if (!Array.isArray(sessions)) return [];
+  if (timeRange === 'all') return sessions;
+
+  const now = new Date();
+
+  return sessions.filter(s => {
+    const sessionTime = new Date(s.last_ping_at || s.created_at || Date.now());
+
+    if (timeRange === 'live') {
+      return s.is_online === true;
+    }
+
+    if (timeRange === 'today') {
+      return sessionTime.toDateString() === now.toDateString();
+    }
+
+    if (timeRange === 'yesterday') {
+      const yesterday = new Date(now);
+      yesterday.setDate(now.getDate() - 1);
+      return sessionTime.toDateString() === yesterday.toDateString();
+    }
+
+    const diffDays = (now.getTime() - sessionTime.getTime()) / (1000 * 3600 * 24);
+
+    if (timeRange === '7d') return diffDays <= 7;
+    if (timeRange === '30d') return diffDays <= 30;
+    if (timeRange === '90d') return diffDays <= 90;
+
+    return true;
+  });
 };
