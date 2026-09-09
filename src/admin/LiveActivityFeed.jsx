@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Activity, Radio, Globe, Search, ShoppingBag, MessageSquare, 
-  RefreshCw, Smartphone, Laptop, Sparkles, Clock, ArrowUpRight
+  RefreshCw, Smartphone, Laptop, Sparkles, Clock, ArrowUpRight, Compass
 } from 'lucide-react';
 import { fetchRecentEvents } from '../services/analyticsService';
 
@@ -22,10 +22,10 @@ export default function LiveActivityFeed() {
     loadEvents();
     if (!isLive) return;
 
-    // Auto update feed every 5 seconds
+    // Auto update feed every 4 seconds
     const interval = setInterval(() => {
       loadEvents();
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isLive]);
@@ -36,7 +36,7 @@ export default function LiveActivityFeed() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-sans">
       {/* Top Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-xl">
         <div>
@@ -74,46 +74,53 @@ export default function LiveActivityFeed() {
           <span>Device & Timestamp</span>
         </div>
 
-        <div className="divide-y divide-slate-800/80 max-h-[700px] overflow-y-auto">
-          {events.map((evt) => {
-            const meta = EVENT_TYPE_MAP[evt.event_type] || EVENT_TYPE_MAP.page_view;
-            const Icon = meta.icon;
-            const dataStr = evt.event_data 
-              ? Object.entries(evt.event_data).map(([k, v]) => `${k}: ${v}`).join(' | ') 
-              : 'General event';
+        {events.length === 0 ? (
+          <div className="p-12 text-center text-slate-500 text-xs">
+            <Compass className="w-8 h-8 mx-auto mb-2 text-slate-600" />
+            <span>No activity events recorded yet. Actions taken on the storefront will stream here automatically.</span>
+          </div>
+        ) : (
+          <div className="divide-y divide-slate-800/80 max-h-[700px] overflow-y-auto">
+            {events.map((evt) => {
+              const meta = EVENT_TYPE_MAP[evt.event_type] || EVENT_TYPE_MAP.page_view;
+              const Icon = meta.icon;
+              const dataStr = evt.event_data 
+                ? Object.entries(evt.event_data).map(([k, v]) => `${k}: ${v}`).join(' | ') 
+                : 'General event';
 
-            return (
-              <div key={evt.id} className="p-4 hover:bg-slate-800/40 transition-colors flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3.5 min-w-0">
-                  <div className={`w-10 h-10 rounded-2xl ${meta.bg} ${meta.color} flex items-center justify-center shrink-0`}>
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-white truncate">{meta.label}</span>
-                      <span className="text-[10px] bg-slate-800 text-cyan-400 px-2 py-0.5 rounded-full font-mono uppercase font-bold">
-                        {evt.language || 'en'}
-                      </span>
+              return (
+                <div key={evt.id} className="p-4 hover:bg-slate-800/40 transition-colors flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <div className={`w-10 h-10 rounded-2xl ${meta.bg} ${meta.color} flex items-center justify-center shrink-0`}>
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <p className="text-[11px] text-slate-400 truncate mt-0.5 font-mono">
-                      {dataStr}
-                    </p>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-white truncate">{meta.label}</span>
+                        <span className="text-[10px] bg-slate-800 text-cyan-400 px-2 py-0.5 rounded-full font-mono uppercase font-bold">
+                          {evt.language || 'en'}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-400 truncate mt-0.5 font-mono">
+                        {dataStr}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="text-right shrink-0">
-                  <div className="text-[11px] font-semibold text-slate-300 flex items-center justify-end gap-1.5">
-                    {evt.device_type === 'Mobile' ? <Smartphone className="w-3.5 h-3.5 text-slate-400" /> : <Laptop className="w-3.5 h-3.5 text-slate-400" />}
-                    <span>{evt.device_type}</span>
-                  </div>
-                  <div className="text-[10px] text-slate-500 mt-1 font-mono">
-                    {new Date(evt.created_at).toLocaleTimeString()}
+                  <div className="text-right shrink-0">
+                    <div className="text-[11px] font-semibold text-slate-300 flex items-center justify-end gap-1.5">
+                      {evt.device_type === 'Mobile' ? <Smartphone className="w-3.5 h-3.5 text-slate-400" /> : <Laptop className="w-3.5 h-3.5 text-slate-400" />}
+                      <span>{evt.device_type}</span>
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-1 font-mono">
+                      {new Date(evt.created_at).toLocaleTimeString()}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

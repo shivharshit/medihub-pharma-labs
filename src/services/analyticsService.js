@@ -12,106 +12,6 @@ const getDeviceType = () => {
   return 'Desktop';
 };
 
-// Initial realistic seed data for immediate demonstration if fresh
-const INITIAL_DEMO_LEADS = [
-  {
-    id: 'lead-101',
-    created_at: new Date(Date.now() - 3600000 * 3).toISOString(),
-    name: 'Dr. Arthur Sterling',
-    company: 'EuroMed Distribution GmbH',
-    email: 'a.sterling@euromed-berlin.de',
-    phone: '+49 30 901820',
-    country: 'Germany',
-    countryCode: 'DE',
-    items: [
-      { name: 'Meropenem 1g Injection', quantity: 5000, category: 'Anti-Infectives' },
-      { name: 'Amoxicillin + Clavulanic Acid 1.2g', quantity: 10000, category: 'Anti-Infectives' }
-    ],
-    status: 'New Lead',
-    notes: 'Urgent hospital tender requirement for Q4.',
-    estimatedValue: '$38,500'
-  },
-  {
-    id: 'lead-102',
-    created_at: new Date(Date.now() - 3600000 * 12).toISOString(),
-    name: 'Carlos Mendoza',
-    company: 'FarmaSur Latina S.A.',
-    email: 'cmendoza@farmasur.es',
-    phone: '+34 91 580 4260',
-    country: 'Spain',
-    countryCode: 'ES',
-    items: [
-      { name: 'Atorvastatin 40mg Tablets', quantity: 25000, category: 'Cardiovascular' },
-      { name: 'Metformin 500mg ER', quantity: 50000, category: 'Anti-Diabetic' }
-    ],
-    status: 'In Discussion',
-    notes: 'Requested Certificate of Analysis (COA) and WHO-GMP pack insert in Spanish.',
-    estimatedValue: '$24,200'
-  },
-  {
-    id: 'lead-103',
-    created_at: new Date(Date.now() - 3600000 * 28).toISOString(),
-    name: 'Sarah Jenkins',
-    company: 'Apex Health Partners UK',
-    email: 's.jenkins@apexhealth.co.uk',
-    phone: '+44 20 7946 0912',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    items: [
-      { name: 'Paracetamol 500mg IV Infusion', quantity: 15000, category: 'Analgesics' },
-      { name: 'Ceftriaxone 1g Injection', quantity: 8000, category: 'Anti-Infectives' }
-    ],
-    status: 'Quoted',
-    notes: 'Proforma invoice sent on CIF London terms.',
-    estimatedValue: '$42,000'
-  },
-  {
-    id: 'lead-104',
-    created_at: new Date(Date.now() - 3600000 * 48).toISOString(),
-    name: 'Tariq Al-Mansoor',
-    company: 'Gulf Pharma Global LLC',
-    email: 'tariq@gulfpharmadubai.ae',
-    phone: '+971 4 313 8888',
-    country: 'United Arab Emirates',
-    countryCode: 'AE',
-    items: [
-      { name: 'Enoxaparin 40mg PFS', quantity: 12000, category: 'Cardiovascular' },
-      { name: 'Piperacillin + Tazobactam 4.5g', quantity: 6000, category: 'Anti-Infectives' }
-    ],
-    status: 'Order Placed',
-    notes: 'Letter of Credit confirmed. Production scheduled.',
-    estimatedValue: '$68,400'
-  },
-  {
-    id: 'lead-105',
-    created_at: new Date(Date.now() - 3600000 * 72).toISOString(),
-    name: 'Robert Vance',
-    company: 'NorthStar Bio Logistics',
-    email: 'rvance@northstarpharma.ca',
-    phone: '+1 416 555 0199',
-    country: 'Canada',
-    countryCode: 'CA',
-    items: [
-      { name: 'Levofloxacin 500mg Tablets', quantity: 20000, category: 'Anti-Infectives' },
-      { name: 'Esomeprazole 40mg IV', quantity: 10000, category: 'Gastrointestinal' }
-    ],
-    status: 'New Lead',
-    notes: 'Exploring annual contract for Canadian pharmacy chain.',
-    estimatedValue: '$31,500'
-  }
-];
-
-const INITIAL_DEMO_SEARCHES = [
-  { term: 'Paracetamol IV', count: 48, category: 'Analgesics', lastSearched: new Date().toISOString() },
-  { term: 'Meropenem Injection', count: 42, category: 'Anti-Infectives', lastSearched: new Date().toISOString() },
-  { term: 'Atorvastatin', count: 37, category: 'Cardiovascular', lastSearched: new Date().toISOString() },
-  { term: 'Amoxicillin Clavulanate', count: 31, category: 'Anti-Infectives', lastSearched: new Date().toISOString() },
-  { term: 'Enoxaparin PFS', count: 28, category: 'Cardiovascular', lastSearched: new Date().toISOString() },
-  { term: 'Ceftriaxone', count: 24, category: 'Anti-Infectives', lastSearched: new Date().toISOString() },
-  { term: 'Metformin ER', count: 22, category: 'Anti-Diabetic', lastSearched: new Date().toISOString() },
-  { term: 'WHO-GMP certification', count: 19, category: 'General', lastSearched: new Date().toISOString() }
-];
-
 // 1. Log an event
 export const trackEvent = async (eventType, eventData = {}) => {
   const payload = {
@@ -165,7 +65,7 @@ export const trackSearchQuery = async (term, resultCount = 0) => {
   // Update searches aggregate table
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_SEARCHES_KEY);
-    let list = raw ? JSON.parse(raw) : INITIAL_DEMO_SEARCHES;
+    let list = raw ? JSON.parse(raw) : [];
     const existingIdx = list.findIndex(s => s.term.toLowerCase() === cleanTerm.toLowerCase());
     if (existingIdx >= 0) {
       list[existingIdx].count += 1;
@@ -174,7 +74,7 @@ export const trackSearchQuery = async (term, resultCount = 0) => {
       list.unshift({
         term: cleanTerm,
         count: 1,
-        category: 'Search',
+        category: 'Pharmaceutical',
         lastSearched: new Date().toISOString()
       });
     }
@@ -195,7 +95,7 @@ export const submitRfqLead = async (leadData) => {
   // Local write
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_LEADS_KEY);
-    const list = raw ? JSON.parse(raw) : INITIAL_DEMO_LEADS;
+    const list = raw ? JSON.parse(raw) : [];
     list.unshift(lead);
     localStorage.setItem(LOCAL_STORAGE_LEADS_KEY, JSON.stringify(list));
   } catch (e) {}
@@ -220,7 +120,7 @@ export const submitRfqLead = async (leadData) => {
   return lead;
 };
 
-// 4. Fetch RFQ Leads
+// 4. Fetch RFQ Leads (Real Supabase & Local)
 export const fetchRfqLeads = async () => {
   const supabase = getSupabase();
   if (supabase) {
@@ -229,7 +129,7 @@ export const fetchRfqLeads = async () => {
         .from('rfq_inquiries')
         .select('*')
         .order('created_at', { ascending: false });
-      if (!error && data && data.length > 0) {
+      if (!error && Array.isArray(data)) {
         return data;
       }
     } catch (e) {}
@@ -238,16 +138,17 @@ export const fetchRfqLeads = async () => {
   const raw = localStorage.getItem(LOCAL_STORAGE_LEADS_KEY);
   if (raw) {
     try {
-      return JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) return parsed;
     } catch (e) {}
   }
-  return INITIAL_DEMO_LEADS;
+  return [];
 };
 
 // 5. Update RFQ Lead Status
 export const updateLeadStatus = async (leadId, newStatus, newNotes) => {
   const raw = localStorage.getItem(LOCAL_STORAGE_LEADS_KEY);
-  let list = raw ? JSON.parse(raw) : INITIAL_DEMO_LEADS;
+  let list = raw ? JSON.parse(raw) : [];
   list = list.map(l => {
     if (l.id === leadId) {
       return { 
@@ -277,9 +178,9 @@ export const updateLeadStatus = async (leadId, newStatus, newNotes) => {
 export const fetchSearchLogs = () => {
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_SEARCHES_KEY);
-    return raw ? JSON.parse(raw) : INITIAL_DEMO_SEARCHES;
+    return raw ? JSON.parse(raw) : [];
   } catch (e) {
-    return INITIAL_DEMO_SEARCHES;
+    return [];
   }
 };
 
@@ -287,19 +188,7 @@ export const fetchSearchLogs = () => {
 export const fetchRecentEvents = () => {
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_EVENTS_KEY);
-    const list = raw ? JSON.parse(raw) : [];
-    if (list.length === 0) {
-      // Generate initial representative telemetry
-      return [
-        { id: 'evt-1', event_type: 'rfq_submitted', device_type: 'Desktop', language: 'en', created_at: new Date(Date.now() - 1000 * 60 * 4).toISOString(), event_data: { company: 'EuroMed Distribution', itemsCount: 2, country: 'Germany' } },
-        { id: 'evt-2', event_type: 'whatsapp_click', device_type: 'Mobile', language: 'es', created_at: new Date(Date.now() - 1000 * 60 * 14).toISOString(), event_data: { product: 'Atorvastatin 40mg' } },
-        { id: 'evt-3', event_type: 'language_change', device_type: 'Desktop', language: 'de', created_at: new Date(Date.now() - 1000 * 60 * 25).toISOString(), event_data: { to: 'de' } },
-        { id: 'evt-4', event_type: 'search', device_type: 'Desktop', language: 'en', created_at: new Date(Date.now() - 1000 * 60 * 42).toISOString(), event_data: { query: 'Meropenem Injection', results: 1 } },
-        { id: 'evt-5', event_type: 'product_view', device_type: 'Mobile', language: 'en', created_at: new Date(Date.now() - 1000 * 60 * 58).toISOString(), event_data: { productName: 'Paracetamol IV' } },
-        { id: 'evt-6', event_type: 'page_view', device_type: 'Desktop', language: 'en', created_at: new Date(Date.now() - 1000 * 60 * 75).toISOString(), event_data: { page: '/' } }
-      ];
-    }
-    return list;
+    return raw ? JSON.parse(raw) : [];
   } catch (e) {
     return [];
   }

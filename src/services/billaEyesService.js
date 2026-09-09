@@ -1,35 +1,121 @@
 import { getSupabase } from '../lib/supabaseClient';
 
 const BILLA_UID_KEY = 'billa_eyes_visitor_id';
-const BILLA_SESSION_KEY = 'billa_eyes_session_data';
+const BILLA_GEO_KEY = 'billa_eyes_geo_cache';
 const BILLA_LOCAL_SESSIONS_KEY = 'billa_eyes_all_sessions';
 const BILLA_LOCAL_EVENTS_KEY = 'billa_eyes_all_events';
 
-// Country & Geolocation detector based on Intl timezone
-const detectLocation = () => {
+// Country Code to Name & Flag Mapper
+const COUNTRY_MAP = {
+  IN: { name: 'India', flag: '🇮🇳' },
+  US: { name: 'United States', flag: '🇺🇸' },
+  GB: { name: 'United Kingdom', flag: '🇬🇧' },
+  DE: { name: 'Germany', flag: '🇩🇪' },
+  AE: { name: 'United Arab Emirates', flag: '🇦🇪' },
+  SA: { name: 'Saudi Arabia', flag: '🇸🇦' },
+  ES: { name: 'Spain', flag: '🇪🇸' },
+  FR: { name: 'France', flag: '🇫🇷' },
+  CA: { name: 'Canada', flag: '🇨🇦' },
+  AU: { name: 'Australia', flag: '🇦🇺' },
+  SG: { name: 'Singapore', flag: '🇸🇬' },
+  NL: { name: 'Netherlands', flag: '🇳🇱' },
+  IT: { name: 'Italy', flag: '🇮🇹' },
+  BR: { name: 'Brazil', flag: '🇧🇷' },
+  ZA: { name: 'South Africa', flag: '🇿🇦' },
+  KE: { name: 'Kenya', flag: '🇰🇪' },
+  NG: { name: 'Nigeria', flag: '🇳🇬' },
+  RU: { name: 'Russia', flag: '🇷🇺' },
+  TR: { name: 'Turkey', flag: '🇹🇷' },
+  EG: { name: 'Egypt', flag: '🇪🇬' },
+  PH: { name: 'Philippines', flag: '🇵🇭' },
+  VN: { name: 'Vietnam', flag: '🇻🇳' },
+  ID: { name: 'Indonesia', flag: '🇮🇩' },
+  BD: { name: 'Bangladesh', flag: '🇧🇩' },
+  LK: { name: 'Sri Lanka', flag: '🇱🇰' },
+  NP: { name: 'Nepal', flag: '🇳🇵' }
+};
+
+export const getCountryInfo = (code) => {
+  if (!code) return { name: 'Global Partner', flag: '🌐' };
+  const upper = code.toUpperCase();
+  if (COUNTRY_MAP[upper]) return COUNTRY_MAP[upper];
+  
+  // Convert ISO 2-letter to flag emoji dynamically
   try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-    if (tz.includes('Europe/Berlin') || tz.includes('Europe/Busingen')) return { country: 'Germany', countryCode: 'DE', flag: '🇩🇪', city: 'Berlin' };
-    if (tz.includes('Europe/London')) return { country: 'United Kingdom', countryCode: 'GB', flag: '🇬🇧', city: 'London' };
-    if (tz.includes('Europe/Madrid')) return { country: 'Spain', countryCode: 'ES', flag: '🇪🇸', city: 'Madrid' };
-    if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) return { country: 'United States', countryCode: 'US', flag: '🇺🇸', city: 'New York' };
-    if (tz.includes('America/Toronto') || tz.includes('America/Vancouver')) return { country: 'Canada', countryCode: 'CA', flag: '🇨🇦', city: 'Toronto' };
-    if (tz.includes('Asia/Dubai')) return { country: 'United Arab Emirates', countryCode: 'AE', flag: '🇦🇪', city: 'Dubai' };
-    if (tz.includes('Asia/Kolkata') || tz.includes('Asia/Calcutta')) return { country: 'India', countryCode: 'IN', flag: '🇮🇳', city: 'Mumbai / SEZ' };
-    if (tz.includes('Australia/Sydney') || tz.includes('Australia/Melbourne')) return { country: 'Australia', countryCode: 'AU', flag: '🇦🇺', city: 'Sydney' };
-    if (tz.includes('Europe/Paris')) return { country: 'France', countryCode: 'FR', flag: '🇫🇷', city: 'Paris' };
-    
-    // Fallback extraction from timezone name
-    const parts = tz.split('/');
-    const city = parts[1] ? parts[1].replace(/_/g, ' ') : 'Global Gateway';
-    return { country: 'International', countryCode: 'GLOBAL', flag: '🌐', city };
+    const codePoints = upper
+      .slice(0, 2)
+      .split('')
+      .map(char => 127397 + char.charCodeAt(0));
+    return { name: upper, flag: String.fromCodePoint(...codePoints) };
   } catch (e) {
-    return { country: 'Global Partner', countryCode: 'GL', flag: '🌐', city: 'International Gateway' };
+    return { name: upper, flag: '🌐' };
   }
 };
 
-// Device & Browser detector
-const detectDevice = () => {
+// Real-Time IP / Geolocation Resolver (Fast & Non-blocking)
+export const resolveRealLocation = async () => {
+  // Check cached geo in current session
+  try {
+    const cached = sessionStorage.getItem(BILLA_GEO_KEY);
+    if (cached) return JSON.parse(cached);
+  } catch (e) {}
+
+  let geo = null;
+
+  // 1. Try fast country API
+  try {
+    const res = await fetch('https://api.country.is', { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.country) {
+        const info = getCountryInfo(data.country);
+        geo = {
+          ip: data.ip || 'Direct Connection',
+          country: info.name,
+          countryCode: data.country.toUpperCase(),
+          flag: info.flag,
+          city: 'Gateway Node'
+        };
+      }
+    }
+  } catch (e) {}
+
+  // 2. Fallback to timezone heuristics if offline / API blocked
+  if (!geo) {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      const parts = tz.split('/');
+      const city = parts[1] ? parts[1].replace(/_/g, ' ') : 'International';
+
+      if (tz.includes('Kolkata') || tz.includes('Calcutta') || tz.includes('Asia/Kolkata')) {
+        geo = { ip: 'Client Node', country: 'India', countryCode: 'IN', flag: '🇮🇳', city: 'Mumbai / Delhi SEZ' };
+      } else if (tz.includes('Europe/Berlin')) {
+        geo = { ip: 'Client Node', country: 'Germany', countryCode: 'DE', flag: '🇩🇪', city: 'Berlin / Frankfurt' };
+      } else if (tz.includes('Europe/London')) {
+        geo = { ip: 'Client Node', country: 'United Kingdom', countryCode: 'GB', flag: '🇬🇧', city: 'London' };
+      } else if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) {
+        geo = { ip: 'Client Node', country: 'United States', countryCode: 'US', flag: '🇺🇸', city: 'North America' };
+      } else if (tz.includes('Asia/Dubai')) {
+        geo = { ip: 'Client Node', country: 'United Arab Emirates', countryCode: 'AE', flag: '🇦🇪', city: 'Dubai' };
+      } else if (tz.includes('Europe/Madrid')) {
+        geo = { ip: 'Client Node', country: 'Spain', countryCode: 'ES', flag: '🇪🇸', city: 'Madrid' };
+      } else {
+        geo = { ip: 'Client Node', country: 'Global Partner', countryCode: 'GL', flag: '🌐', city };
+      }
+    } catch (e) {
+      geo = { ip: 'Client Node', country: 'Global Partner', countryCode: 'GL', flag: '🌐', city: 'Direct Connection' };
+    }
+  }
+
+  try {
+    sessionStorage.setItem(BILLA_GEO_KEY, JSON.stringify(geo));
+  } catch (e) {}
+
+  return geo;
+};
+
+// Real Device & Browser detector
+export const detectDeviceDiagnostics = () => {
   const ua = navigator.userAgent;
   let deviceType = 'Desktop PC';
   let browser = 'Chrome';
@@ -38,139 +124,42 @@ const detectDevice = () => {
   if (/iPhone/i.test(ua)) { deviceType = 'Apple iPhone'; os = 'iOS'; }
   else if (/iPad/i.test(ua)) { deviceType = 'Apple iPad'; os = 'iPadOS'; }
   else if (/Android/i.test(ua)) { deviceType = 'Android Smartphone'; os = 'Android'; }
-  else if (/Macintosh/i.test(ua)) { deviceType = 'MacBook / Mac'; os = 'macOS'; }
-  else if (/Windows/i.test(ua)) { deviceType = 'Windows Workstation'; os = 'Windows'; }
+  else if (/Macintosh/i.test(ua)) { deviceType = 'MacBook / iMac'; os = 'macOS'; }
+  else if (/Linux/i.test(ua)) { deviceType = 'Linux Workstation'; os = 'Linux'; }
+  else if (/Windows/i.test(ua)) { deviceType = 'Windows PC'; os = 'Windows'; }
 
   if (/Edg/i.test(ua)) browser = 'Microsoft Edge';
   else if (/Chrome/i.test(ua)) browser = 'Google Chrome';
-  else if (/Safari/i.test(ua)) browser = 'Apple Safari';
+  else if (/Safari/i.test(ua) && !/Chrome/i.test(ua)) browser = 'Apple Safari';
   else if (/Firefox/i.test(ua)) browser = 'Mozilla Firefox';
+  else if (/Opera|OPR/i.test(ua)) browser = 'Opera';
 
-  return { deviceType, browser, os, screen: `${window.innerWidth}x${window.innerHeight}` };
+  return {
+    deviceType,
+    browser,
+    os,
+    screen: `${window.innerWidth}x${window.innerHeight}`
+  };
 };
 
-// 1. Get or Generate Persistent BILLA Visitor ID
+// Persistent Visitor ID
 export const getBillaVisitorId = () => {
   let uid = localStorage.getItem(BILLA_UID_KEY);
   if (!uid) {
-    const loc = detectLocation();
     const rand = Math.floor(1000 + Math.random() * 9000);
-    uid = `BILLA-${loc.countryCode}-${rand}`;
+    const code = (navigator.language || 'GL').slice(0, 2).toUpperCase();
+    uid = `BILLA-${code}-${rand}`;
     localStorage.setItem(BILLA_UID_KEY, uid);
   }
   return uid;
 };
 
-// 2. Representative initial seed sessions for instant rich visualization
-const DEMO_BILLA_SESSIONS = [
-  {
-    visitor_id: 'BILLA-DE-8492',
-    country: 'Germany',
-    countryCode: 'DE',
-    flag: '🇩🇪',
-    city: 'Frankfurt',
-    deviceType: 'Windows Workstation',
-    browser: 'Chrome 128',
-    os: 'Windows 11',
-    screen: '1920x1080',
-    current_page: 'Product: Meropenem 1g Injection',
-    current_action: 'Inspecting Antibiotic COA Specifications',
-    is_online: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 6).toISOString(),
-    last_ping_at: new Date(Date.now() - 1000 * 8).toISOString(),
-    events_count: 5
-  },
-  {
-    visitor_id: 'BILLA-US-3194',
-    country: 'United States',
-    countryCode: 'US',
-    flag: '🇺🇸',
-    city: 'New Jersey',
-    deviceType: 'MacBook Pro',
-    browser: 'Safari 18',
-    os: 'macOS Sequoia',
-    screen: '1728x1117',
-    current_page: 'RFQ Cart Drawer',
-    current_action: 'Added 25,000 units of Atorvastatin 40mg',
-    is_online: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 14).toISOString(),
-    last_ping_at: new Date(Date.now() - 1000 * 12).toISOString(),
-    events_count: 7
-  },
-  {
-    visitor_id: 'BILLA-GB-6721',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    flag: '🇬🇧',
-    city: 'London',
-    deviceType: 'Apple iPhone 15 Pro',
-    browser: 'Mobile Safari',
-    os: 'iOS 18',
-    screen: '393x852',
-    current_page: 'Therapeutic: Anti-Infectives',
-    current_action: 'Browsing Ceftriaxone & Amoxicillin',
-    is_online: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 22).toISOString(),
-    last_ping_at: new Date(Date.now() - 1000 * 15).toISOString(),
-    events_count: 4
-  },
-  {
-    visitor_id: 'BILLA-AE-9051',
-    country: 'United Arab Emirates',
-    countryCode: 'AE',
-    flag: '🇦🇪',
-    city: 'Dubai',
-    deviceType: 'Windows Workstation',
-    browser: 'Edge 128',
-    os: 'Windows 11',
-    screen: '2560x1440',
-    current_page: 'WhatsApp Export Desk',
-    current_action: 'Initiated Commercial Inquiry for Hospital Tender',
-    is_online: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 35).toISOString(),
-    last_ping_at: new Date(Date.now() - 1000 * 25).toISOString(),
-    events_count: 9
-  },
-  {
-    visitor_id: 'BILLA-ES-4209',
-    country: 'Spain',
-    countryCode: 'ES',
-    flag: '🇪🇸',
-    city: 'Madrid',
-    deviceType: 'Android Smartphone',
-    browser: 'Chrome Mobile',
-    os: 'Android 14',
-    screen: '412x915',
-    current_page: 'Storefront (Español)',
-    current_action: 'Switched Language to Spanish & Browsing Analgesics',
-    is_online: false,
-    created_at: new Date(Date.now() - 1000 * 60 * 55).toISOString(),
-    last_ping_at: new Date(Date.now() - 1000 * 60 * 18).toISOString(),
-    events_count: 3
-  }
-];
-
-const DEMO_BILLA_EVENTS = {
-  'BILLA-DE-8492': [
-    { time: '14:02:10', title: 'Landed on Medihub Storefront', detail: 'Referrer: Google Organic Search (Keywords: WHO-GMP finished pharma exports)' },
-    { time: '14:02:40', title: 'Language Switched to German 🇩🇪', detail: 'Selected Deutsch localization for product catalog' },
-    { time: '14:03:15', title: 'Filtered Therapeutic Category', detail: 'Selected "Anti-Infectives & Antibiotics" (142 formulations)' },
-    { time: '14:04:20', title: 'Opened Product Specification', detail: 'Meropenem 1g Injection with COA / WHO-GMP compliance sheet' },
-    { time: '14:05:00', title: 'Currently Active', detail: 'Inspecting Antibiotic COA Specifications' }
-  ],
-  'BILLA-US-3194': [
-    { time: '13:54:05', title: 'Landed on Storefront', detail: 'Direct B2B referral from pharma portal' },
-    { time: '13:55:10', title: 'Searched Formulation', detail: 'Query: "Atorvastatin 40mg"' },
-    { time: '13:57:30', title: 'Added to RFQ Cart', detail: '25,000 units of Atorvastatin 40mg' },
-    { time: '14:02:15', title: 'Opened RFQ Drawer', detail: 'Filling procurement details for North American distribution' }
-  ]
-};
-
-// 3. Send BILLA EYES Heartbeat Ping
-export const pingBillaEyes = async (actionDesc = 'Browsing Catalog', pageName = '/') => {
+// Send Real BILLA EYES Heartbeat Ping
+export const pingBillaEyes = async (actionDesc = 'Browsing Medihub Catalog', pageName = '/') => {
   const visitorId = getBillaVisitorId();
-  const loc = detectLocation();
-  const dev = detectDevice();
+  const loc = await resolveRealLocation();
+  const dev = detectDeviceDiagnostics();
+  const now = new Date().toISOString();
 
   const payload = {
     visitor_id: visitorId,
@@ -182,26 +171,26 @@ export const pingBillaEyes = async (actionDesc = 'Browsing Catalog', pageName = 
     browser: dev.browser,
     os: dev.os,
     screen: dev.screen,
-    current_page: pageName || window.location.pathname,
+    current_page: pageName || window.location.pathname || '/',
     current_action: actionDesc,
     is_online: true,
-    last_ping_at: new Date().toISOString()
+    last_ping_at: now
   };
 
-  // Local write
+  // 1. Write to local buffer
   try {
     const raw = localStorage.getItem(BILLA_LOCAL_SESSIONS_KEY);
-    let list = raw ? JSON.parse(raw) : DEMO_BILLA_SESSIONS;
-    const existingIdx = list.findIndex(s => s.visitor_id === visitorId);
-    if (existingIdx >= 0) {
-      list[existingIdx] = { ...list[existingIdx], ...payload, last_ping_at: payload.last_ping_at, is_online: true };
+    let list = raw ? JSON.parse(raw) : [];
+    const idx = list.findIndex(s => s.visitor_id === visitorId);
+    if (idx >= 0) {
+      list[idx] = { ...list[idx], ...payload, last_ping_at: now, is_online: true };
     } else {
-      list.unshift({ ...payload, created_at: new Date().toISOString(), events_count: 1 });
+      list.unshift({ ...payload, created_at: now, events_count: 1 });
     }
     localStorage.setItem(BILLA_LOCAL_SESSIONS_KEY, JSON.stringify(list));
   } catch (e) {}
 
-  // Supabase push
+  // 2. Write to Supabase
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -219,16 +208,19 @@ export const pingBillaEyes = async (actionDesc = 'Browsing Catalog', pageName = 
         is_online: true,
         last_ping_at: payload.last_ping_at
       }, { onConflict: 'visitor_id' });
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Supabase billa_eyes_sessions ping error:', e);
+    }
   }
 
   return payload;
 };
 
-// 4. Log a Specific BILLA Action Event
+// Log a Real BILLA Action Event (clicks, searches, RFQs)
 export const logBillaAction = async (title, detail = '') => {
   const visitorId = getBillaVisitorId();
   const timeStr = new Date().toLocaleTimeString();
+  const now = new Date().toISOString();
 
   const eventItem = {
     id: `billa-evt-${Date.now()}`,
@@ -236,22 +228,23 @@ export const logBillaAction = async (title, detail = '') => {
     time: timeStr,
     title,
     detail,
-    created_at: new Date().toISOString()
+    created_at: now
   };
 
-  // Update local events map
+  // 1. Write to local events buffer
   try {
     const raw = localStorage.getItem(BILLA_LOCAL_EVENTS_KEY);
-    const map = raw ? JSON.parse(raw) : DEMO_BILLA_EVENTS;
+    const map = raw ? JSON.parse(raw) : {};
     map[visitorId] = map[visitorId] || [];
-    map[visitorId].push({ time: timeStr, title, detail });
+    map[visitorId].push({ time: timeStr, title, detail, created_at: now });
+    if (map[visitorId].length > 50) map[visitorId] = map[visitorId].slice(-50);
     localStorage.setItem(BILLA_LOCAL_EVENTS_KEY, JSON.stringify(map));
   } catch (e) {}
 
-  // Trigger heartbeat with new action
+  // 2. Trigger ping with new action description
   pingBillaEyes(title, window.location.pathname);
 
-  // Supabase push
+  // 3. Write event to Supabase
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -259,14 +252,20 @@ export const logBillaAction = async (title, detail = '') => {
         visitor_id: visitorId,
         title,
         detail,
-        created_at: eventItem.created_at
+        created_at: now
       });
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Supabase billa_eyes_events write error:', e);
+    }
   }
 };
 
-// 5. Fetch Active BILLA Sessions for Dashboard
+// Fetch 100% Pure Real BILLA Sessions (No Mock Data)
 export const fetchBillaSessions = async () => {
+  const now = Date.now();
+  const ONLINE_THRESHOLD_MS = 35000; // Active within last 35 seconds
+
+  // Try Supabase first
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -274,36 +273,58 @@ export const fetchBillaSessions = async () => {
         .from('billa_eyes_sessions')
         .select('*')
         .order('last_ping_at', { ascending: false });
-      if (!error && data && data.length > 0) {
-        // Mark as offline if last ping > 45 seconds ago
-        const now = Date.now();
-        return data.map(s => ({
-          ...s,
-          visitor_id: s.visitor_id,
-          deviceType: s.device_type,
-          is_online: (now - new Date(s.last_ping_at).getTime()) < 45000
-        }));
+
+      if (!error && Array.isArray(data)) {
+        return data.map(s => {
+          const lastPing = new Date(s.last_ping_at || s.updated_at || s.created_at).getTime();
+          return {
+            visitor_id: s.visitor_id,
+            country: s.country || 'Global Partner',
+            countryCode: s.country_code || 'GL',
+            flag: s.flag || getCountryInfo(s.country_code).flag,
+            city: s.city || 'Network Node',
+            deviceType: s.device_type || 'Desktop PC',
+            browser: s.browser || 'Browser',
+            os: s.os || 'OS',
+            current_page: s.current_page || '/',
+            current_action: s.current_action || 'Browsing Storefront',
+            is_online: (now - lastPing) < ONLINE_THRESHOLD_MS,
+            last_ping_at: s.last_ping_at || s.created_at,
+            created_at: s.created_at
+          };
+        });
       }
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Supabase session fetch error:', e);
+    }
   }
 
-  const raw = localStorage.getItem(BILLA_LOCAL_SESSIONS_KEY);
-  if (raw) {
-    try {
+  // Fallback to local session buffer
+  try {
+    const raw = localStorage.getItem(BILLA_LOCAL_SESSIONS_KEY);
+    if (raw) {
       const list = JSON.parse(raw);
-      const now = Date.now();
-      return list.map(s => ({
-        ...s,
-        is_online: (now - new Date(s.last_ping_at).getTime()) < 45000
-      }));
-    } catch (e) {}
-  }
+      if (Array.isArray(list)) {
+        return list.map(s => {
+          const lastPing = new Date(s.last_ping_at || s.created_at).getTime();
+          return {
+            ...s,
+            is_online: (now - lastPing) < ONLINE_THRESHOLD_MS
+          };
+        });
+      }
+    }
+  } catch (e) {}
 
-  return DEMO_BILLA_SESSIONS;
+  // If completely fresh and no visitors yet, return empty array (zero fake data)
+  return [];
 };
 
-// 6. Fetch Visitor Journey for Detail Drawer
+// Fetch Real Visitor Journey (No Mock Events)
 export const fetchBillaVisitorJourney = async (visitorId) => {
+  if (!visitorId) return [];
+
+  // Try Supabase first
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -312,26 +333,36 @@ export const fetchBillaVisitorJourney = async (visitorId) => {
         .select('*')
         .eq('visitor_id', visitorId)
         .order('created_at', { ascending: true });
-      if (!error && data && data.length > 0) {
+
+      if (!error && Array.isArray(data) && data.length > 0) {
         return data.map(d => ({
-          time: new Date(d.created_at).toLocaleTimeString(),
+          time: new Date(d.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
           title: d.title,
-          detail: d.detail
+          detail: d.detail || '',
+          created_at: d.created_at
         }));
       }
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Supabase events fetch error:', e);
+    }
   }
 
-  const raw = localStorage.getItem(BILLA_LOCAL_EVENTS_KEY);
-  if (raw) {
-    try {
+  // Fallback to local event buffer
+  try {
+    const raw = localStorage.getItem(BILLA_LOCAL_EVENTS_KEY);
+    if (raw) {
       const map = JSON.parse(raw);
-      if (map[visitorId]) return map[visitorId];
-    } catch (e) {}
-  }
+      if (map[visitorId] && Array.isArray(map[visitorId])) {
+        return map[visitorId];
+      }
+    }
+  } catch (e) {}
 
-  return DEMO_BILLA_EVENTS[visitorId] || [
-    { time: 'Just now', title: 'Landed on Website', detail: 'Exploring Medihub pharmaceutical export formulations' },
-    { time: 'Just now', title: 'Live Session Connected', detail: 'Heartbeat registered via BILLA EYES Telemetry' }
+  return [
+    {
+      time: 'Real-Time',
+      title: 'Session Initiated',
+      detail: 'Visitor connected via BILLA EYES™ Telemetry Network'
+    }
   ];
 };
