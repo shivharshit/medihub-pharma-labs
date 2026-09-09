@@ -140,86 +140,78 @@ export default function BillaEyesRadar() {
 
   return (
     <div className="space-y-6 font-sans">
-      {/* Top Hero Command Header with Perfectly Framed BILLA EYES Cat Eyes */}
-      <div className="relative rounded-3xl overflow-hidden border border-amber-500/40 bg-gradient-to-r from-slate-950 via-slate-900 to-amber-950/40 p-6 lg:p-8 shadow-2xl shadow-amber-950/30">
-        {/* Subtle ambient glow in background */}
-        <div className="absolute top-0 right-0 w-96 h-full bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Top Hero Command Header with Full-Width Animated Panoramic BILLA EYES & Floating Glassmorphism HUD */}
+      <div className="relative rounded-3xl overflow-hidden border-2 border-amber-500/50 bg-black min-h-[320px] md:min-h-[360px] shadow-[0_0_50px_rgba(245,158,11,0.25)] flex flex-col justify-between p-6 md:p-10 select-none">
+        {/* Full-Width Background Cat Eyes Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/billa-eyes-banner.jpg" 
+            alt="BILLA EYES Omniscient Surveillance" 
+            className="w-full h-full object-cover object-[center_35%] filter brightness-105 contrast-125"
+          />
 
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-          {/* Left Column: Command Typography & Stats */}
-          <div className="max-w-xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-500/15 border border-amber-500/40 rounded-full text-amber-300 text-xs font-bold shadow-lg shadow-amber-500/10">
+          {/* Cinematic Vignette & Radial Shadow for crystal-clear text readability while preserving the golden eyes */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/85" />
+
+          {/* Animated Horizontal Amber Laser Scanline */}
+          <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-pulse opacity-90" />
+        </div>
+
+        {/* HUD Corner Brackets for Full Cinematic Banner */}
+        <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-amber-400 pointer-events-none z-10" />
+        <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-amber-400 pointer-events-none z-10" />
+        <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-amber-400 pointer-events-none z-10" />
+        <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-amber-400 pointer-events-none z-10" />
+
+        {/* Top Floating Row: Badges & Live Status Counters */}
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center flex-wrap gap-2.5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black/80 border border-amber-500/60 rounded-full text-amber-300 text-xs font-bold shadow-xl backdrop-blur-md">
               <Eye className="w-4 h-4 text-amber-400 animate-pulse" />
               <span className="tracking-wider uppercase font-mono">BILLA EYES™ OMNISCIENT RADAR</span>
             </div>
 
-            <h1 className="text-2xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-              Global Buyer Surveillance & Telemetry
-            </h1>
-
-            <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-              Omniscient real-time buyer intelligence. Tracking international buyers with live satellite laser arcs, hardware diagnostics, and step-by-step visitor session trajectories.
-            </p>
-
-            {/* Quick Metrics Bar */}
-            <div className="flex items-center gap-3 pt-2">
-              <div className="bg-slate-950/90 border border-amber-500/40 p-3.5 px-4 rounded-2xl flex items-center gap-3 backdrop-blur-md shadow-xl shadow-amber-950/30">
-                <div className="relative">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
-                    <Radio className="w-5 h-5 animate-pulse" />
-                  </div>
-                  {activeOnlineCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-slate-950 rounded-full animate-ping" />
-                  )}
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase font-bold text-amber-400/90 tracking-wider">Live Active</div>
-                  <div className="text-xl font-black text-white font-mono">{activeOnlineCount} Online</div>
-                </div>
-              </div>
-
-              <div className="bg-slate-950/90 border border-slate-800 p-3.5 px-4 rounded-2xl flex flex-col justify-center backdrop-blur-md">
-                <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Range Sessions</div>
-                <div className="text-xl font-black text-cyan-300 font-mono">
-                  {timeFilteredSessions.length} <span className="text-xs text-slate-400 font-sans font-normal">Records</span>
-                </div>
-              </div>
+            <div className="px-2.5 py-1 bg-black/60 border border-slate-700/80 rounded-lg text-slate-300 text-[10px] font-mono backdrop-blur-md flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>LIVE OPTICS • SATELLITE TELEMETRY</span>
             </div>
           </div>
 
-          {/* Right Column: Dedicated Luxury Framed BILLA EYES Spotlight Viewport */}
-          <div className="w-full lg:w-[440px] shrink-0">
-            <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/50 shadow-[0_0_35px_rgba(245,158,11,0.25)] bg-black group aspect-[16/9] flex items-center justify-center">
-              {/* Perfectly Centered Cat Eyes Image */}
-              <img 
-                src="/billa-eyes-banner.jpg" 
-                alt="BILLA EYES Golden Gaze" 
-                className="w-full h-full object-cover object-[center_38%] filter brightness-105 contrast-125 group-hover:scale-105 transition-transform duration-700"
-              />
-
-              {/* Holographic Scanline Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
-
-              {/* Animated Horizontal Amber Radar Scanline */}
-              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-pulse opacity-75 pointer-events-none" />
-
-              {/* Viewport Corner HUD Accents */}
-              <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-amber-400 pointer-events-none" />
-              <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-amber-400 pointer-events-none" />
-              <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-amber-400 pointer-events-none" />
-              <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-amber-400 pointer-events-none" />
-
-              {/* Live HUD Badge */}
-              <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-black/80 border border-amber-500/40 rounded-lg text-amber-300 text-[10px] font-mono font-bold flex items-center gap-1.5 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-                <span>BILLA EYES™ LIVE OPTICS</span>
+          {/* Floating Glass Metric Counters */}
+          <div className="flex items-center gap-3">
+            <div className="bg-black/80 border border-amber-500/50 px-4 py-2.5 rounded-2xl flex items-center gap-3 backdrop-blur-md shadow-2xl shadow-amber-950/40">
+              <div className="relative">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                  <Radio className="w-4 h-4 animate-pulse" />
+                </div>
+                {activeOnlineCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 border-2 border-black rounded-full animate-ping" />
+                )}
               </div>
+              <div>
+                <div className="text-[9px] uppercase font-bold text-amber-400/90 tracking-wider">Live Active</div>
+                <div className="text-lg font-black text-white font-mono">{activeOnlineCount} Online</div>
+              </div>
+            </div>
 
-              <div className="absolute top-3 right-3 px-2 py-0.5 bg-black/70 border border-slate-700 rounded-md text-[9px] font-mono text-slate-300">
-                1080p UHD
+            <div className="bg-black/80 border border-slate-700 px-4 py-2.5 rounded-2xl backdrop-blur-md">
+              <div className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Range Sessions</div>
+              <div className="text-lg font-black text-cyan-300 font-mono">
+                {timeFilteredSessions.length} <span className="text-[10px] text-slate-400 font-sans font-normal">Records</span>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Bottom Floating Row: Main Titles & High-Impact Description */}
+        <div className="relative z-10 max-w-2xl mt-8 pt-4">
+          <h1 className="text-3xl lg:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+            Global Buyer Surveillance & Telemetry
+          </h1>
+          <p className="text-slate-200 text-xs md:text-sm mt-2 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] max-w-xl">
+            Omniscient real-time buyer intelligence. Tracking international pharmaceutical buyers with live satellite laser arcs, hardware diagnostics, and step-by-step visitor session trajectories.
+          </p>
         </div>
       </div>
 
