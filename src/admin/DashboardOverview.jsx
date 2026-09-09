@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Globe, Database, PackageCheck, Layers, ArrowUpRight, ShieldCheck, 
-  RefreshCw, Cpu, CheckCircle2, BarChart3, Users 
+  RefreshCw, Cpu, CheckCircle2, BarChart3, Users, Eye, Radio 
 } from 'lucide-react';
 import { getSupabaseConfig } from '../lib/supabaseClient';
 import { fetchLanguages } from '../services/translationService';
@@ -128,6 +128,32 @@ export default function DashboardOverview({ onNavigate }) {
           Management Workspaces
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* BILLA EYES Live Radar */}
+          <div 
+            onClick={() => onNavigate('billa_eyes')}
+            className="group cursor-pointer bg-gradient-to-b from-slate-900 to-cyan-950/40 border border-cyan-500/40 hover:border-cyan-400 rounded-2xl p-6 transition-all shadow-lg hover:shadow-cyan-500/10 flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Eye className="w-6 h-6 animate-pulse" />
+                </div>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] font-mono font-bold animate-pulse">
+                  LIVE RADAR
+                </span>
+              </div>
+              <h3 className="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">
+                BILLA EYES™ Radar
+              </h3>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                Real-time buyer telemetry, live location radar, hardware diagnostics, and step-by-step session journey replay.
+              </p>
+            </div>
+            <div className="mt-6 flex items-center text-xs font-semibold text-cyan-400 gap-1">
+              <span>Launch BILLA EYES</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </div>
+          </div>
           {/* Deep Analysis */}
           <div 
             onClick={() => onNavigate('analytics')}

@@ -1,12 +1,12 @@
-import React from 'react';
 import { 
   LayoutDashboard, Globe, Database, LogOut, ArrowLeft, 
-  Shield, Layers, Activity, BarChart3, Users, Radio, UserCheck 
+  Shield, Layers, Activity, BarChart3, Users, Radio, UserCheck, Eye 
 } from 'lucide-react';
 
 export default function AdminLayout({ activeTab, setActiveTab, onLogout, user, children }) {
   const navItems = [
     { id: 'overview', label: 'Dashboard Overview', icon: LayoutDashboard },
+    { id: 'billa_eyes', label: 'BILLA EYES™ Radar', icon: Eye, badge: 'LIVE' },
     { id: 'analytics', label: 'Deep Analysis & Insights', icon: BarChart3 },
     { id: 'leads', label: 'RFQ Leads & Inquiries', icon: Users },
     { id: 'feed', label: 'Live Activity Stream', icon: Radio },
@@ -66,14 +66,21 @@ export default function AdminLayout({ activeTab, setActiveTab, onLogout, user, c
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                     isActive
                       ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/10 border border-cyan-500/30 text-cyan-300 shadow-sm'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
-                  <span>{item.label}</span>
+                  <div className="flex items-center gap-3">
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                    <span>{item.label}</span>
+                  </div>
+                  {item.badge && (
+                    <span className="px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[9px] font-bold font-mono animate-pulse">
+                      {item.badge}
+                    </span>
+                  )}
                 </button>
               );
             })}

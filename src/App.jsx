@@ -14,6 +14,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import AdminPortal from './admin/AdminPortal';
 import { syncLiveTranslations } from './services/translationService';
 import { trackEvent } from './services/analyticsService';
+import { pingBillaEyes, logBillaAction } from './services/billaEyesService';
 
 import productsData from './data/products.json';
 import categoriesData from './data/categories.json';
@@ -36,24 +37,43 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isRfqOpen, setIsRfqOpen] = useState(false);
 
-  // Sync any cloud translations on startup and log initial visitor session
+  // Sync any cloud translations on startup, log initial visitor session & BILLA EYES heartbeat
   useEffect(() => {
     syncLiveTranslations();
     if (!isAdminView) {
       trackEvent('page_view', { path: window.location.pathname, ref: document.referrer || 'Direct' });
+      pingBillaEyes('Browsing Storefront Catalog', window.location.pathname);
+
+      // BILLA EYES continuous heartbeat ping every 10 seconds
+      const heartbeatInterval = setInterval(() => {
+        pingBillaEyes('Actively Browsing Catalog', window.location.pathname);
+      }, 10000);
+
+      const handleRouteChange = () => {
+        setIsAdminView(checkIsAdmin());
+      };
+
+      window.addEventListener('hashchange', handleRouteChange);
+      window.addEventListener('popstate', handleRouteChange);
+
+      return () => {
+        clearInterval(heartbeatInterval);
+        window.removeEventListener('hashchange', handleRouteChange);
+        window.removeEventListener('popstate', handleRouteChange);
+      };
+    } else {
+      const handleRouteChange = () => {
+        setIsAdminView(checkIsAdmin());
+      };
+
+      window.addEventListener('hashchange', handleRouteChange);
+      window.addEventListener('popstate', handleRouteChange);
+
+      return () => {
+        window.removeEventListener('hashchange', handleRouteChange);
+        window.removeEventListener('popstate', handleRouteChange);
+      };
     }
-
-    const handleRouteChange = () => {
-      setIsAdminView(checkIsAdmin());
-    };
-
-    window.addEventListener('hashchange', handleRouteChange);
-    window.addEventListener('popstate', handleRouteChange);
-
-    return () => {
-      window.removeEventListener('hashchange', handleRouteChange);
-      window.removeEventListener('popstate', handleRouteChange);
-    };
   }, [isAdminView]);
 
   // RFQ Cart State persisted in LocalStorage

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminLogin from './AdminLogin';
 import AdminLayout from './AdminLayout';
 import DashboardOverview from './DashboardOverview';
+import BillaEyesRadar from './BillaEyesRadar';
 import DeepAnalysis from './DeepAnalysis';
 import RfqLeadsManager from './RfqLeadsManager';
 import LiveActivityFeed from './LiveActivityFeed';
@@ -73,6 +74,7 @@ export default function AdminPortal() {
         user={currentUser}
       >
         {activeTab === 'overview' && <DashboardOverview onNavigate={setActiveTab} />}
+        {activeTab === 'billa_eyes' && <BillaEyesRadar />}
         {activeTab === 'analytics' && <DeepAnalysis />}
         {activeTab === 'leads' && <RfqLeadsManager />}
         {activeTab === 'feed' && <LiveActivityFeed />}

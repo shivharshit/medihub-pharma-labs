@@ -57,6 +57,30 @@ CREATE TABLE IF NOT EXISTS rfq_inquiries (
     updated_at TIMESTAMPTZ DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS billa_eyes_sessions (
+    visitor_id VARCHAR(100) PRIMARY KEY,
+    country VARCHAR(100),
+    country_code VARCHAR(10),
+    flag VARCHAR(10),
+    city VARCHAR(100),
+    device_type VARCHAR(100),
+    browser VARCHAR(100),
+    os VARCHAR(100),
+    current_page VARCHAR(255),
+    current_action VARCHAR(255),
+    is_online BOOLEAN DEFAULT true,
+    created_at TIMESTAMPTZ DEFAULT now(),
+    last_ping_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS billa_eyes_events (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    visitor_id VARCHAR(100) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    detail TEXT,
+    created_at TIMESTAMPTZ DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS analytics_events (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     event_type VARCHAR(100) NOT NULL,
@@ -70,6 +94,8 @@ ALTER TABLE languages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE translations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE site_settings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE rfq_inquiries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE billa_eyes_sessions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE billa_eyes_events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE analytics_events ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Public Read Languages" ON languages FOR SELECT USING (true);
@@ -79,6 +105,8 @@ CREATE POLICY "Allow All on Languages" ON languages FOR ALL USING (true) WITH CH
 CREATE POLICY "Allow All on Translations" ON translations FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow All on Settings" ON site_settings FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow All on RFQ" ON rfq_inquiries FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Allow All on Billa Sessions" ON billa_eyes_sessions FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Allow All on Billa Events" ON billa_eyes_events FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow All on Analytics" ON analytics_events FOR ALL USING (true) WITH CHECK (true);
 `;
 
