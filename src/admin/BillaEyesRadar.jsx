@@ -140,42 +140,55 @@ export default function BillaEyesRadar() {
 
   return (
     <div className="space-y-6 font-sans">
-      {/* Top Hero Command Header */}
-      <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/70 border border-cyan-500/30 rounded-3xl p-6 relative overflow-hidden shadow-2xl shadow-cyan-950/40">
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-bold mb-2">
-              <Eye className="w-4 h-4 text-cyan-400 animate-pulse" />
-              <span>BILLA EYES™ SATELLITE RADAR & TELEMETRY</span>
+      {/* Top Hero Command Header with Cinematic BILLA EYES Imagery */}
+      <div className="relative rounded-3xl overflow-hidden border border-amber-500/30 bg-slate-950 shadow-2xl shadow-amber-950/20">
+        {/* Background Image with Gradient Blending */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/billa-eyes-banner.jpg" 
+            alt="BILLA EYES Omniscient Surveillance" 
+            className="w-full h-full object-cover object-right md:object-center opacity-80 filter brightness-95 contrast-125"
+          />
+          {/* Multi-layer Gradient Fades for perfect text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 md:via-slate-950/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40" />
+        </div>
+
+        {/* Foreground Content */}
+        <div className="relative z-10 p-6 md:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 backdrop-blur-[1px]">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/15 border border-amber-500/40 rounded-full text-amber-300 text-xs font-bold mb-3 shadow-lg shadow-amber-500/10">
+              <Eye className="w-4 h-4 text-amber-400 animate-pulse" />
+              <span className="tracking-wider uppercase font-mono">BILLA EYES™ OMNISCIENT RADAR</span>
             </div>
-            <h1 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
+            <h1 className="text-2xl lg:text-4xl font-black text-white tracking-tight leading-tight flex items-center gap-3 drop-shadow-md">
               Global Buyer Surveillance & Telemetry
             </h1>
-            <p className="text-slate-300 text-xs mt-1 max-w-2xl leading-relaxed">
-              Real-time animated laser arcs shooting from Medihub HQ to live visitors worldwide. Multi-range historical analysis with deep telemetry replay.
+            <p className="text-slate-300 text-xs md:text-sm mt-2 max-w-xl leading-relaxed drop-shadow">
+              Omniscient real-time buyer intelligence. Tracking international buyers with live satellite laser arcs, hardware diagnostics, and step-by-step session trajectory replay.
             </p>
           </div>
 
-          {/* Quick Stats Block */}
+          {/* Quick Stats Block with Amber/Cyan Glow */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="bg-slate-900/90 border border-cyan-500/40 p-3.5 px-4 rounded-2xl flex items-center gap-3 backdrop-blur-md shadow-xl">
+            <div className="bg-slate-950/80 border border-amber-500/40 p-4 rounded-2xl flex items-center gap-3.5 backdrop-blur-md shadow-xl shadow-amber-950/30">
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                <div className="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
                   <Radio className="w-5 h-5 animate-pulse" />
                 </div>
                 {activeOnlineCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-slate-900 rounded-full animate-ping" />
+                  <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-slate-950 rounded-full animate-ping" />
                 )}
               </div>
               <div>
-                <div className="text-[10px] uppercase font-bold text-slate-400">Live Active</div>
-                <div className="text-xl font-black text-white font-mono">{activeOnlineCount} Online</div>
+                <div className="text-[10px] uppercase font-bold text-amber-400/80 tracking-wider">Live Active</div>
+                <div className="text-2xl font-black text-white font-mono">{activeOnlineCount} Online</div>
               </div>
             </div>
 
-            <div className="bg-slate-900/90 border border-slate-800 p-3.5 px-4 rounded-2xl">
-              <div className="text-[10px] uppercase font-bold text-slate-400">Range Sessions</div>
-              <div className="text-xl font-black text-cyan-300 font-mono">
+            <div className="bg-slate-950/80 border border-slate-800 p-4 rounded-2xl flex flex-col justify-center backdrop-blur-md">
+              <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Range Sessions</div>
+              <div className="text-2xl font-black text-cyan-300 font-mono">
                 {timeFilteredSessions.length} <span className="text-xs text-slate-400 font-sans font-normal">Records</span>
               </div>
             </div>

@@ -128,29 +128,39 @@ export default function DashboardOverview({ onNavigate }) {
           Management Workspaces
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {/* BILLA EYES Live Radar */}
+          {/* BILLA EYES Live Radar Tile with Panther Imagery */}
           <div 
             onClick={() => onNavigate('billa_eyes')}
-            className="group cursor-pointer bg-gradient-to-b from-slate-900 to-cyan-950/40 border border-cyan-500/40 hover:border-cyan-400 rounded-2xl p-6 transition-all shadow-lg hover:shadow-cyan-500/10 flex flex-col justify-between"
+            className="group cursor-pointer relative overflow-hidden bg-slate-950 border border-amber-500/40 hover:border-amber-400 rounded-2xl p-6 transition-all shadow-xl hover:shadow-amber-500/15 flex flex-col justify-between"
           >
-            <div>
+            {/* Ambient Background Image */}
+            <div className="absolute inset-0 z-0 opacity-25 group-hover:opacity-40 transition-opacity">
+              <img 
+                src="/billa-eyes-banner.jpg" 
+                alt="BILLA EYES" 
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/30" />
+            </div>
+
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Eye className="w-6 h-6 animate-pulse" />
                 </div>
                 <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] font-mono font-bold animate-pulse">
                   LIVE RADAR
                 </span>
               </div>
-              <h3 className="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">
+              <h3 className="text-base font-black text-white group-hover:text-amber-300 transition-colors">
                 BILLA EYES™ Radar
               </h3>
-              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                Real-time buyer telemetry, live location radar, hardware diagnostics, and step-by-step session journey replay.
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                Omniscient buyer telemetry, live laser arcs, hardware diagnostics, and step-by-step visitor session trajectories.
               </p>
             </div>
-            <div className="mt-6 flex items-center text-xs font-semibold text-cyan-400 gap-1">
-              <span>Launch BILLA EYES</span>
+            <div className="relative z-10 mt-6 flex items-center text-xs font-bold text-amber-400 gap-1 group-hover:text-amber-300">
+              <span>Launch BILLA EYES Radar</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </div>
