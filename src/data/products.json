@@ -12694,13 +12694,13 @@
     "name": "500 Mg Campicillin Capsules",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "500 Mg",
+    "dosage": "500mg",
     "form": "Capsule",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569630047/IL/OV/IZ/251396077/500-mg-campicillin-capsules-500x500.webp",
-    "packaging": "Blister Pack",
+    "packaging": "10 x 10 Capsules / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Ampicillin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12710,27 +12710,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Capsule"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Ampicillin Capsules IP 500mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/12/569630047/IL/OV/IZ/251396077/500-mg-campicillin-capsules-500x500.webp"
-    ]
+    ],
+    "brand": "Cadila Pharmaceuticals"
   },
   {
     "id": "med-132",
     "name": "50 Mg Hansepran Capsules IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "50 Mg",
+    "dosage": "50mg",
     "form": "Capsule",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569524495/PJ/QE/OT/251396077/50-mg-hansepran-capsules-ip-500x500.jpg",
-    "packaging": "Blister Pack",
+    "packaging": "10 x 10 Capsules / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "50mg",
+      "Composition": "Clofazimine IP (50mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12740,27 +12742,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Capsule"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Clofazimine Capsules IP 50mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/12/569524495/PJ/QE/OT/251396077/50-mg-hansepran-capsules-ip-500x500.jpg"
-    ]
+    ],
+    "brand": "Abbott"
   },
   {
     "id": "med-133",
-    "name": "5 Mg Carithrotic Tablets IP",
+    "name": "500 Mg Carithrotic Tablets IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "5 Mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569630047/IL/OV/IZ/251396077/500-mg-campicillin-capsules-250x250.webp",
-    "packaging": "Blister Pack",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569630047/IL/OV/IZ/251396077/500-mg-campicillin-capsules-500x500.webp",
+    "packaging": "10 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Clarithromycin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12770,14 +12774,16 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Clarithromycin Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/12/569630047/IL/OV/IZ/251396077/500-mg-campicillin-capsules-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/12/569630047/IL/OV/IZ/251396077/500-mg-campicillin-capsules-500x500.webp"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-134",
@@ -12785,12 +12791,12 @@
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
     "dosage": "500mg",
-    "form": "Capsule",
+    "form": "Tablet",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561843573/RC/BG/GV/251396077/500mg-azithromax-azithromycin-tablets-500x500.jpg",
-    "packaging": "Blister Pack",
+    "packaging": "3 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Azithromycin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12800,14 +12806,16 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Azithromycin Tablets IP 500mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/561843573/RC/BG/GV/251396077/500mg-azithromax-azithromycin-tablets-500x500.jpg"
-    ]
+    ],
+    "brand": "Pfizer / Medihub"
   },
   {
     "id": "med-135",
@@ -12815,12 +12823,12 @@
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
     "dosage": "250mg",
-    "form": "Capsule",
+    "form": "Tablet",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561842870/WJ/QM/TB/251396077/250mg-azithromax-azithromycin-tablets-500x500.jpg",
-    "packaging": "Blister Pack",
+    "packaging": "6 Tablets / Blister Pack",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "250mg",
+      "Composition": "Azithromycin IP (250mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12830,27 +12838,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Azithromycin Tablets IP 250mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/561842870/WJ/QM/TB/251396077/250mg-azithromax-azithromycin-tablets-500x500.jpg"
-    ]
+    ],
+    "brand": "Pfizer / Medihub"
   },
   {
     "id": "med-136",
-    "name": "250mg Ciprodac Ciprofloxacin Tablet",
+    "name": "250mg Ciprodac Ciprofloxacin Tablets",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
     "dosage": "250mg",
-    "form": "Capsule",
+    "form": "Tablet",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561768536/GQ/CV/GG/251396077/250mg-ciprodac-ciprofloxacin-tablet-500x500.png",
-    "packaging": "Blister Pack",
+    "packaging": "10 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "250mg",
+      "Composition": "Ciprofloxacin HCl (250mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12860,27 +12870,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Ciprofloxacin Hydrochloride Tablets IP 250mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/561768536/GQ/CV/GG/251396077/250mg-ciprodac-ciprofloxacin-tablet-500x500.png"
-    ]
+    ],
+    "brand": "Cadila Pharmaceuticals"
   },
   {
     "id": "med-137",
-    "name": "500mg Ciprodac Ciprofloxacin Tablet",
+    "name": "500mg Ciprodac Ciprofloxacin Tablets",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
     "dosage": "500mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561765630/MV/MD/UF/251396077/ciprodac-500-tablet-125x125.jpg",
-    "packaging": "Blister Pack",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561765630/MV/MD/UF/251396077/ciprodac-500-tablet-500x500.jpg",
+    "packaging": "10 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Ciprofloxacin HCl (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12890,27 +12902,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Ciprofloxacin Hydrochloride Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/561765630/MV/MD/UF/251396077/ciprodac-500-tablet-125x125.jpg"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/11/561765630/MV/MD/UF/251396077/ciprodac-500-tablet-500x500.jpg"
+    ],
+    "brand": "Cadila Pharmaceuticals"
   },
   {
     "id": "med-138",
-    "name": "100mg Doxypen Doxycycline Capsule",
+    "name": "100mg Doxypen Doxycycline Capsules",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
     "dosage": "100mg",
     "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561760811/NX/CT/ES/251396077/100mg-doxypen-doxycycline-tablet-125x125.webp",
-    "packaging": "Blister Pack",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561760811/NX/CT/ES/251396077/100mg-doxypen-doxycycline-tablet-500x500.webp",
+    "packaging": "10 x 10 Capsules / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "100mg",
+      "Composition": "Doxycycline HCl (100mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12920,14 +12934,16 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Capsule"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Doxycycline Hydrochloride Capsules IP 100mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/561760811/NX/CT/ES/251396077/100mg-doxypen-doxycycline-tablet-125x125.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/11/561760811/NX/CT/ES/251396077/100mg-doxypen-doxycycline-tablet-500x500.webp"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-139",
@@ -12935,12 +12951,12 @@
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
     "dosage": "500mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561837495/TS/FX/PX/251396077/gercip-500-125x125.jpg",
-    "packaging": "Blister Pack",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/561837495/TS/FX/PX/251396077/gercip-500-500x500.jpg",
+    "packaging": "10 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Ciprofloxacin HCl (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12950,27 +12966,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Ciprofloxacin Hydrochloride Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/561837495/TS/FX/PX/251396077/gercip-500-125x125.jpg"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/11/561837495/TS/FX/PX/251396077/gercip-500-500x500.jpg"
+    ],
+    "brand": "German Remedies"
   },
   {
     "id": "med-140",
     "name": "500 Mg Azisign Tablets IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "500 Mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569633287/CU/JW/GJ/251396077/500-mg-azisign-tablets-ip-125x125.jpg",
-    "packaging": "Blister Pack",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569633287/CU/JW/GJ/251396077/500-mg-azisign-tablets-ip-500x500.jpg",
+    "packaging": "3 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Azithromycin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -12980,27 +12998,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Azithromycin Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/12/569633287/CU/JW/GJ/251396077/500-mg-azisign-tablets-ip-125x125.jpg"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/12/569633287/CU/JW/GJ/251396077/500-mg-azisign-tablets-ip-500x500.jpg"
+    ],
+    "brand": "Signova Healthcare"
   },
   {
     "id": "med-141",
     "name": "500 Mg Cephadex Capsules IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "500 Mg",
+    "dosage": "500mg",
     "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569633140/HT/GH/FT/251396077/500-mg-cephadex-capsules-ip-125x125.webp",
-    "packaging": "Blister Pack",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569633140/HT/GH/FT/251396077/500-mg-cephadex-capsules-ip-500x500.webp",
+    "packaging": "10 x 10 Capsules / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Cephalexin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -13010,27 +13030,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Capsule"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Cephalexin Capsules IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/12/569633140/HT/GH/FT/251396077/500-mg-cephadex-capsules-ip-125x125.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/12/569633140/HT/GH/FT/251396077/500-mg-cephadex-capsules-ip-500x500.webp"
+    ],
+    "brand": "Cipla"
   },
   {
     "id": "med-142",
     "name": "500 Mg Ceflox Tablets IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "500 Mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569524058/MA/FJ/DD/251396077/500-mg-ceflox-tablets-ip-125x125.jpeg",
-    "packaging": "Blister Pack",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569524058/MA/FJ/DD/251396077/500-mg-ceflox-tablets-ip-500x500.jpeg",
+    "packaging": "10 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Ciprofloxacin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -13040,27 +13062,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Ciprofloxacin Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/12/569524058/MA/FJ/DD/251396077/500-mg-ceflox-tablets-ip-125x125.jpeg"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/12/569524058/MA/FJ/DD/251396077/500-mg-ceflox-tablets-ip-500x500.jpeg"
+    ],
+    "brand": "Intas Pharmaceuticals"
   },
   {
     "id": "med-143",
     "name": "500 Mg Ciplox Tablets IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "500 Mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569633016/PO/LH/IN/251396077/-500-mg-ciplox-tablets-ip-125x125.webp",
-    "packaging": "Blister Pack",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569633016/PO/LH/IN/251396077/-500-mg-ciplox-tablets-ip-500x500.webp",
+    "packaging": "10 x 10 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Ciprofloxacin HCl (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -13070,27 +13094,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Ciprofloxacin Hydrochloride Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/12/569633016/PO/LH/IN/251396077/-500-mg-ciplox-tablets-ip-125x125.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/12/569633016/PO/LH/IN/251396077/-500-mg-ciplox-tablets-ip-500x500.webp"
+    ],
+    "brand": "Cipla"
   },
   {
     "id": "med-144",
     "name": "500 Mg Azicip Tablets IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "500 Mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569632095/HW/WV/AX/251396077/azicip-500-azithromycin-antibiotic-tablet-20x3-blister-pack-677-125x125.jpg",
-    "packaging": "Blister Pack",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569632095/HW/WV/AX/251396077/azicip-500-azithromycin-antibiotic-tablet-20x3-blister-pack-677-500x500.jpg",
+    "packaging": "20 x 3 Blister Pack / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Azithromycin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -13100,27 +13126,29 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Azithromycin Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/12/569632095/HW/WV/AX/251396077/azicip-500-azithromycin-antibiotic-tablet-20x3-blister-pack-677-125x125.jpg"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/12/569632095/HW/WV/AX/251396077/azicip-500-azithromycin-antibiotic-tablet-20x3-blister-pack-677-500x500.jpg"
+    ],
+    "brand": "Cipla"
   },
   {
     "id": "med-145",
     "name": "500 Mg Azeetop Tablets IP",
     "category": "Antibiotic Tablets & Capsules",
     "categorySlug": "antibiotic-tablets-capsules",
-    "dosage": "500 Mg",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569524265/JA/UW/SK/251396077/azeetop-500mg-tablet-125x125.webp",
-    "packaging": "Blister Pack",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/12/569524265/JA/UW/SK/251396077/azeetop-500mg-tablet-500x500.webp",
+    "packaging": "10 x 3 Tablets / Box",
     "specifications": {
-      "Strength": "500 mg",
-      "Composition": "Azithromycin Only",
+      "Strength": "500mg",
+      "Composition": "Azithromycin IP (500mg)",
       "Dosage Form": "Tablet",
       "Packaging Size": "10x10 Tablets",
       "Brand": "Gercip",
@@ -13130,14 +13158,16 @@
       "Manufactured By": "Cadila Pharmaceuticals",
       "Usage": "To treat a variety of bacterial infections",
       "Brand Name": "Doxypen",
-      "Country of Origin": "Made in India"
+      "Country of Origin": "Made in India",
+      "Form": "Tablet"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Azithromycin Tablets IP 500mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/12/569524265/JA/UW/SK/251396077/azeetop-500mg-tablet-125x125.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/12/569524265/JA/UW/SK/251396077/azeetop-500mg-tablet-500x500.webp"
+    ],
+    "brand": "Abbott"
   },
   {
     "id": "med-146",
