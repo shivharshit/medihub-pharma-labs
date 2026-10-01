@@ -13144,10 +13144,10 @@
     "name": "ROGER PHARMA BPC-157",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
+    "dosage": "500mcg",
     "form": "Capsule",
     "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-500x500.webp",
-    "packaging": "Export Standard Pack",
+    "packaging": "60 Capsules / Bottle",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
       "Form": "Capsule",
@@ -13155,24 +13155,27 @@
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "BPC-157 (500mcg)",
+      "Strength": "500mcg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "BPC-157 Body Protection Compound Capsules 500mcg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-500x500.webp"
-    ]
+    ],
+    "brand": "Roger Pharma"
   },
   {
     "id": "med-147",
     "name": "ROGER PHARMA 5-AMINO-1MQ",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
+    "dosage": "50mg",
     "form": "Capsule",
     "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626714638/IT/GA/QW/251396077/roger-pharma-5-amino-1mq-500x500.webp",
-    "packaging": "Export Standard Pack",
+    "packaging": "60 Capsules / Bottle",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
       "Form": "Capsule",
@@ -13180,49 +13183,55 @@
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "5-Amino-1MQ (50mg)",
+      "Strength": "50mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "5-Amino-1MQ NNMT Inhibitor Capsules 50mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2026/7/626714638/IT/GA/QW/251396077/roger-pharma-5-amino-1mq-500x500.webp"
-    ]
+    ],
+    "brand": "Roger Pharma"
   },
   {
     "id": "med-148",
     "name": "PHARMAQO BPC-157",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
+    "dosage": "5mg",
+    "form": "Lyophilized Vial",
     "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/616401115/SN/SF/KV/251396077/pharmaqo-bpc-157-500x500.webp",
-    "packaging": "Export Standard Pack",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "BPC-157 (5mg)",
+      "Strength": "5mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "BPC-157 Pentadecapeptide Lyophilized 5mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2026/6/616401115/SN/SF/KV/251396077/pharmaqo-bpc-157-500x500.webp"
-    ]
+    ],
+    "brand": "Pharmaqo Labs"
   },
   {
     "id": "med-149",
     "name": "ROGER PHARMA SLU-PP-332",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
+    "dosage": "25mg",
     "form": "Capsule",
     "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626716152/OE/DE/AJ/251396077/roger-pharma-slu-pp-332-500x500.webp",
-    "packaging": "Export Standard Pack",
+    "packaging": "60 Capsules / Bottle",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
       "Form": "Capsule",
@@ -13230,314 +13239,353 @@
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "SLU-PP-332 (25mg)",
+      "Strength": "25mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "SLU-PP-332 ERR Agonist Capsules 25mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2026/7/626716152/OE/DE/AJ/251396077/roger-pharma-slu-pp-332-500x500.webp"
-    ]
+    ],
+    "brand": "Roger Pharma"
   },
   {
     "id": "med-150",
     "name": "HGH FRAGMENT 176-191",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
+    "dosage": "5mg",
+    "form": "Lyophilized Vial",
     "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/611810832/JG/CD/UW/251396077/hgh-fragment-176-191-500x500.jpg",
-    "packaging": "Export Standard Pack",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "HGH Fragment 176-191 (5mg)",
+      "Strength": "5mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "HGH Fragment 176-191 Lyophilized Peptide 5mg",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2026/5/611810832/JG/CD/UW/251396077/hgh-fragment-176-191-500x500.jpg"
-    ]
+    ],
+    "brand": "Superior Peptide"
   },
   {
     "id": "med-151",
-    "name": "GROWTH HORMONE RELEASING PEPTIDE-6",
+    "name": "GROWTH HORMONE RELEASING PEPTIDE-6 (GHRP-6)",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "5mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/611810922/BI/KP/FA/251396077/insulin-like-growth-factor-1-long-r3-500x500.jpg",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "GHRP-6 (5mg)",
+      "Strength": "5mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "GHRP-6 Growth Hormone Secretagogue 5mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/5/611810922/BI/KP/FA/251396077/insulin-like-growth-factor-1-long-r3-500x500.jpg"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-152",
-    "name": "GROWTH HORMONE RELEASING PENTA PEPTIDE",
+    "name": "IPAMORELIN (PENTA PEPTIDE)",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "2mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/612099198/JN/FV/EL/251396077/tesamorelin-cjc-1295-ipamorelin-500x500.jpg",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "Ipamorelin (2mg)",
+      "Strength": "2mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Ipamorelin Growth Hormone Releasing Peptide 2mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/5/612099198/JN/FV/EL/251396077/tesamorelin-cjc-1295-ipamorelin-500x500.jpg"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-153",
     "name": "GONADORELIN (WASHOUT CYCLE)",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "2mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626718189/FO/NP/KP/251396077/roger-pharma-enclomifix-500x500.webp",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "Gonadorelin Acetate (2mg)",
+      "Strength": "2mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "Gonadorelin Acetate Lyophilized 2mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/7/626718189/FO/NP/KP/251396077/roger-pharma-enclomifix-500x500.webp"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-154",
-    "name": "CJC-1295 NON DAC",
+    "name": "CJC-1295 NO DAC (MOD GRF 1-29)",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "2mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/612099198/JN/FV/EL/251396077/tesamorelin-cjc-1295-ipamorelin-500x500.jpg",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "CJC-1295 No DAC (2mg)",
+      "Strength": "2mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "CJC-1295 Without DAC Lyophilized 2mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/5/612099198/JN/FV/EL/251396077/tesamorelin-cjc-1295-ipamorelin-500x500.jpg"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-155",
-    "name": "CJC-1295 WITH DRUG AFFINITY COMPLEX",
+    "name": "CJC-1295 WITH DAC",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "2mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/612099198/JN/FV/EL/251396077/tesamorelin-cjc-1295-ipamorelin-500x500.jpg",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "CJC-1295 with DAC (2mg)",
+      "Strength": "2mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "CJC-1295 with Drug Affinity Complex 2mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/5/612099198/JN/FV/EL/251396077/tesamorelin-cjc-1295-ipamorelin-500x500.jpg"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-156",
-    "name": "Adipotide (FTPP) Fat Targeted Proapoptotic Peptide",
+    "name": "Adipotide (FTPP) Proapoptotic Peptide",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "5mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/611810832/JG/CD/UW/251396077/hgh-fragment-176-191-500x500.jpg",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "Adipotide FTPP (5mg)",
+      "Strength": "5mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "Proapoptotic Fat-Targeted Peptide (FTPP) 5mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/5/611810832/JG/CD/UW/251396077/hgh-fragment-176-191-500x500.jpg"
+    ],
+    "brand": "Superior Peptide"
   },
   {
     "id": "med-157",
-    "name": "GHRP-6 + MOD GRF + HEXARELIN",
+    "name": "GHRP-6 + MOD GRF + HEXARELIN (Triple Blend)",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "10mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/611810922/BI/KP/FA/251396077/insulin-like-growth-factor-1-long-r3-500x500.jpg",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "GHRP-6 + MOD GRF 1-29 + Hexarelin (10mg)",
+      "Strength": "10mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Growth Hormone Secretagogue Peptide Blend 10mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/5/611810922/BI/KP/FA/251396077/insulin-like-growth-factor-1-long-r3-500x500.jpg"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-158",
     "name": "SEMAGLUTIDE (GLP-1 ANALOGUE)",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "5mg",
+    "form": "Injectable Pen",
+    "image": "https://pharmaqolabs.com/wp-content/uploads/2026/03/Semaglutide.webp",
+    "packaging": "1 Pre-Filled Pen Device",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Injectable Pen",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "Semaglutide (5mg)",
+      "Strength": "5mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "Semaglutide 5mg Multi-Dose Pen Device",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://pharmaqolabs.com/wp-content/uploads/2026/03/Semaglutide.webp"
+    ],
+    "brand": "Pharmaqo Labs"
   },
   {
     "id": "med-159",
-    "name": "GHK(GLYCYL-L-HISTIDYL-LLYSINE)CU",
+    "name": "GHK-Cu (Copper Tripeptide-1)",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "50mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/616401115/SN/SF/KV/251396077/pharmaqo-bpc-157-500x500.webp",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "GHK-Cu (50mg)",
+      "Strength": "50mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": true,
-    "genericName": "",
+    "genericName": "GHK-Cu Copper Tripeptide-1 Lyophilized 50mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/6/616401115/SN/SF/KV/251396077/pharmaqo-bpc-157-500x500.webp"
+    ],
+    "brand": "Pharmaqo Labs"
   },
   {
     "id": "med-160",
-    "name": "MITOCHONDRIAL PEPTIDE",
+    "name": "MOTS-c Mitochondrial Derived Peptide",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "10mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/5/611810832/JG/CD/UW/251396077/hgh-fragment-176-191-500x500.jpg",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "MOTS-c (10mg)",
+      "Strength": "10mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "MOTS-c Metabolic Regulator Peptide 10mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/5/611810832/JG/CD/UW/251396077/hgh-fragment-176-191-500x500.jpg"
+    ],
+    "brand": "Superior Peptide"
   },
   {
     "id": "med-161",
-    "name": "BODY PROTECTION COMPOUND",
+    "name": "BPC-157 Body Protection Compound",
     "category": "Peptides",
     "categorySlug": "peptides",
-    "dosage": "",
-    "form": "Capsule",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp",
-    "packaging": "Export Standard Pack",
+    "dosage": "5mg",
+    "form": "Lyophilized Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/616401115/SN/SF/KV/251396077/pharmaqo-bpc-157-500x500.webp",
+    "packaging": "10 Vials / Kit",
     "specifications": {
       "Peptide Type": "Body Protection Compound",
-      "Form": "Capsule",
+      "Form": "Lyophilized Vial",
       "Application": "Fat Loss",
       "Flavour": "Unflavoured",
       "Protein Content": "98%",
       "Pack Size": "60 CAPSULES",
-      "BRAND": "ROGER PHARMA"
+      "BRAND": "ROGER PHARMA",
+      "Composition": "BPC-157 (5mg)",
+      "Strength": "5mg"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "BPC-157 Pentadecapeptide Lyophilized 5mg",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2026/7/626715057/MB/MG/PM/251396077/roger-pharma-bpc-157-250x250.webp"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/6/616401115/SN/SF/KV/251396077/pharmaqo-bpc-157-500x500.webp"
+    ],
+    "brand": "Pharmaqo Labs"
   },
   {
     "id": "med-162",
