@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Eye, Plus, Check, MessageCircle, Package, ShieldCheck, Zap } from 'lucide-react';
+import { Eye, Plus, Check, MessageCircle, Package, ShieldCheck, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function ProductCard({ product, onSelectProduct, onAddToRfq, isInRfq }) {
   const { t, i18n } = useTranslation();
   const [imgError, setImgError] = useState(false);
   const [isAddedAnim, setIsAddedAnim] = useState(false);
+  const [activeImgIdx, setActiveImgIdx] = useState(0);
+
+  const images = (product.images && product.images.length > 0) 
+    ? product.images 
+    : [product.image];
 
   // Fallback image generator based on category
   const fallbackImg = "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80";
+
+  const handlePrevImg = (e) => {
+    e.stopPropagation();
+    setActiveImgIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNextImg = (e) => {
+    e.stopPropagation();
+    setActiveImgIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDotClick = (e, idx) => {
+    e.stopPropagation();
+    setActiveImgIdx(idx);
+  };
 
   const handleAddClick = (e) => {
     e.stopPropagation();
@@ -38,6 +58,8 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
     return `Hello Medihub Pharma Labs, I am interested in product: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.dosage || '')}). Please provide export quotation and MOQ.`;
   };
 
+  const currentImage = images[activeImgIdx] || product.image;
+
   return (
     <div 
       onClick={() => onSelectProduct(product)}
@@ -56,18 +78,56 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
         )}
       </div>
 
-      {/* Image Container */}
+      {/* Image Container with Carousel */}
       <div className="relative w-full h-52 sm:h-56 bg-white flex items-center justify-center p-2.5 sm:p-3 overflow-hidden">
         <img
-          src={imgError ? fallbackImg : product.image}
-          alt={product.name}
+          key={currentImage}
+          src={imgError ? fallbackImg : currentImage}
+          alt={`${product.name} - image ${activeImgIdx + 1}`}
           onError={() => setImgError(true)}
-          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-xs"
+          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-all duration-300 drop-shadow-xs"
           loading="lazy"
         />
 
+        {/* Carousel Prev/Next Buttons if product has multiple images */}
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={handlePrevImg}
+              aria-label="Previous Image"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/90 shadow-md text-slate-700 hover:text-brand-blue hover:bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={handleNextImg}
+              aria-label="Next Image"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/90 shadow-md text-slate-700 hover:text-brand-blue hover:bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            {/* Dots indicator */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20 bg-slate-900/40 px-2 py-1 rounded-full backdrop-blur-xs">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={(e) => handleDotClick(e, idx)}
+                  className={`w-1.5 h-1.5 rounded-full transition-all ${
+                    idx === activeImgIdx ? 'bg-white w-3 scale-110' : 'bg-white/50 hover:bg-white/80'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
         {/* Quick View Hover Overlay */}
-        <div className="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+        <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
           <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-full shadow flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
             <Eye className="w-3.5 h-3.5 text-brand-blue" />
             {t('productCard.viewDetails')}

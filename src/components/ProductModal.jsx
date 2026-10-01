@@ -1,16 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { X, Check, MessageCircle, ShoppingBag, ShieldCheck, FileText, Package, AlertCircle, Sparkles, Building2 } from 'lucide-react';
+import { X, Check, MessageCircle, ShoppingBag, ShieldCheck, FileText, Package, AlertCircle, Sparkles, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) {
   const { t, i18n } = useTranslation();
   const [quantity, setQuantity] = useState(100);
   const [isAdded, setIsAdded] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [activeImgIdx, setActiveImgIdx] = useState(0);
+
+  const images = (product?.images && product.images.length > 0)
+    ? product.images
+    : [product?.image];
+
+  useEffect(() => {
+    setActiveImgIdx(0);
+  }, [product]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft' && images.length > 1) {
+        setActiveImgIdx(prev => (prev === 0 ? images.length - 1 : prev - 1));
+      }
+      if (e.key === 'ArrowRight' && images.length > 1) {
+        setActiveImgIdx(prev => (prev === images.length - 1 ? 0 : prev + 1));
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
@@ -18,9 +33,11 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [onClose]);
+  }, [onClose, images.length]);
 
   if (!product) return null;
+
+  const currentImage = images[activeImgIdx] || product.image;
 
   const handleAdd = () => {
     onAddToRfq(product, quantity);
@@ -82,17 +99,66 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
         <div className="overflow-y-auto p-6 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
             
-            {/* Image Preview */}
-            <div className="md:col-span-5 bg-gradient-to-b from-slate-50 to-slate-100/50 rounded-2xl border border-slate-200/80 p-6 flex items-center justify-center min-h-[260px] relative">
-              <img
-                src={imgError ? "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80" : product.image}
-                alt={product.name}
-                onError={() => setImgError(true)}
-                className="max-h-56 max-w-full object-contain rounded-lg"
-              />
-              <span className="absolute bottom-2 right-2 text-[10px] text-slate-400 font-mono">
-                Certified Formulation
-              </span>
+            {/* Image Preview & Gallery */}
+            <div className="md:col-span-5 flex flex-col gap-3">
+              <div className="bg-gradient-to-b from-slate-50 to-slate-100/50 rounded-2xl border border-slate-200/80 p-5 flex items-center justify-center min-h-[260px] relative group">
+                <img
+                  key={currentImage}
+                  src={imgError ? "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80" : currentImage}
+                  alt={product.name}
+                  onError={() => setImgError(true)}
+                  className="max-h-56 max-w-full object-contain rounded-lg transition-all duration-300 drop-shadow-xs"
+                />
+
+                {images.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setActiveImgIdx(prev => (prev === 0 ? images.length - 1 : prev - 1))}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md text-slate-700 hover:text-brand-blue hover:bg-white flex items-center justify-center transition-all opacity-80 hover:opacity-100"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveImgIdx(prev => (prev === images.length - 1 ? 0 : prev + 1))}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md text-slate-700 hover:text-brand-blue hover:bg-white flex items-center justify-center transition-all opacity-80 hover:opacity-100"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </>
+                )}
+
+                <span className="absolute bottom-2 right-2 text-[10px] text-slate-400 font-mono bg-white/80 px-2 py-0.5 rounded-md backdrop-blur-xs">
+                  {images.length > 1 ? `${activeImgIdx + 1} / ${images.length}` : 'Certified Formulation'}
+                </span>
+              </div>
+
+              {/* Thumbnails list if multiple images available */}
+              {images.length > 1 && (
+                <div className="flex items-center gap-2 justify-center pt-1">
+                  {images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setActiveImgIdx(idx)}
+                      className={`w-14 h-14 rounded-xl border-2 p-1 bg-white overflow-hidden transition-all ${
+                        activeImgIdx === idx 
+                          ? 'border-brand-blue shadow-sm scale-105' 
+                          : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-slate-300'
+                      }`}
+                    >
+                      <img 
+                        src={img} 
+                        alt={`thumbnail-${idx}`} 
+                        className="w-full h-full object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Product Details & Specs */}
