@@ -11595,12 +11595,12 @@
     "name": "100mg TrenMax Trenbolone Acetate Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "100mg",
+    "dosage": "100mg/ml",
     "form": "Injection",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-500x500.png",
-    "packaging": "Vial",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "100mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11609,28 +11609,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Trenbolone Acetate (100mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Trenbolone Acetate Injection 100mg/ml",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-500x500.png"
-    ]
+    ],
+    "brand": "Evolve Biolabs"
   },
   {
     "id": "med-98",
     "name": "200mg Trenbolon Trenbolone Enanthate Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "200mg",
+    "dosage": "200mg/ml",
     "form": "Injection",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560129574/CR/ZV/YE/251396077/200mg-trenbolon-trenbolone-enanthate-injection-500x500.png",
-    "packaging": "Vial",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "200mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11639,28 +11641,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Trenbolone Enanthate (200mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Trenbolone Enanthate Injection 200mg/ml",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/560129574/CR/ZV/YE/251396077/200mg-trenbolon-trenbolone-enanthate-injection-500x500.png"
-    ]
+    ],
+    "brand": "Evolve Biolabs"
   },
   {
     "id": "med-99",
     "name": "300mg Tri Tren Trenbolone Blend Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "300mg",
+    "dosage": "300mg/ml",
     "form": "Injection",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560131623/QQ/ZA/WH/251396077/200mg-tri-tren-trenbolone-blend-injection-500x500.png",
-    "packaging": "Vial",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "300mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11669,28 +11673,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Trenbolone Acetate, Enanthate & Hexahydrobenzylcarbonate (300mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Tri-Trenbolone Blend Injection 300mg/ml",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/560131623/QQ/ZA/WH/251396077/200mg-tri-tren-trenbolone-blend-injection-500x500.png"
-    ]
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-100",
     "name": "76.5mg Tren Hexa Trenbolone Hexabenzylcarbonate Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "76.5mg",
+    "dosage": "76.5mg/ml",
     "form": "Injection",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560133725/MV/IC/JQ/251396077/untitled-design-35-500x500.png",
-    "packaging": "Vial",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "76.5mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11699,28 +11705,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Trenbolone Hexahydrobenzylcarbonate (76.5mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Trenbolone Hexahydrobenzylcarbonate 76.5mg/ml",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/560133725/MV/IC/JQ/251396077/untitled-design-35-500x500.png"
-    ]
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-101",
     "name": "150mg Schnitt Cutmix Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "150mg",
+    "dosage": "150mg/ml",
     "form": "Injection",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png",
-    "packaging": "Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/614386488/RS/WF/OM/251396077/german-remedies-gr-ultra-lean-500x500.webp",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "150mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11729,28 +11737,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Drostanolone Propionate, Trenbolone Acetate, Testosterone Propionate (150mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Cut Mix (Drostanolone + Trenbolone + Test) 150mg/ml",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/6/614386488/RS/WF/OM/251396077/german-remedies-gr-ultra-lean-500x500.webp"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-102",
     "name": "500mg Pro Series Super Cut Mix Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "500mg",
+    "dosage": "500mg/ml",
     "form": "Injection",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png",
-    "packaging": "Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/614386167/KS/OA/KM/251396077/german-remedies-gr-lean-bulk-500x500.webp",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "500mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11759,28 +11769,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Drostanolone Enanthate, Trenbolone Enanthate, Testosterone Enanthate (500mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Super Cut Mix (Masteron + Trenbolone + Test) 500mg/ml",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/6/614386167/KS/OA/KM/251396077/german-remedies-gr-lean-bulk-500x500.webp"
+    ],
+    "brand": "Pro Series"
   },
   {
     "id": "med-103",
     "name": "100mg Masteron Drostanolone Propionate Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "100mg",
+    "dosage": "100mg/ml",
     "form": "Injection",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png",
-    "packaging": "Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/615644840/BS/CO/EG/251396077/pharmaqo-drostanolone-e-200-drostanolone-enanthate-500x500.jpg",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "100mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11789,28 +11801,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Drostanolone Propionate (100mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Drostanolone Propionate Injection USP 100mg/ml",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/6/615644840/BS/CO/EG/251396077/pharmaqo-drostanolone-e-200-drostanolone-enanthate-500x500.jpg"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-104",
     "name": "500mg Pro Series EQ Boldenone Undecylenate Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "500mg",
+    "dosage": "500mg/ml",
     "form": "Injection",
     "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560121004/PO/QN/WU/251396077/500mg-pro-series-eq-boldenone-undecylenate-injection-500x500.png",
-    "packaging": "Vial",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "500mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11819,28 +11833,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Boldenone Undecylenate (500mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Boldenone Undecylenate (Equipoise) Injection 500mg/ml",
     "images": [
       "https://5.imimg.com/data5/SELLER/Default/2025/11/560121004/PO/QN/WU/251396077/500mg-pro-series-eq-boldenone-undecylenate-injection-500x500.png"
-    ]
+    ],
+    "brand": "Pro Series"
   },
   {
     "id": "med-105",
     "name": "250mg Boldabol Boldenone Undecylenate Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "250mg",
+    "dosage": "250mg/ml",
     "form": "Injection",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png",
-    "packaging": "Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/614375974/AO/AC/LU/251396077/german-remedies-nand-blend-p-500x500.png",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "250mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11849,28 +11865,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Boldenone Undecylenate (250mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Boldenone Undecylenate Injection USP 250mg/ml",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/6/614375974/AO/AC/LU/251396077/german-remedies-nand-blend-p-500x500.png"
+    ],
+    "brand": "Boldabol"
   },
   {
     "id": "med-106",
     "name": "300mg EQ Boldenone Undecylenate Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "300mg",
+    "dosage": "300mg/ml",
     "form": "Injection",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png",
-    "packaging": "Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560121004/PO/QN/WU/251396077/500mg-pro-series-eq-boldenone-undecylenate-injection-500x500.png",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "300mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11879,28 +11897,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Boldenone Undecylenate (300mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Boldenone Undecylenate Injection USP 300mg/ml",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2025/11/560121004/PO/QN/WU/251396077/500mg-pro-series-eq-boldenone-undecylenate-injection-500x500.png"
+    ],
+    "brand": "Medihub Pharma Labs"
   },
   {
     "id": "med-107",
     "name": "600mg Pro Series Super Bulk Mix Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "600mg",
+    "dosage": "600mg/ml",
     "form": "Injection",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png",
-    "packaging": "Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/6/614386167/KS/OA/KM/251396077/german-remedies-gr-lean-bulk-500x500.webp",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "600mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11909,28 +11929,30 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Testosterone Enanthate, Nandrolone Decanoate, Boldenone Undecylenate (600mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Super Bulk Mix (Test Enanthate + Deca + EQ) 600mg/ml",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/6/614386167/KS/OA/KM/251396077/german-remedies-gr-lean-bulk-500x500.webp"
+    ],
+    "brand": "Pro Series"
   },
   {
     "id": "med-108",
     "name": "100mg Winstrol Stanozolol Injection",
     "category": "Pharmaceutical Injections",
     "categorySlug": "pharmaceutical-injections",
-    "dosage": "100mg",
+    "dosage": "100mg/ml",
     "form": "Injection",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png",
-    "packaging": "Vial",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2026/7/623544711/EJ/ZV/JL/251396077/infinity-pharma-stanabol-500x500.webp",
+    "packaging": "10ml Multi-Dose Vial",
     "specifications": {
-      "Strength": "100 mg",
+      "Strength": "100mg/ml",
       "Packaging Size": "20ml",
       "Packaging Type": "Vial",
       "Brand": "Super Bulk Mix",
@@ -11939,16 +11961,18 @@
       "Age Group": "Adult",
       "Usage/Application": "Increase In Strength",
       "Brand Name": "Winstrol",
-      "Composition": "Stanozolol",
+      "Composition": "Stanozolol (100mg/ml)",
       "Dose/Strength": "300 mg",
-      "Pack Size": "10ml"
+      "Pack Size": "10ml",
+      "Form": "Injection"
     },
     "description": "Katangi, Jabalpur, Madhya Pradesh Thanks for Contacting Us.",
     "isPopular": false,
-    "genericName": "",
+    "genericName": "Stanozolol Water-Based Suspension Injection 100mg/ml",
     "images": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/11/560127200/FT/LB/TF/251396077/100mg-trenmax-trenbolone-acetate-injection-250x250.png"
-    ]
+      "https://5.imimg.com/data5/SELLER/Default/2026/7/623544711/EJ/ZV/JL/251396077/infinity-pharma-stanabol-500x500.webp"
+    ],
+    "brand": "Winstrol"
   },
   {
     "id": "med-109",
