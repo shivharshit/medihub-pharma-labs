@@ -49,13 +49,15 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
 
   const getLocalizedWaMessage = () => {
     const lang = (i18n.language || 'en').slice(0, 2);
+    const skuText = product.sku ? ` [SKU: ${product.sku}]` : '';
+    const priceText = product.price ? ` [Price: $${product.price}/Box]` : '';
     if (lang === 'es') {
-      return `Hola Medihub Pharma Labs, estoy interesado en el producto: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.dosage || '')}). Por favor proporcione cotización de exportación y MOQ.`;
+      return `Hola Medihub Pharma Labs, estoy interesado en el producto: ${encodeURIComponent(product.name)}${skuText}${priceText} (${encodeURIComponent(product.dosage || '')}). Por favor proporcione cotización de exportación y MOQ.`;
     }
     if (lang === 'de') {
-      return `Hallo Medihub Pharma Labs, ich interessiere mich für das Produkt: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.dosage || '')}). Bitte senden Sie mir ein Export-Angebot und Mindestbestellmengen (MOQ).`;
+      return `Hallo Medihub Pharma Labs, ich interessiere mich für das Produkt: ${encodeURIComponent(product.name)}${skuText}${priceText} (${encodeURIComponent(product.dosage || '')}). Bitte senden Sie mir ein Export-Angebot und Mindestbestellmengen (MOQ).`;
     }
-    return `Hello Medihub Pharma Labs, I am interested in product: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.dosage || '')}). Please provide export quotation and MOQ.`;
+    return `Hello Medihub Pharma Labs, I am interested in product: ${encodeURIComponent(product.name)}${skuText}${priceText} (${encodeURIComponent(product.dosage || '')}). Please provide export quotation and MOQ.`;
   };
 
   const currentImage = images[activeImgIdx] || product.image;
@@ -66,10 +68,17 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
       className="group bg-white rounded-2xl border border-slate-200/90 hover:border-brand-blue/50 shadow-subtle hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden cursor-pointer relative"
     >
       {/* Top Badges & Indicators */}
-      <div className="p-3 pb-0 flex items-center justify-between gap-1 z-10">
-        <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${getFormColor(product.form)}`}>
-          {product.form || t('productCard.tablets')}
-        </span>
+      <div className="p-3 pb-0 flex items-center justify-between gap-1.5 z-10 flex-wrap">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${getFormColor(product.form)}`}>
+            {product.form || t('productCard.tablets')}
+          </span>
+          {product.sku && (
+            <span className="text-[10px] font-mono font-bold bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full">
+              SKU: {product.sku}
+            </span>
+          )}
+        </div>
 
         {product.dosage && (
           <span className="text-[11px] font-bold bg-slate-900 text-white px-2.5 py-0.5 rounded-full">
@@ -138,15 +147,42 @@ export default function ProductCard({ product, onSelectProduct, onAddToRfq, isIn
       {/* Content Body */}
       <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
         <div>
-          {/* Category Tag */}
-          <p className="text-[11px] font-medium text-brand-blue uppercase tracking-wider line-clamp-1">
-            {product.category}
-          </p>
+          {/* Category Tag & Janoshik COA Badge */}
+          <div className="flex items-center justify-between gap-1">
+            <p className="text-[11px] font-semibold text-brand-blue uppercase tracking-wider line-clamp-1">
+              {product.category}
+            </p>
+            {product.coaUrl && (
+              <a
+                href={product.coaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 text-[10px] font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2 py-0.5 rounded-full transition-colors flex-shrink-0"
+                title="Janoshik 3rd-Party Analytical Test Report"
+              >
+                <ShieldCheck className="w-3 h-3 text-blue-600" />
+                <span>COA Verified</span>
+              </a>
+            )}
+          </div>
 
           {/* Product Name */}
           <h3 className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-brand-blue transition-colors line-clamp-2 mt-1 leading-snug">
             {product.name}
           </h3>
+
+          {/* Wholesale Price Badge */}
+          {product.price && (
+            <div className="flex items-baseline gap-1 mt-1.5">
+              <span className="text-sm font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-lg">
+                ${product.price} USD
+              </span>
+              <span className="text-[11px] font-semibold text-slate-500">
+                / Box (10 Vials)
+              </span>
+            </div>
+          )}
 
           {/* Packaging / Specs Info */}
           {product.packaging && (

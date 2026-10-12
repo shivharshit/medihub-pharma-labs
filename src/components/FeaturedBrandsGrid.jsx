@@ -76,6 +76,15 @@ const brandConfigs = {
     borderHover: 'hover:border-indigo-400 hover:shadow-indigo-500/10',
     btnClass: 'bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white',
     tag: '54 Formulations Catalog'
+  },
+  'wholesale-peptides-china': {
+    badge: 'Janoshik Verified Factory Direct',
+    themeColor: 'cyan',
+    badgeClass: 'bg-cyan-50 text-cyan-800 border-cyan-200',
+    iconClass: 'bg-cyan-100 text-cyan-700',
+    borderHover: 'hover:border-cyan-400 hover:shadow-cyan-500/10',
+    btnClass: 'bg-cyan-50 text-cyan-800 hover:bg-cyan-600 hover:text-white',
+    tag: '108 Wholesale Peptides Kit Catalog'
   }
 };
 

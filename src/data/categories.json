@@ -32,6 +32,15 @@
     "featured": true
   },
   {
+    "id": "wholesale-peptides-china",
+    "name": "Wholesale Peptides (China)",
+    "slug": "wholesale-peptides-china",
+    "count": 108,
+    "icon": "Dna",
+    "featured": true,
+    "description": "Direct Factory Wholesale 10-Vial Peptide Kits with 3rd-Party Janoshik Analytical Verification & Factory Pricing"
+  },
+  {
     "id": "pharmaqo-labs-hgh-peptides",
     "name": "PHARMAQO Labs - HGH & PEPTIDES",
     "slug": "pharmaqo-labs-hgh-peptides",

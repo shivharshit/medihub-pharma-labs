@@ -47,18 +47,23 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
 
   const getLocalizedModalWaMessage = () => {
     const lang = (i18n.language || 'en').slice(0, 2);
+    const skuLine = product.sku ? `\n*SKU:* ${product.sku}` : '';
+    const priceLine = product.price ? `\n*Precio Mayorista:* $${product.price} USD / Caja (10 Viales)` : '';
+    const priceLineDe = product.price ? `\n*Großhandelspreis:* $${product.price} USD / Box (10 Vials)` : '';
+    const priceLineEn = product.price ? `\n*Wholesale Price:* $${product.price} USD / Box (10 Vials)` : '';
+
     if (lang === 'es') {
       return encodeURIComponent(
-        `Hola Medihub Pharma Labs, me gustaría solicitar una cotización de exportación para:\n\n*Producto:* ${product.name}\n*Categoría:* ${product.category}\n*Dosis/Concentración:* ${product.dosage || 'Estándar'}\n*Cantidad Estimada de Pedido:* ${quantity} Unidades / Cajas\n\nPor favor proporcione cotización mayorista, tiempo de entrega y disponibilidad de COA.`
+        `Hola Medihub Pharma Labs, me gustaría solicitar una cotización de exportación para:\n\n*Producto:* ${product.name}${skuLine}${priceLine}\n*Categoría:* ${product.category}\n*Dosis/Concentración:* ${product.dosage || 'Estándar'}\n*Cantidad Estimada de Pedido:* ${quantity} Unidades / Cajas\n\nPor favor proporcione cotización mayorista, tiempo de entrega y disponibilidad de COA.`
       );
     }
     if (lang === 'de') {
       return encodeURIComponent(
-        `Hallo Medihub Pharma Labs, ich möchte ein Export-Angebot anfordern für:\n\n*Produkt:* ${product.name}\n*Kategorie:* ${product.category}\n*Stärke/Dosis:* ${product.dosage || 'Standard'}\n*Geschätzte Bestellmenge:* ${quantity} Einheiten / Packungen\n\nBitte senden Sie mir ein Großhandelsangebot, Lieferzeiten und COA-Verfügbarkeit.`
+        `Hallo Medihub Pharma Labs, ich möchte ein Export-Angebot anfordern für:\n\n*Produkt:* ${product.name}${skuLine}${priceLineDe}\n*Kategorie:* ${product.category}\n*Stärke/Dosis:* ${product.dosage || 'Standard'}\n*Geschätzte Bestellmenge:* ${quantity} Einheiten / Packungen\n\nBitte senden Sie mir ein Großhandelsangebot, Lieferzeiten und COA-Verfügbarkeit.`
       );
     }
     return encodeURIComponent(
-      `Hello Medihub Pharma Labs, I would like to request an export quotation for:\n\n*Product:* ${product.name}\n*Category:* ${product.category}\n*Strength/Dosage:* ${product.dosage || 'Standard'}\n*Estimated Order Quantity:* ${quantity} Units / Packs\n\nPlease provide wholesale quotation, delivery timeline, and COA availability.`
+      `Hello Medihub Pharma Labs, I would like to request an export quotation for:\n\n*Product:* ${product.name}${skuLine}${priceLineEn}\n*Category:* ${product.category}\n*Strength/Dosage:* ${product.dosage || 'Standard'}\n*Estimated Order Quantity:* ${quantity} Units / Packs\n\nPlease provide wholesale quotation, delivery timeline, and COA availability.`
     );
   };
 
@@ -75,10 +80,15 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
         
         {/* Header Strip */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/80">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-bold text-brand-blue uppercase tracking-wider bg-brand-blue-light px-2.5 py-1 rounded-full">
               {product.category}
             </span>
+            {product.sku && (
+              <span className="text-xs font-mono font-bold bg-slate-200 text-slate-800 px-2.5 py-1 rounded-full border border-slate-300">
+                SKU: {product.sku}
+              </span>
+            )}
             {product.dosage && (
               <span className="text-xs font-bold bg-slate-900 text-white px-2.5 py-1 rounded-full">
                 {product.dosage}
@@ -168,9 +178,43 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
                   {product.name}
                 </h2>
                 <p className="text-xs text-slate-500 mt-1">
-                  Export SKU: <span className="font-mono text-slate-700 font-semibold">{product.id.toUpperCase()}</span>
+                  Export SKU: <span className="font-mono text-slate-700 font-semibold">{product.sku || product.id.toUpperCase()}</span>
                 </p>
               </div>
+
+              {/* Wholesale Price & Janoshik COA Banner */}
+              {(product.price || product.coaUrl) && (
+                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/90 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-xs">
+                  <div>
+                    {product.price && (
+                      <>
+                        <div className="text-[10px] font-black tracking-wider uppercase text-emerald-800">
+                          Factory Wholesale Export Price
+                        </div>
+                        <div className="flex items-baseline gap-1.5 mt-0.5">
+                          <span className="text-2xl font-black text-emerald-700 font-mono">${product.price} USD</span>
+                          <span className="text-xs font-bold text-slate-600">/ Box (10 Vials Kit)</span>
+                        </div>
+                      </>
+                    )}
+                    <div className="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
+                      <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                      <span>HPLC Purity ≥99% • Sterile Lyophilized • Express Cold-Chain Delivery</span>
+                    </div>
+                  </div>
+                  {product.coaUrl && (
+                    <a
+                      href={product.coaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-xs transition-colors"
+                    >
+                      <ShieldCheck className="w-4 h-4 text-blue-200" />
+                      <span>Janoshik COA Report</span>
+                    </a>
+                  )}
+                </div>
+              )}
 
               {/* Technical Specifications Table */}
               <div className="bg-slate-50 rounded-xl p-4 border border-slate-200/70 space-y-2 text-xs">
@@ -199,10 +243,25 @@ export default function ProductModal({ product, onClose, onAddToRfq, isInRfq }) 
 
                   {Object.entries(product.specifications || {}).map(([key, val]) => {
                     if (['Form', 'Strength', 'Packaging Type', 'Packaging Size'].includes(key)) return null;
+                    const isUrl = typeof val === 'string' && val.startsWith('http');
                     return (
                       <React.Fragment key={key}>
                         <div className="text-slate-500 truncate pr-2">{key}:</div>
-                        <div className="font-semibold text-slate-800 break-words">{val}</div>
+                        <div className="font-semibold text-slate-800 break-words">
+                          {isUrl ? (
+                            <a
+                              href={val}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:underline inline-flex items-center gap-1 font-bold"
+                            >
+                              <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                              <span>View Janoshik Test</span>
+                            </a>
+                          ) : (
+                            val
+                          )}
+                        </div>
                       </React.Fragment>
                     );
                   })}
