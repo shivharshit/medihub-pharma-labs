@@ -187,6 +187,11 @@ console.log('categories.json updated with Wholesale Peptides (China)!');
 // 2. Filter out any existing wholesale-peptides-china items to avoid duplicates
 const cleanProducts = products.filter(p => p.categorySlug !== 'wholesale-peptides-china');
 
+// Increase price by $10 for all 108 products
+rawItems.forEach(item => {
+  item.price += 10;
+});
+
 // 3. Build new product objects
 const newProducts = rawItems.map(item => {
   const isLiquid = item.spec.includes('ml');

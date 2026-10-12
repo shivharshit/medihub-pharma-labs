@@ -163,6 +163,11 @@ if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir, { recursive: true });
 }
 
+// Increase price by $10 for all 108 products
+rawItems.forEach(item => {
+  item.price += 10;
+});
+
 // Generate clean high-resolution SVG product box + vial artwork for each SKU
 rawItems.forEach(item => {
   const isLiquid = item.spec.includes('ml');
